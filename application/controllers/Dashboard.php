@@ -24,7 +24,7 @@ class Dashboard extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Lokasikumuh_model');
+        $this->load->model('Model_lokasi_kumuh');
     }
 
     public function index()

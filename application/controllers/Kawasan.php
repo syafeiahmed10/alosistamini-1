@@ -5,6 +5,38 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Kawasan extends CI_Controller
 {
 
+    // =======================================================================LOKASI==================================
+
+    public function sk_kumuh()
+    {
+
+        $data['lokasikumuh'] = $this->Model_lokasi_kumuh->getAllLokasikumuh();
+        $this->header();
+        $this->load->view('kawasan/lokasi/view_sk_kumuh', $data);
+        $this->footer();
+    }
+
+    public function sk_kumuh_tambah()
+    {
+        $data['kabupaten'] = $this->Model_lokasi_kumuh->getAllKabupaten();
+        $this->form_validation->set_rules('kabupaten', 'Kabupaten', 'required');
+        $this->form_validation->set_rules('surat_keterangan', 'Sk', 'required');
+
+
+        if ($this->form_validation->run() == FALSE) {
+
+            $this->header();
+            $this->load->view('kawasan/lokasi/view_sk_kumuh_tambah', $data);
+            $this->footer();
+        } else {
+            $this->Model_lokasi_kumuh->tambahDataSk();
+            $this->session->set_flashdata('flash', 'ditambahkan');
+
+
+            redirect('Kawasan/lokasi_kumuh');
+        }
+    }
+
 
 
     public function lokasi_kumuh()
@@ -35,12 +67,22 @@ class Kawasan extends CI_Controller
             $this->footer();
         } else {
             $this->Model_lokasi_kumuh->tambahDataLokasi();
-            $this->session->set_flashdata('add', 'ditambahkan');
+            $this->session->set_flashdata('flash', 'ditambahkan');
 
 
             redirect('Kawasan/lokasi_kumuh');
         }
     }
+
+    public function lokasi_kumuh_hapus($id)
+    {
+        $this->Model_lokasi_kumuh->hapusDataLokasi($id);
+        $this->session->set_flashdata('flash', 'dihapus');
+        redirect('Kawasan/lokasi_kumuh');
+    }
+
+
+    // =======================================================================PENGANGANAN==================================
 
     public function penanganan_kumuh()
     {
