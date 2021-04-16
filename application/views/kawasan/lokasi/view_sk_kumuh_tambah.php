@@ -37,7 +37,7 @@
                             <input type="text" class="form-control" name="surat_keterangan" id="surat_keterangan">
                         </div>
 
-                        <button type="submit" name="tambah" class="btn btn-primary float-left">Tambah Data</button>
+                        <button type="submit" name="tambah" class="btn btn-primary float-left">tambah</button>
                     </form>
                 </div>
             </div>

@@ -14,7 +14,7 @@
         </span>
         <span class="text">Tambah</span></a>
 
-    <?php var_dump($this->mongo_db->get('lokasi_kumuh')); ?>
+
     <?php if ($this->session->flashdata('flash')) : ?>
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
             <strong>Alhamdulilllah</strong> Data Berhasil di <?php echo $this->session->flashdata('add'); ?>

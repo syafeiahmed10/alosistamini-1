@@ -18,9 +18,10 @@ class Kawasan extends CI_Controller
 
     public function sk_kumuh_tambah()
     {
+
         $data['kabupaten'] = $this->Model_lokasi_kumuh->getAllKabupaten();
         $this->form_validation->set_rules('kabupaten', 'Kabupaten', 'required');
-        $this->form_validation->set_rules('surat_keterangan', 'Sk', 'required');
+        // $this->form_validation->set_rules('surat_keterangan', 'Sk', 'required');
 
 
         if ($this->form_validation->run() == FALSE) {
@@ -33,9 +34,21 @@ class Kawasan extends CI_Controller
             $this->session->set_flashdata('flash', 'ditambahkan');
 
 
-            redirect('Kawasan/lokasi_kumuh');
+            redirect('Kawasan/sk_kumuh');
         }
     }
+
+    public function sk_kumuh_tambah_action($kabupaten)
+    {
+    }
+
+    public function sk_kumuh_hapus($id)
+    {
+        $this->Model_lokasi_kumuh->hapusDataSk($id);
+        $this->session->set_flashdata('flash', 'dihapus');
+        redirect('Kawasan/sk_kumuh');
+    }
+
 
 
 

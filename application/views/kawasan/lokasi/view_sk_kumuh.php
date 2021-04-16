@@ -9,7 +9,7 @@
 
 
 
-    <a class="btn btn-success btn-icon-split mb-3 ml-auto" href="<?php echo base_url() ?>kawasan/sk_kumuh_tambah"><span class="icon text-white-50">
+    <a class="btn btn-success btn-icon-split mb-3 ml-auto" href="<?php echo base_url() ?>kawasan/sk_kumuh_tambah/"><span class="icon text-white-50">
             <i class="fas fa-plus"></i>
         </span>
         <span class="text">Tambah</span></a>
@@ -17,7 +17,7 @@
 
     <?php if ($this->session->flashdata('flash')) : ?>
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <strong>Alhamdulilllah</strong> Data Berhasil di <?php echo $this->session->flashdata('add'); ?>
+            <strong>Selamat</strong> Data Berhasil di <?php echo $this->session->flashdata('flash'); ?>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -45,20 +45,25 @@
                         <tr>
                             <th>No</th>
                             <th>Nomor SK</th>
+                            <th>Kabupaten</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>
                     <tbody>
+
                         <?php $i = 1; ?>
+
                         <?php foreach ($lokasikumuh as $lokasi) : ?>
-                            <tr>
-                                <td><?php echo $i++ ?></td>
-                                <td><?php echo $lokasi['surat_keterangan']['sk'] ?></td>
-                                <td><?php echo $lokasi['kabupaten'] ?></td>
-                                <td><a class="badge badge-primary" href="<?= base_url(); ?>kawasan/lokasi_kumuh_detail/<?= $lokasi['_id'] ?>">Hapus</a>
-                                    <a onclick="return confirm('Anda Yakin Menghapus <?php echo $lokasi['surat_keterangan']['kawasan']['nama_lokasi']  ?>')" class="badge badge-danger" href="<?= base_url(); ?>kawasan/lokasi_kumuh_hapus/<?= $lokasi['_id'] ?>">Hapus</a>
-                                </td>
-                            </tr>
+                            <?php foreach ($lokasi['surat_keterangan'] as $sk) : ?>
+                                <tr>
+                                    <td><?php echo $i++ ?></td>
+                                    <td><?php echo $sk['sk'] ?></td>
+                                    <td><?php echo $lokasi['kabupaten'] ?></td>
+                                    <td><a class="badge badge-primary" href="<?= base_url(); ?>kawasan/lokasi_kumuh_detail/<?= $lokasi['_id'] ?>">Hapus</a>
+
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
                         <?php endforeach; ?>
                     </tbody>
                 </table>

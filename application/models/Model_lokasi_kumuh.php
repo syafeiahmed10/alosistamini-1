@@ -20,7 +20,8 @@ class Model_lokasi_kumuh extends CI_Model
 
     public function getAllLokasikumuh()
     {
-        return $this->mongo_db->get('lokasi_kumuh');
+        $this->mongo_db->where(['surat_keterangan' => $this->mongo_db->exists(true)]);
+        return $this->mongo_db->sort('_id', 'desc')->get('lokasi_kumuh');
     }
 
     public function tambahDataLokasi()
@@ -46,27 +47,6 @@ class Model_lokasi_kumuh extends CI_Model
     }
 
 
-    public function tambahDataSk()
-    {
-        $data = [
-
-            'kabupaten' => $this->input->post('kabupaten', true),
-            'surat_keterangan' => [
-                'sk' => $this->input->post('surat_keterangan'),
-                'kawasan' => [
-                    'nama_lokasi' => '',
-                    'luas_awal' => '',
-                    'lingkup_administratif' => '',
-                    'latitude' => '',
-                    'longitude' => '',
-                    'status' => ''
-                ]
-            ]
-        ];
-
-
-        $this->mongo_db->insert('lokasi_kumuh', $data);
-    }
 
 
     public function hapusDataLokasi($id)
@@ -74,5 +54,26 @@ class Model_lokasi_kumuh extends CI_Model
         $this->mongo_db->where('_id', new MongoDb\BSON\ObjectId($id))->delete('lokasi_kumuh');
     }
 
+    public function tambahDataSk()
+    {
+
+        $this->mongo_db->push(
+            'surat_keterangan',
+            [
+                'id_sk' => $this->mongo_db->create_document_id(),
+                'sk' => $this->input->post('surat_keterangan')
+            ]
+        )
+            ->where(
+                'kabupaten',
+                $this->input->post('kabupaten')
+            )
+            ->update('lokasi_kumuh');
+    }
+
+    public function hapusDataSk($id)
+    {
+        $this->mongo_db->where('_id', new MongoDb\BSON\ObjectId($id))->delete('lokasi_kumuh');
+    }
     /* End of file Lokasikumuh_model.php */
 }
