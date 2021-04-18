@@ -57,10 +57,10 @@
                             <?php foreach ($lokasi['surat_keterangan'] as $sk) : ?>
                                 <tr>
                                     <td><?php echo $i++ ?></td>
-                                    <td><?php echo $sk['sk'] ?></td>
+                                    <td><?php echo $sk['id_sk'] ?></td>
                                     <td><?php echo $lokasi['kabupaten'] ?></td>
-                                    <td><a class="badge badge-primary" href="<?= base_url(); ?>dashboard/lokasi_kumuh_detail/<?= $lokasi['_id'] ?>">Hapus</a>
-
+                                    <td><a class="badge badge-primary" href="<?= base_url(); ?>dashboard/sk_kumuh_edit/<?php echo $lokasi['_id'] ?>/<?php echo $sk['id_sk'] ?>">Edit</a>
+                                        <a onclick="return confirm('Anda Yakin Menghapus <?php echo $sk['sk']  ?>')" class="badge badge-danger" href="<?= base_url(); ?>dashboard/sk_kumuh_hapus/<?php echo $lokasi['_id'] ?>/<?php echo $sk['id_sk'] ?>">Hapus</a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

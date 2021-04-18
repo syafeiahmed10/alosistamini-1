@@ -9,7 +9,7 @@
 
 
 
-    <a class="btn btn-success btn-icon-split mb-3 ml-auto" href="<?php echo base_url() ?>kawasan/lokasi_kumuh_tambah"><span class="icon text-white-50">
+    <a class="btn btn-success btn-icon-split mb-3 ml-auto" href="<?php echo base_url() ?>dashboard/lokasi_kumuh_tambah"><span class="icon text-white-50">
             <i class="fas fa-plus"></i>
         </span>
         <span class="text">Tambah</span></a>
@@ -36,49 +36,54 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Kabupaten</th>
-                            <th>Nomor SK</th>
-                            <th>Nama Lokasi</th>
-                            <th><span class="lat"> Latitude </span> | <span class="long"> Longitude </span></th>
-                            <th>Luas</th>
-                            <th>Tingkat Kumuh</th>
+                            <th>Lokasi</th>
                             <th>Lingkup Administratif</th>
+                            <th>Longitude</th>
+                            <th>Latitude</th>
+                            <th>Luas</th>
+                            <th>Tinkgat Kumuh</th>
+                            <th>SK</th>
+                            <th>Kabupaten</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>No</th>
-                            <th>Kabupaten</th>
-                            <th>Nomor SK</th>
-                            <th>Nama Lokasi</th>
-                            <th><span class="lat"> Latitude </span> | <span class="long"> Longitude </span></th>
-                            <th>Luas</th>
-                            <th>Tingkat Kumuh</th>
+                            <th>Lokasi</th>
                             <th>Lingkup Administratif</th>
+                            <th>Longitude</th>
+                            <th>Latitude</th>
+                            <th>Luas</th>
+                            <th>Tinkgat Kumuh</th>
+                            <th>SK</th>
+                            <th>Kabupaten</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>
                     <tbody>
-                        <?php $i = 1; ?>
-                        <?php foreach ($lokasikumuh as $lokasi) : ?>
-                            <tr>
-                                <td><?php echo $i++ ?></td>
-                                <td><?php echo $lokasi['kabupaten'] ?></td>
-                                <td><?php echo $lokasi['surat_keterangan']['sk'] ?></td>
-                                <td><?php echo $lokasi['surat_keterangan']['kawasan']['nama_lokasi'] ?></td>
-                                <td>
-                                    <span class="lat"><?php echo $lokasi['surat_keterangan']['kawasan']['latitude'] ?></span> |
-                                    <span class="long"><?php echo $lokasi['surat_keterangan']['kawasan']['longitude'] ?></span>
-                                </td>
-                                <td><?php echo $lokasi['surat_keterangan']['kawasan']['luas_awal'] ?></td>
-                                <td><?php echo $lokasi['surat_keterangan']['kawasan']['status'] ?></td>
-                                <td><?php echo $lokasi['surat_keterangan']['kawasan']['lingkup_administratif'] ?>
 
-                                <td><a class="badge badge-primary" href="<?= base_url(); ?>kawasan/lokasi_kumuh_detail/<?= $lokasi['_id'] ?>">Hapus</a>
-                                    <a onclick="return confirm('Anda Yakin Menghapus <?php echo $lokasi['surat_keterangan']['kawasan']['nama_lokasi']  ?>')" class="badge badge-danger" href="<?= base_url(); ?>kawasan/lokasi_kumuh_hapus/<?= $lokasi['_id'] ?>">Hapus</a>
-                                </td>
-                            </tr>
+                        <?php $i = 1; ?>
+
+                        <?php foreach ($lokasikumuh as $lokasi) : ?>
+                            <?php foreach ($lokasi['surat_keterangan'] as $sk) : ?>
+                                <?php foreach ($sk['lokasi_kumuh'] as $lk) : ?>
+                                    <tr>
+                                        <td><?php echo $i++ ?></td>
+                                        <td><?php echo $lk['nama_lokasi'] ?></td>
+                                        <td><?php echo $lk['luas_lokasi'] ?></td>
+                                        <td><?php echo $lk['lingkup_administratif'] ?></td>
+                                        <td><?php echo $lk['longitude'] ?></td>
+                                        <td><?php echo $lk['latitude'] ?></td>
+                                        <td><?php echo $lk['tingkat_kumuh'] ?></td>
+                                        <td><?php echo $sk['sk'] ?></td>
+                                        <td><?php echo $lokasi['kabupaten'] ?></td>
+                                        <td><a class="badge badge-primary" href="<?= base_url(); ?>dashboard/sk_kumuh_edit/<?php echo $lokasi['_id'] ?>/<?php echo $sk['id_sk'] ?>">Edit</a>
+                                            <a onclick="return confirm('Anda Yakin Menghapus <?php echo $lk['nama_lokasi'] ?>')" class="badge badge-danger" href="<?= base_url(); ?>dashboard/lokasi_kumuh_hapus/<?php echo $lokasi['_id'] ?>/<?php echo $sk['id_sk'] ?>/<?php echo $lk['id_lokasi'] ?>">Hapus</a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php endforeach; ?>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
