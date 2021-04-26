@@ -9,7 +9,7 @@
 
 
 
-    <a class="btn btn-success btn-icon-split mb-3 ml-auto" href="<?php echo base_url() ?>dashboard/lokasi_kumuh_tambah"><span class="icon text-white-50">
+    <a class="btn btn-success btn-icon-split mb-3 ml-auto" href="<?php echo base_url() ?>lokasi_kumuh/tambah"><span class="icon text-white-50">
             <i class="fas fa-plus"></i>
         </span>
         <span class="text">Tambah</span></a>
@@ -78,8 +78,8 @@
                                         <td><?php echo $lk['tingkat_kumuh'] ?></td>
                                         <td><?php echo $sk['sk'] ?></td>
                                         <td><?php echo $lokasi['kabupaten'] ?></td>
-                                        <td><a class="badge badge-primary" href="<?= base_url(); ?>dashboard/sk_kumuh_edit/<?php echo $lokasi['_id'] ?>/<?php echo $sk['id_sk'] ?>">Edit</a>
-                                            <a onclick="return confirm('Anda Yakin Menghapus <?php echo $lk['nama_lokasi'] ?>')" class="badge badge-danger" href="<?= base_url(); ?>dashboard/lokasi_kumuh_hapus/<?php echo $lokasi['_id'] ?>/<?php echo $sk['id_sk'] ?>/<?php echo $lk['id_lokasi'] ?>">Hapus</a>
+                                        <td>
+                                            <a onclick="return confirm('Anda Yakin Menghapus <?php echo $lk['nama_lokasi'] ?>')" class="badge badge-danger" href="<?= base_url(); ?>lokasi_kumuh/hapus/<?php echo $lokasi['_id'] ?>/<?php echo $sk['id_sk'] ?>/<?php echo $lk['id_lokasi'] ?>">Hapus</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

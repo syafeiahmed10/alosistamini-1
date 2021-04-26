@@ -26,8 +26,8 @@
                         <div class="form-group">
                             <label for="kabupaten">Kabupaten</label>
                             <!-- <input type="text" class="form-control" id="n ama_lokasi" required> -->
-                            <select class="form-control" name="kabupaten" id="kabupaten" required disabled>
-                                <?php foreach ($content as $key) : ?>
+                            <select class="form-control" name="kabupaten" id="kabupaten" required>
+                                <?php foreach ($kabupaten as $key) : ?>
                                     <option value="<?php echo $key['kabupaten'] ?>"><?php echo $key['kabupaten'] ?></option>
                                 <?php endforeach; ?>
 

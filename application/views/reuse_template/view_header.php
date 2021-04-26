@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title><?= $title; ?></title>
 
     <!-- Custom fonts for this template-->
     <link href="<?php echo base_url() ?>assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -84,9 +84,9 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Data Kawasan</h6>
-                        <a class="collapse-item" href="<?php echo base_url() ?>dashboard/sk_kumuh">SK Kumuh</a>
-                        <a class="collapse-item" href="<?php echo base_url() ?>dashboard/lokasi_kumuh">Lokasi Kumuh</a>
-                        <a class="collapse-item" href="<?php echo base_url() ?>dashboard/penanganan_kumuh">Pengangan Kumuh</a>
+                        <a class="collapse-item" href="<?php echo base_url() ?>sk_kumuh">SK Kumuh</a>
+                        <a class="collapse-item" href="<?php echo base_url() ?>lokasi_kumuh">Lokasi Kumuh</a>
+                        <a class="collapse-item" href="<?php echo base_url() ?>penanganan_kumuh">Pengangan Kumuh</a>
                     </div>
                 </div>
             </li>

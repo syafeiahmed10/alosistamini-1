@@ -25,7 +25,7 @@
 
                         <div class="form-group">
                             <label for="nama_lokasi">Surat Keterangan</label>
-                            <select class="form-control" name="surat_keterangan" id="surat_keterangan" required>
+                            <select class="selectpicker form-control" data-live-search="true" name="surat_keterangan" id="surat_keterangan" required>
                                 <?php foreach ($lokasikumuh as $lokasi) : ?>
                                     <?php foreach ($lokasi['surat_keterangan'] as $sk) : ?>
 

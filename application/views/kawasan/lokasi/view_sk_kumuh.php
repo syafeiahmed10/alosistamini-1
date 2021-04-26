@@ -9,7 +9,7 @@
 
 
 
-    <a class="btn btn-success btn-icon-split mb-3 ml-auto" href="<?php echo base_url() ?>dashboard/sk_kumuh_tambah/"><span class="icon text-white-50">
+    <a class="btn btn-success btn-icon-split mb-3 ml-auto" href="<?php echo base_url() ?>sk_kumuh/tambah/"><span class="icon text-white-50">
             <i class="fas fa-plus"></i>
         </span>
         <span class="text">Tambah</span></a>
@@ -59,8 +59,9 @@
                                     <td><?php echo $i++ ?></td>
                                     <td><?php echo $sk['id_sk'] ?></td>
                                     <td><?php echo $lokasi['kabupaten'] ?></td>
-                                    <td><a class="badge badge-primary" href="<?= base_url(); ?>dashboard/sk_kumuh_edit/<?php echo $lokasi['_id'] ?>/<?php echo $sk['id_sk'] ?>">Edit</a>
-                                        <a onclick="return confirm('Anda Yakin Menghapus <?php echo $sk['sk']  ?>')" class="badge badge-danger" href="<?= base_url(); ?>dashboard/sk_kumuh_hapus/<?php echo $lokasi['_id'] ?>/<?php echo $sk['id_sk'] ?>">Hapus</a>
+                                    <td>
+                                        <a class="badge badge-primary" href="<?= base_url(); ?>sk_kumuh/edit/<?php echo $lokasi['_id'] ?>/<?php echo $sk['id_sk'] ?>">Edit</a>
+                                        <a onclick="return confirm('Anda Yakin Menghapus <?php echo $sk['sk']  ?>')" class="badge badge-danger" href="<?= base_url(); ?>sk_kumuh/hapus/<?php echo $lokasi['_id'] ?>/<?php echo $sk['id_sk'] ?>">Hapus</a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
