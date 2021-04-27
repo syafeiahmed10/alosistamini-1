@@ -55,8 +55,8 @@ class Alosista_model extends CI_Model
         $this->db->join('lokasi_kumuh as l', 'l.id_lokasi = p.id_lokasi', 'left');
         $this->db->join('surat_keterangan_kumuh as s', 's.id_sk = l.id_sk', 'left');
         $this->db->join('reg_regencies as r', 'r.id = s.regency_id', 'left');
-        $this->db->select('p.id_penanganan as id_penanganan, p.proposal as proposal, p.kegiatan as kegiatan, p.tahun as tahun_penanganan, p.sumber_dana as dana, p.luas_tertangani as luas_tertangani, l.lokasi as lokasi, l.lingkup_administratif, s.sk as sk, r.name as kabupaten, p.lng as lng, p.lat as lat');
-        return $this->db->get()->result_array();
+        $this->db->select('p.id_penanganan as id_penanganan, p.proposal as proposal, p.kegiatan as kegiatan, p.tahun as tahun_penanganan, p.sumber_dana as dana, p.luas_tertangani as luas_tertangani, p.lng as lng, p.lat as lat, l.lokasi as lokasi, l.lingkup_administratif, s.sk as sk, r.name as kabupaten');
+        return $this->db->get();
     }
     // ========================================================END QUERY TABEL=============================================================================
 
@@ -168,6 +168,29 @@ class Alosista_model extends CI_Model
     public function del_penanganan_kumuh($id_penanganan)
     {
         $this->db->where('id_penanganan', $id_penanganan)->delete('penanganan_lokasi_kumuh');
+    }
+
+    public function edit_penanganan_kumuh_get($id_penanganan)
+    {
+        $this->db->where('id_penanganan', $id_penanganan);
+        return $this->get_penanganan_kumuh()->row_array();
+    }
+
+    public function edit_penanganan_kumuh_action($id_penanganan)
+    {
+        $this->db->where('id_penanganan', $id_penanganan);
+
+        $object = [
+            'id_lokasi' => $this->input->post('lokasi'),
+            'proposal' => $this->input->post('proposal'),
+            'luas_tertangani' => (float)$this->input->post('luas_tertangani'),
+            'lng' => $this->input->post('lng'),
+            'lat' => $this->input->post('lat'),
+            'sumber_dana' => $this->input->post('sumber_dana'),
+            'tahun' => $this->input->post('tahun'),
+            'kegiatan' => $this->input->post('kegiatan')
+        ];
+        $this->db->update('penanganan_lokasi_kumuh', $object);
     }
 }
 

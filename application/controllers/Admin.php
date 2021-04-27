@@ -66,7 +66,7 @@ class Admin extends CI_Controller
     public function lokasi_kumuh()
     {
         $data['title'] = "Lokasi Kumuh";
-        $data['content'] = $this->alosista_model->get_lokasi_kumuh()->result_array();;
+        $data['content'] = $this->alosista_model->get_lokasi_kumuh()->result_array();
         $this->load->view('template/header', $data);
         $this->load->view('lokasikumuh', $data);
         $this->load->view('template/footer');
@@ -92,13 +92,13 @@ class Admin extends CI_Controller
         }
     }
 
-    public function lokasi_kumuh_ubah($id_sk)
+    public function lokasi_kumuh_ubah($id_lokasi)
     {
-        // var_dump($this->alosista_model->edit_lokasi_kumuh_get($id_sk));
+        // var_dump($this->alosista_model->edit_lokasi_kumuh_get($id_lokasi));
         // die;
         $data['content'] = $this->alosista_model->dropdown_sk_kumuh();
         $data['title'] =  "Ubah Lokasi Kumuh";
-        $data['content2'] = $this->alosista_model->edit_lokasi_kumuh_get($id_sk);
+        $data['content2'] = $this->alosista_model->edit_lokasi_kumuh_get($id_lokasi);
         $this->load->view('template/header', $data);
         $this->load->view('lokasikumuhubah', $data);
         $this->load->view('template/footer');
@@ -122,7 +122,7 @@ class Admin extends CI_Controller
     {
         // var_dump($this->alosista_model->get_penanganan_kumuh());
         // die;
-        $data['content'] =  $this->alosista_model->get_penanganan_kumuh();
+        $data['content'] =  $this->alosista_model->get_penanganan_kumuh()->result_array();
         $data['title'] =  "Penanganan Kumuh";
         $this->load->view('template/header', $data);
         $this->load->view('penanganankumuh', $data);
@@ -148,6 +148,26 @@ class Admin extends CI_Controller
     public function penanganan_kumuh_hapus($id_penanganan)
     {
         $this->alosista_model->del_penanganan_kumuh($id_penanganan);
+        redirect('admin/penanganan_kumuh');
+    }
+
+    public function penanganan_kumuh_ubah($id_penanganan)
+    {
+        // var_dump($this->alosista_model->edit_penanganan_kumuh_get($id_penanganan));
+        // die;
+        $data['content'] = $this->alosista_model->dropdown_lokasi_kumuh()->result_array();
+        $data['title'] =  "Ubah Penanganan Kumuh";
+        $data['content2'] = $this->alosista_model->edit_penanganan_kumuh_get($id_penanganan);
+        
+        $this->load->view('template/header', $data);
+        $this->load->view('penanganankumuhubah', $data);
+        $this->load->view('template/footer');
+    }
+
+    public function penanganan_kumuh_aksi_ubah()
+    {
+        $this->alosista_model->edit_penanganan_kumuh_action($this->input->post('id_penanganan'));
+
         redirect('admin/penanganan_kumuh');
     }
     // ==================================================END OF PENANGANAN KUMUH==========================================================================
