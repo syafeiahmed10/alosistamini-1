@@ -36,6 +36,7 @@
                             <th>Langitude</th>
                             <th>Latitude</th>
                             <th>Tingkat Kumuh</th>
+                            <th>Luas Akhir</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -50,6 +51,7 @@
                             <th>Langitude</th>
                             <th>Latitude</th>
                             <th>Tingkat Kumuh</th>
+                            <th>Luas Akhir</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>
@@ -66,6 +68,7 @@
                                 <td><?php echo $key['lng']; ?></td>
                                 <td><?php echo $key['lat']; ?></td>
                                 <td><?php echo $key['tingkat_kumuh']; ?></td>
+                                <td><?php echo $key['luas_akhir']; ?></td>
 
                                 <td>
                                     <a href="<?php echo base_url('admin/lokasi_kumuh_ubah/') ?><?php echo $key['id_lokasi'] ?>"><span class="badge badge-primary">ubah</span></a>

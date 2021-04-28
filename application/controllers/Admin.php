@@ -24,9 +24,9 @@ class Admin extends CI_Controller
     {
 
         $this->form_validation->set_rules('surat_keterangan', 'Surat Keterangan', 'trim|required');
-        $this->form_validation->set_rules('tahun', 'Tahun SK', 'trim|required');
+        $this->form_validation->set_rules('tahun', 'Tahun SK', 'numeric|trim|required');
         $this->form_validation->set_message('required', '{field} harus diisi');
-
+        $this->form_validation->set_message('numeric', 'Input {field} harus berupa angka');
         if ($this->form_validation->run() == FALSE) {
             $data['content'] =  $this->alosista_model->dropdown_kabupaten_jateng();
             $data['title'] =  "Tambah SK";
@@ -145,9 +145,9 @@ class Admin extends CI_Controller
         }
     }
 
-    public function penanganan_kumuh_hapus($id_penanganan)
+    public function penanganan_kumuh_hapus($id_penanganan,$id_lokasi)
     {
-        $this->alosista_model->del_penanganan_kumuh($id_penanganan);
+        $this->alosista_model->del_penanganan_kumuh($id_penanganan,$id_lokasi);
         redirect('admin/penanganan_kumuh');
     }
 

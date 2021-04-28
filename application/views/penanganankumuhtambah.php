@@ -31,7 +31,7 @@
                         </div>
                         <div class="form-group">
                             <label for="tahun_penanganan">Tahun Penanganan</label>
-                            <input type="text" class="form-control" name="tahun_penanganan" id="tahun_penanganan">
+                            <input type="number" class="form-control" name="tahun_penanganan" id="tahun_penanganan">
                         </div>
                         <div class="form-group">
                             <label for="kegiatan">Kegiatan</label>
@@ -61,9 +61,9 @@
                         <div class="form-group">
                             <label for="sumber_dana">Sumber Dana</label>
                             <select class="selectpicker form-control" data-live-search="true" name="sumber_dana" id="sumber_dana" required>
-                                <option value="Rendah">APBN</option>
-                                <option value="Sedang">APBD</option>
-                                <option value="Tinggi">KOTAKU</option>
+                                <option value="APBN">APBN</option>
+                                <option value="APBD">APBD</option>
+                                <option value="KOTAKU">KOTAKU</option>
                             </select>
                         </div>
                         <button type="submit" name="tambah" class="btn btn-primary float-left">Tambah Data</button>

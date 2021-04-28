@@ -35,7 +35,7 @@
                         </div>
                         <div class="form-group">
                             <label for="surat_keterangan">Surat Keterangan</label>
-                            <input type="text" class="form-control" name="surat_keterangan" id="surat_keterangan">
+                            <input type="text" maxlength="40" class="form-control" name="surat_keterangan" id="surat_keterangan">
                         </div>
                         <div class="form-group">
                             <label for="tahun">Tahun SK</label>

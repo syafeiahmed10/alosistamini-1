@@ -26,14 +26,14 @@
                     <form action="<?php echo base_url('admin/'); ?>penanganan_kumuh_aksi_ubah" method="POST">
 
                     <input type="hidden" name="id_penanganan" id="id_penanganan" value="<?php echo $content2['id_penanganan'] ?>">
-
+                    <input type="hidden" name="id_lokasi" id="id_lokasi" value="<?php echo $content2['id_lokasi'] ?>">
                         <div class="form-group">
                             <label for="proposal">Proposal</label>
                             <input type="text" class="form-control" name="proposal" id="proposal" value="<?php echo $content2['proposal'] ?>">
                         </div>
                         <div class="form-group">
                             <label for="tahun_penanganan">Tahun Penanganan</label>
-                            <input type="text" class="form-control" name="tahun_penanganan" id="tahun_penanganan" value="<?php echo $content2['tahun_penanganan'] ?>">
+                            <input type="number" class="form-control" name="tahun_penanganan" id="tahun_penanganan" value="<?php echo $content2['tahun_penanganan'] ?>">
                         </div>
                         <div class="form-group">
                             <label for="kegiatan">Kegiatan</label>
@@ -66,9 +66,9 @@
                         <div class="form-group">
                             <label for="sumber_dana">Sumber Dana</label>
                             <select class="selectpicker form-control" data-live-search="true" name="sumber_dana" id="sumber_dana" required>
-                                <option value="Rendah">APBN</option>
-                                <option value="Sedang">APBD</option>
-                                <option value="Tinggi">KOTAKU</option>
+                                <option value="APBN">APBN</option>
+                                <option value="APBD">APBD</option>
+                                <option value="KOTAKU">KOTAKU</option>
                             </select>
                         </div>
                         <button type="submit" name="tambah" class="btn btn-primary float-left">Ubah Data</button>

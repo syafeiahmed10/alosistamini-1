@@ -45,7 +45,7 @@ class Alosista_model extends CI_Model
     }
     public function get_lokasi_kumuh()
     {
-        $this->db->select('lokasi_kumuh.id_lokasi as id_lokasi, lokasi_kumuh.lokasi as lokasi,lokasi_kumuh.luas as luas, lokasi_kumuh.lingkup_administratif as lingkup_administratif, lokasi_kumuh.lng as lng, lokasi_kumuh.lat as lat, lokasi_kumuh.tingkat_kumuh as tingkat_kumuh,  surat_keterangan_kumuh.id_sk as id_sk,surat_keterangan_kumuh.sk as sk, reg_regencies.name as kabupaten, lokasi_kumuh.tingkat_kumuh as tingkat_kumuh');
+        $this->db->select('lokasi_kumuh.luas_akhir as luas_akhir, lokasi_kumuh.id_lokasi as id_lokasi, lokasi_kumuh.lokasi as lokasi,lokasi_kumuh.luas as luas, lokasi_kumuh.lingkup_administratif as lingkup_administratif, lokasi_kumuh.lng as lng, lokasi_kumuh.lat as lat, lokasi_kumuh.tingkat_kumuh as tingkat_kumuh,  surat_keterangan_kumuh.id_sk as id_sk,surat_keterangan_kumuh.sk as sk, reg_regencies.name as kabupaten, lokasi_kumuh.tingkat_kumuh as tingkat_kumuh');
         return $this->db->from('lokasi_kumuh')->join('surat_keterangan_kumuh', 'surat_keterangan_kumuh.id_sk=lokasi_kumuh.id_sk', 'LEFT')->join('reg_regencies', 'reg_regencies.id=surat_keterangan_kumuh.regency_id', 'LEFT')->get();
     }
 
@@ -55,7 +55,7 @@ class Alosista_model extends CI_Model
         $this->db->join('lokasi_kumuh as l', 'l.id_lokasi = p.id_lokasi', 'left');
         $this->db->join('surat_keterangan_kumuh as s', 's.id_sk = l.id_sk', 'left');
         $this->db->join('reg_regencies as r', 'r.id = s.regency_id', 'left');
-        $this->db->select('p.id_penanganan as id_penanganan, p.proposal as proposal, p.kegiatan as kegiatan, p.tahun as tahun_penanganan, p.sumber_dana as dana, p.luas_tertangani as luas_tertangani, p.lng as lng, p.lat as lat, l.lokasi as lokasi, l.lingkup_administratif, s.sk as sk, r.name as kabupaten');
+        $this->db->select('p.id_penanganan as id_penanganan, p.proposal as proposal, p.kegiatan as kegiatan, p.tahun as tahun_penanganan, p.sumber_dana as dana, p.luas_tertangani as luas_tertangani, p.lng as lng, p.lat as lat, l.lokasi as lokasi, l.lingkup_administratif, s.sk as sk, r.name as kabupaten, p.id_lokasi as id_lokasi');
         return $this->db->get();
     }
     // ========================================================END QUERY TABEL=============================================================================
@@ -108,6 +108,7 @@ class Alosista_model extends CI_Model
             'id_sk' => $this->input->post('sk'),
             'lokasi' => $this->input->post('lokasi'),
             'luas' => (float)$this->input->post('luas'),
+            'luas_akhir' => (float)$this->input->post('luas'),
             'lingkup_administratif' => $this->input->post('lingkup_administratif'),
             'lng' => $this->input->post('lng'),
             'lat' => $this->input->post('lat'),
@@ -163,11 +164,51 @@ class Alosista_model extends CI_Model
         ];
 
         $this->db->insert('penanganan_lokasi_kumuh', $object);
+
+
+        $this->db->select_sum('luas_tertangani');
+        $this->db->from('penanganan_lokasi_kumuh');
+        $this->db->where('id_lokasi',$this->input->post('lokasi'));
+        $luas_tertangani = $this->db->get()->row()->luas_tertangani;
+
+        $this->db->select_sum('luas');
+        $this->db->from('lokasi_kumuh');
+        $this->db->where('id_lokasi',$this->input->post('lokasi'));
+        $luasawal = $this->db->get()->row()->luas;
+        
+
+        $this->db->where('id_lokasi', $this->input->post('lokasi'));
+        $object = [
+            'luas_akhir' => (float)$luasawal - (float)$luas_tertangani
+        ];
+        $this->db->update('lokasi_kumuh', $object);
+        
     }
 
-    public function del_penanganan_kumuh($id_penanganan)
+    public function del_penanganan_kumuh($id_penanganan, $id_lokasi)
     {
         $this->db->where('id_penanganan', $id_penanganan)->delete('penanganan_lokasi_kumuh');
+        
+        $this->db->select_sum('luas_tertangani');
+        $this->db->from('penanganan_lokasi_kumuh');
+        $this->db->where('id_lokasi',$id_lokasi);
+        $luas_tertangani = $this->db->get()->row()->luas_tertangani;
+
+        $this->db->select_sum('luas');
+        $this->db->from('lokasi_kumuh');
+        $this->db->where('id_lokasi',$id_lokasi);
+        $luasawal = $this->db->get()->row()->luas;
+        
+        
+        $this->db->where('id_lokasi', $id_lokasi);
+        $object = [
+            'luas_akhir' => (float)$luasawal - (float)$luas_tertangani
+        ];
+        $this->db->update('lokasi_kumuh', $object);
+        
+        
+
+        
     }
 
     public function edit_penanganan_kumuh_get($id_penanganan)
@@ -180,6 +221,9 @@ class Alosista_model extends CI_Model
     {
         $this->db->where('id_penanganan', $id_penanganan);
 
+        
+
+
         $object = [
             'id_lokasi' => $this->input->post('lokasi'),
             'proposal' => $this->input->post('proposal'),
@@ -187,10 +231,27 @@ class Alosista_model extends CI_Model
             'lng' => $this->input->post('lng'),
             'lat' => $this->input->post('lat'),
             'sumber_dana' => $this->input->post('sumber_dana'),
-            'tahun' => $this->input->post('tahun'),
+            'tahun' => $this->input->post('tahun_penanganan'),
             'kegiatan' => $this->input->post('kegiatan')
         ];
         $this->db->update('penanganan_lokasi_kumuh', $object);
+
+        $this->db->select_sum('luas_tertangani');
+        $this->db->from('penanganan_lokasi_kumuh');
+        $this->db->where('id_lokasi',$this->input->post('lokasi'));
+        $luas_tertangani = $this->db->get()->row()->luas_tertangani;
+
+        $this->db->select_sum('luas');
+        $this->db->from('lokasi_kumuh');
+        $this->db->where('id_lokasi',$this->input->post('lokasi'));
+        $luasawal = $this->db->get()->row()->luas;
+        
+        
+        $this->db->where('id_lokasi', $this->input->post('lokasi'));
+        $object = [
+            'luas_akhir' => (float)$luasawal - (float)$luas_tertangani
+        ];
+        $this->db->update('lokasi_kumuh', $object);
     }
 }
 
