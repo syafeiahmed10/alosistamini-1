@@ -23,10 +23,10 @@
                         '</div>'
                     ) ?>
 
-                    <form action="<?php echo base_url('admin/'); ?>penanganan_kumuh_aksi_ubah" method="POST">
+                    <form action="<?php echo base_url('user/'); ?>penanganan_kumuh_aksi_ubah" method="POST">
 
-                    <input type="hidden" name="id_penanganan" id="id_penanganan" value="<?php echo $content2['id_penanganan'] ?>">
-                    <input type="hidden" name="id_lokasi" id="id_lokasi" value="<?php echo $content2['id_lokasi'] ?>">
+                        <input type="hidden" name="id_penanganan" id="id_penanganan" value="<?php echo $content2['id_penanganan'] ?>">
+                        <input type="hidden" name="id_lokasi" id="id_lokasi" value="<?php echo $content2['id_lokasi'] ?>">
                         <div class="form-group">
                             <label for="proposal">Proposal</label>
                             <input type="text" class="form-control" name="proposal" id="proposal" value="<?php echo $content2['proposal'] ?>">
@@ -61,8 +61,8 @@
                             <label for="lat">Latitude</label>
                             <input type="number" step="any" class="form-control" name="lat" id="lat" value="<?php echo $content2['lat'] ?>">
                         </div>
-                        
-                        
+
+
                         <div class="form-group">
                             <label for="sumber_dana">Sumber Dana</label>
                             <select class="selectpicker form-control" data-live-search="true" name="sumber_dana" id="sumber_dana" required>
@@ -72,7 +72,7 @@
                             </select>
                         </div>
                         <button type="submit" name="tambah" class="btn btn-primary float-left">Ubah Data</button>
-                        <a class="btn btn-danger float-left ml-1" href="<?php echo base_url('admin/penanganan_kumuh') ?>">Batal</a>
+                        <a class="btn btn-danger float-left ml-1" href="<?php echo base_url('user/penanganan_kumuh') ?>">Batal</a>
                     </form>
                 </div>
             </div>

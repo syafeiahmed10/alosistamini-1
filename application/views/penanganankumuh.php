@@ -8,7 +8,7 @@
 
 
 
-    <a class="btn btn-success btn-icon-split mb-3 ml-auto" href="<?php echo base_url('admin/penanganan_kumuh_tambah') ?>"><span class="icon text-white-50">
+    <a class="btn btn-success btn-icon-split mb-3 ml-auto" href="<?php echo base_url('user/penanganan_kumuh_tambah') ?>"><span class="icon text-white-50">
             <i class="fas fa-plus"></i>
         </span>
         <span class="text">Tambah</span></a>
@@ -71,8 +71,8 @@
                                 <td><?php echo $key['dana']; ?></td>
 
                                 <td>
-                                    <a href="<?php echo base_url('admin/penanganan_kumuh_ubah/') ?><?php echo $key['id_penanganan'] ?>"><span class="badge badge-primary">ubah</span></a>
-                                    <a href=" <?php echo base_url('admin/penanganan_kumuh_hapus/') ?><?php echo $key['id_penanganan'] ?>/<?php echo $key['id_lokasi'] ?>"><span class="badge badge-danger" onclick="return confirm('yakin')">hapus</span></a>
+                                    <a href="<?php echo base_url('user/penanganan_kumuh_ubah/') ?><?php echo $key['id_penanganan'] ?>"><span class="badge badge-primary">ubah</span></a>
+                                    <a href=" <?php echo base_url('user/penanganan_kumuh_hapus/') ?><?php echo $key['id_penanganan'] ?>/<?php echo $key['id_lokasi'] ?>"><span class="badge badge-danger" onclick="return confirm('yakin')">hapus</span></a>
                                 </td>
 
                             </tr>

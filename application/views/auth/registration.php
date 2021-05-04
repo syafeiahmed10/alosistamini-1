@@ -13,17 +13,18 @@
                         <form class="user" method="POST" action="<?= base_url('auth/registration') ?>">
 
                             <div class="form-group">
-                                <input type="text" class="form-control form-control-user" id="nama" name="nama" placeholder="Full Name" value="<?php echo set_value('nama') ?>">
-                                <?php echo form_error('nama'); ?>
+                                <input type="text" class="form-control form-control-user" id="name" name="name" placeholder="Full Name" value="<?php echo set_value('name') ?>">
+                                <?php echo form_error('name'); ?>
 
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control form-control-user" id="email" name="email" placeholder="Email Address" value="<?php echo set_value('email') ?>">
+                                <input type="text" class="form-control form-control-user" id="email" name="email" placeholder="Email Address" value="<?php echo set_value('email ') ?>">
                                 <?php echo form_error('email'); ?>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                     <input type="password" class="form-control form-control-user" id="password1" name="password1" placeholder="Password">
+                                    <?php echo form_error('password1'); ?>
                                 </div>
                                 <div class="col-sm-6">
                                     <input type="password" class="form-control form-control-user" id="password2" name="password2" placeholder="Repeat Password">

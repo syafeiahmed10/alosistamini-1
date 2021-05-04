@@ -8,7 +8,7 @@
 
 
 
-    <a class="btn btn-success btn-icon-split mb-3 ml-auto" href="<?php echo base_url('admin/sk_kumuh_tambah') ?>"><span class="icon text-white-50">
+    <a class="btn btn-success btn-icon-split mb-3 ml-auto" href="<?php echo base_url('user/sk_kumuh_tambah') ?>"><span class="icon text-white-50">
             <i class="fas fa-plus"></i>
         </span>
         <span class="text">Tambah</span></a>
@@ -53,8 +53,8 @@
                                 <td><?php echo $key['tahun']; ?></td>
 
                                 <td>
-                                    <a href="<?php echo base_url('admin/sk_kumuh_ubah/') ?><?php echo $key['id_sk'] ?>"><span class="badge badge-primary">ubah</span></a>
-                                    <a href=" <?php echo base_url('admin/sk_kumuh_hapus/') ?><?php echo $key['id_sk'] ?>"><span class="badge badge-danger" onclick="return confirm('yakin')">hapus</span></a>
+                                    <a href="<?php echo base_url('user/sk_kumuh_ubah/') ?><?php echo $key['id_sk'] ?>"><span class="badge badge-primary">ubah</span></a>
+                                    <a href=" <?php echo base_url('user/sk_kumuh_hapus/') ?><?php echo $key['id_sk'] ?>"><span class="badge badge-danger" onclick="return confirm('yakin')">hapus</span></a>
                                 </td>
 
                             </tr>
