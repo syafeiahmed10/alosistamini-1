@@ -8,6 +8,7 @@ class User extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        is_logged_in();
         $this->load->model('alosista_model');
         $this->form_validation->set_error_delimiters(' <small class="text-danger pl-3">', ' </small>');
     }
