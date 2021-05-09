@@ -79,6 +79,29 @@
 <!-- (Optional) Latest compiled and minified JavaScript translation files -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script>
 
+
+
+<script>
+    $('.form-check-input').on("click", function() {
+        alert('tes');
+        const menuId = $(this).data('menu');
+        const roleId = $(this).data('role');
+
+        $.ajax({
+            url: "<?php echo base_url('admin/changeAccess'); ?>",
+            type: 'post',
+            data: {
+                menuId: menuId,
+                roleId: roleId
+            },
+            success: function() {
+                document.location.href = "<?= base_url('admin/roleaccess/'); ?>" + roleId;
+            }
+        });
+
+    });
+</script>
+
 </body>
 
 </html>
