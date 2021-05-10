@@ -23,7 +23,7 @@
                         '</div>'
                     ) ?>
 
-                    <form action="<?php echo base_url('user/'); ?>penanganan_kumuh_tambah" method="POST">
+                    <form action="<?php echo base_url('kawasan/'); ?>penanganan_kumuh_tambah" method="POST">
 
                         <div class="form-group">
                             <label for="proposal">Proposal</label>
@@ -67,7 +67,7 @@
                             </select>
                         </div>
                         <button type="submit" name="tambah" class="btn btn-primary float-left">Tambah Data</button>
-                        <a class="btn btn-danger float-left ml-1" href="<?php echo base_url('user/penanganan_kumuh') ?>">Batal</a>
+                        <a class="btn btn-danger float-left ml-1" href="<?php echo base_url('kawasan/penanganan_kumuh') ?>">Batal</a>
                     </form>
                 </div>
             </div>

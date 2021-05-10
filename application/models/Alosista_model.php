@@ -4,11 +4,26 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Alosista_model extends CI_Model
 {
 
+
+    public function __construct()
+    {
+        parent::__construct();
+        //Do your magic here
+    }
+
+
     // ====================================================QUERY UNTUK DROPDOWN==========================================================================
     public function dropdown_kabupaten_jateng()
     {
+        $email = $this->session->userdata('email');
+        $user = $this->db->get_where('user', ['email' => $email])->row_array();
+        $regency_id = $user['regency_id'];
         $this->db->where('province_id', 33);
-        return $this->db->get('reg_regencies')->result_array();
+        if ($user['role_id'] == 1) {
+            return $this->db->get('reg_regencies')->result_array();
+        } else {
+            return $this->db->where('id', $regency_id)->get('reg_regencies')->result_array();
+        }
     }
 
     public function dropdown_sk_kumuh()
@@ -41,12 +56,28 @@ class Alosista_model extends CI_Model
     // ========================================================QUERY TABEL================================================================================
     public function get_sk_kumuh()
     {
-        return $this->db->from('surat_keterangan_kumuh')->join('reg_regencies', 'reg_regencies.id=surat_keterangan_kumuh.regency_id', 'LEFT')->get()->result_array();
+        $email = $this->session->userdata('email');
+        $user = $this->db->get_where('user', ['email' => $email])->row_array();
+        $regency_id = $user['regency_id'];
+        if ($user['role_id'] == 1) {
+            return $this->db->from('surat_keterangan_kumuh')->join('reg_regencies', 'reg_regencies.id=surat_keterangan_kumuh.regency_id', 'LEFT')->get()->result_array();
+        } else {
+            return $this->db->from('surat_keterangan_kumuh')->join('reg_regencies', 'reg_regencies.id=surat_keterangan_kumuh.regency_id', 'LEFT')->where('regency_id', $regency_id)->get()->result_array();
+        }
     }
     public function get_lokasi_kumuh()
     {
+        $email = $this->session->userdata('email');
+        $user = $this->db->get_where('user', ['email' => $email])->row_array();
+        $regency_id = $user['regency_id'];
+
+
         $this->db->select('lokasi_kumuh.luas_akhir as luas_akhir, lokasi_kumuh.id_lokasi as id_lokasi, lokasi_kumuh.lokasi as lokasi,lokasi_kumuh.luas as luas, lokasi_kumuh.lingkup_administratif as lingkup_administratif, lokasi_kumuh.lng as lng, lokasi_kumuh.lat as lat, lokasi_kumuh.tingkat_kumuh as tingkat_kumuh,  surat_keterangan_kumuh.id_sk as id_sk,surat_keterangan_kumuh.sk as sk, reg_regencies.name as kabupaten, lokasi_kumuh.tingkat_kumuh as tingkat_kumuh');
-        return $this->db->from('lokasi_kumuh')->join('surat_keterangan_kumuh', 'surat_keterangan_kumuh.id_sk=lokasi_kumuh.id_sk', 'LEFT')->join('reg_regencies', 'reg_regencies.id=surat_keterangan_kumuh.regency_id', 'LEFT')->get();
+        if ($user['role_id'] == 1) {
+            return $this->db->from('lokasi_kumuh')->join('surat_keterangan_kumuh', 'surat_keterangan_kumuh.id_sk=lokasi_kumuh.id_sk', 'LEFT')->join('reg_regencies', 'reg_regencies.id=surat_keterangan_kumuh.regency_id', 'LEFT')->get();
+        } else {
+            return $this->db->from('lokasi_kumuh')->join('surat_keterangan_kumuh', 'surat_keterangan_kumuh.id_sk=lokasi_kumuh.id_sk', 'LEFT')->join('reg_regencies', 'reg_regencies.id=surat_keterangan_kumuh.regency_id', 'LEFT')->where('regency_id', $regency_id)->get();
+        }
     }
 
     public function get_penanganan_kumuh()
@@ -168,47 +199,42 @@ class Alosista_model extends CI_Model
 
         $this->db->select_sum('luas_tertangani');
         $this->db->from('penanganan_lokasi_kumuh');
-        $this->db->where('id_lokasi',$this->input->post('lokasi'));
+        $this->db->where('id_lokasi', $this->input->post('lokasi'));
         $luas_tertangani = $this->db->get()->row()->luas_tertangani;
 
         $this->db->select_sum('luas');
         $this->db->from('lokasi_kumuh');
-        $this->db->where('id_lokasi',$this->input->post('lokasi'));
+        $this->db->where('id_lokasi', $this->input->post('lokasi'));
         $luasawal = $this->db->get()->row()->luas;
-        
+
 
         $this->db->where('id_lokasi', $this->input->post('lokasi'));
         $object = [
             'luas_akhir' => (float)$luasawal - (float)$luas_tertangani
         ];
         $this->db->update('lokasi_kumuh', $object);
-        
     }
 
     public function del_penanganan_kumuh($id_penanganan, $id_lokasi)
     {
         $this->db->where('id_penanganan', $id_penanganan)->delete('penanganan_lokasi_kumuh');
-        
+
         $this->db->select_sum('luas_tertangani');
         $this->db->from('penanganan_lokasi_kumuh');
-        $this->db->where('id_lokasi',$id_lokasi);
+        $this->db->where('id_lokasi', $id_lokasi);
         $luas_tertangani = $this->db->get()->row()->luas_tertangani;
 
         $this->db->select_sum('luas');
         $this->db->from('lokasi_kumuh');
-        $this->db->where('id_lokasi',$id_lokasi);
+        $this->db->where('id_lokasi', $id_lokasi);
         $luasawal = $this->db->get()->row()->luas;
-        
-        
+
+
         $this->db->where('id_lokasi', $id_lokasi);
         $object = [
             'luas_akhir' => (float)$luasawal - (float)$luas_tertangani
         ];
         $this->db->update('lokasi_kumuh', $object);
-        
-        
-
-        
     }
 
     public function edit_penanganan_kumuh_get($id_penanganan)
@@ -221,7 +247,7 @@ class Alosista_model extends CI_Model
     {
         $this->db->where('id_penanganan', $id_penanganan);
 
-        
+
 
 
         $object = [
@@ -238,15 +264,15 @@ class Alosista_model extends CI_Model
 
         $this->db->select_sum('luas_tertangani');
         $this->db->from('penanganan_lokasi_kumuh');
-        $this->db->where('id_lokasi',$this->input->post('lokasi'));
+        $this->db->where('id_lokasi', $this->input->post('lokasi'));
         $luas_tertangani = $this->db->get()->row()->luas_tertangani;
 
         $this->db->select_sum('luas');
         $this->db->from('lokasi_kumuh');
-        $this->db->where('id_lokasi',$this->input->post('lokasi'));
+        $this->db->where('id_lokasi', $this->input->post('lokasi'));
         $luasawal = $this->db->get()->row()->luas;
-        
-        
+
+
         $this->db->where('id_lokasi', $this->input->post('lokasi'));
         $object = [
             'luas_akhir' => (float)$luasawal - (float)$luas_tertangani

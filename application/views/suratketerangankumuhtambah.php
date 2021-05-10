@@ -23,7 +23,7 @@
                         '</div>'
                     ) ?>
 
-                    <form action="<?php echo base_url('user/'); ?>sk_kumuh_tambah" method="POST">
+                    <form action="<?php echo base_url('kawasan/'); ?>sk_kumuh_tambah" method="POST">
 
                         <div class="form-group">
                             <label for="kabupaten">Kabupaten</label>
@@ -42,7 +42,7 @@
                             <input type="number" class="form-control" name="tahun" id="tahun">
                         </div>
                         <button type="submit" name="tambah" class="btn btn-primary float-left">Tambah Data</button>
-                        <a class="btn btn-danger float-left ml-1" href="<?php echo base_url('user/sk_kumuh') ?>">Batal</a>
+                        <a class="btn btn-danger float-left ml-1" href="<?php echo base_url('kawasan/') ?>">Batal</a>
                     </form>
                 </div>
             </div>

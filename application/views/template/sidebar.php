@@ -68,37 +68,12 @@
 
 
 
-        <!-- Heading -->
-        <div class="sidebar-heading">
-            Data
-        </div>
-
-        <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                <i class="fas fa-fw fa-cog"></i>
-                <span>Kawasan</span>
-            </a>
-            <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Data Kawasan</h6>
-                    <a class="<?php if ($this->uri->segment(2) == "sk_kumuh" or $this->uri->segment(2) == "sk_kumuh_ubah" or $this->uri->segment(2) == "sk_kumuh_tambah") {
-                                    echo "active";
-                                } ?> collapse-item" href="<?php echo base_url('user/sk_kumuh') ?>">SK Kumuh</a>
-                    <a class="<?php if ($this->uri->segment(2) == "lokasi_kumuh" or $this->uri->segment(2) == "lokasi_kumuh_ubah" or $this->uri->segment(2) == "lokasi_kumuh_tambah") {
-                                    echo "active";
-                                } ?> collapse-item" href="<?php echo base_url('user/lokasi_kumuh') ?>">Lokasi Kumuh</a>
-                    <a class="<?php if ($this->uri->segment(2) == "penanganan_kumuh" or $this->uri->segment(2) == "penanganan_kumuh_ubah" or $this->uri->segment(2) == "penanganan_kumuh_tambah") {
-                                    echo "active";
-                                } ?> collapse-item" href="<?php echo base_url('user/penanganan_kumuh') ?>">Penanganan Kumuh</a>
-                </div>
-            </div>
-        </li>
 
 
 
-        <!-- Divider -->
-        <hr class="sidebar-divider d-none d-md-block">
+
+
+
 
         <!-- Sidebar Toggler (Sidebar) -->
         <div class="text-center d-none d-md-inline">
