@@ -100,6 +100,22 @@
         });
 
     });
+
+    $(document).ready(function() {
+
+        // get Edit Product
+        $('.editmenu').on('click', function() {
+            // get data from button edit
+            const id = $(this).data('id');
+            const menu = $(this).data('menu');
+
+            // Set data to Form Edit
+            $('.id').val(id);
+            $('.menu').val(menu);
+            // Call Modal Edit
+            $('#editModal').modal('show');
+        });
+    });
 </script>
 
 </body>

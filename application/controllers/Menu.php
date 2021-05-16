@@ -90,13 +90,28 @@ class Menu extends CI_Controller
     }
 
     //Update one item
-    public function update($id = NULL)
+    public function update()
     {
+        $id = $this->input->post('id');
+        $data = [
+            'menu' => $this->input->post('menu')
+        ];
+        $this->db->where('id', $id);
+        $this->db->update('user_menu', $data);
+        redirect('menu');
     }
 
     //Delete one item
     public function delete($id = NULL)
     {
+        $this->db->where('id', $id)->delete('user_menu');
+        redirect('menu');
+    }
+
+    public function deleteSubmenu($id = NULL)
+    {
+        $this->db->where('id', $id)->delete('user_sub_menu');
+        redirect('menu/submenu');
     }
 }
 

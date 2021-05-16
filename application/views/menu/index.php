@@ -26,8 +26,9 @@
                             <th scope="row"><?php echo $i++ ?></th>
                             <td><?= $m['menu']; ?></td>
                             <td>
-                                <a href="" class="badge badge-success">Edit</a>
-                                <a href="" class="badge badge-danger">delete</a>
+                                <!-- <a href="" class="badge badge-success" data-toggle="modal" data-target="#newMenuModal">Edit</a> -->
+                                <a href="#" class="editmenu badge badge-success" data-id="<?= $m['id']; ?>" data-menu="<?= $m['menu']; ?>">Edit</a>
+                                <a href="<?= base_url('menu/delete') ?>/<?php echo $m['id']; ?>" onclick="return confirm('are you sure?')" class="badge badge-danger">delete</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -58,7 +59,7 @@
                 <div class="modal-body">
 
                     <div class="form-group">
-                        <input type="text" class="form-control" id="menu" name="menu" placeholder="Menu Name">
+                        <input type="text" class="form-control" id="menu" name="menu" placeholder="Menu Name" value="">
                     </div>
 
                 </div>
@@ -70,3 +71,37 @@
         </div>
     </div>
 </div>
+
+
+<!-- Modal Edit Product-->
+<form action="<?= base_url('menu/update') ?>" method="post">
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Menu</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+
+                    <div class="form-group">
+                        <label>Menu</label>
+                        <input type="text" class="form-control menu" name="menu" placeholder="menu">
+                    </div>
+
+
+
+                </div>
+                <div class=" modal-footer">
+                    <input type="hidden" name="id" class="id">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<!-- End Modal Edit Product-->
