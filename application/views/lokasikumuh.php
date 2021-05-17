@@ -12,7 +12,14 @@
             <i class="fas fa-plus"></i>
         </span>
         <span class="text">Tambah</span></a>
-
+    <form method="post" enctype="multipart/form-data" action="<?php echo base_url('kawasan/import_lokasi') ?>">
+        <div class="form-group custom-file  mb-3">
+            <input type="file" name="berkas_excel" class="form-control custom-file-input" id="validatedCustomFile" onchange="this.nextElementSibling.innerText = this.files[0].name">
+            <label class="custom-file-label" for="validatedCustomFile">Upload</label>
+            <div class="invalid-feedback">Example invalid custom file feedback</div>
+        </div>
+        <button type="submit" class="btn btn-primary">Import</button>
+    </form>
 
 
 

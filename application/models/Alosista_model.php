@@ -82,12 +82,20 @@ class Alosista_model extends CI_Model
 
     public function get_penanganan_kumuh()
     {
+        $email = $this->session->userdata('email');
+        $user = $this->db->get_where('user', ['email' => $email])->row_array();
+        $regency_id = $user['regency_id'];
+
         $this->db->from('penanganan_lokasi_kumuh as p');
         $this->db->join('lokasi_kumuh as l', 'l.id_lokasi = p.id_lokasi', 'left');
         $this->db->join('surat_keterangan_kumuh as s', 's.id_sk = l.id_sk', 'left');
         $this->db->join('reg_regencies as r', 'r.id = s.regency_id', 'left');
         $this->db->select('p.id_penanganan as id_penanganan, p.proposal as proposal, p.kegiatan as kegiatan, p.tahun as tahun_penanganan, p.sumber_dana as dana, p.luas_tertangani as luas_tertangani, p.lng as lng, p.lat as lat, l.lokasi as lokasi, l.lingkup_administratif, s.sk as sk, r.name as kabupaten, p.id_lokasi as id_lokasi');
-        return $this->db->get();
+        if ($user['role_id'] == 1) {
+            return $this->db->get();
+        } else {
+            return $this->db->where('regency_id', $regency_id)->get();
+        }
     }
     // ========================================================END QUERY TABEL=============================================================================
 

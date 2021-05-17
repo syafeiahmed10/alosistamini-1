@@ -75,6 +75,42 @@ class Kawasan extends CI_Controller
         $this->alosista_model->del_sk_kumuh($id_sk);
         redirect('kawasan/');
     }
+
+    public function import_sk()
+    {
+        $file_mimes = array('application/octet-stream', 'application/vnd.ms-excel', 'application/x-csv', 'text/x-csv', 'text/csv', 'application/csv', 'application/excel', 'application/vnd.msexcel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+
+        if (isset($_FILES['berkas_excel']['name']) && in_array($_FILES['berkas_excel']['type'], $file_mimes)) {
+
+            $arr_file = explode('.', $_FILES['berkas_excel']['name']);
+            $extension = end($arr_file);
+
+            if ('csv' == $extension) {
+                $reader = new \PhpOffice\PhpSpreadsheet\Reader\Csv();
+            } else {
+                $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
+            }
+
+            $spreadsheet = $reader->load($_FILES['berkas_excel']['tmp_name']);
+
+            $sheetData = $spreadsheet->getActiveSheet()->toArray();
+            for ($i = 1; $i < count($sheetData); $i++) {
+                $sk = $sheetData[$i]['0'];
+                $tahun = $sheetData[$i]['1'];
+                $regency_id = $sheetData[$i]['2'];
+
+                $object = [
+                    'sk' => $sk,
+                    'tahun' => $tahun,
+                    'regency_id' => $regency_id
+
+                ];
+
+                $this->db->insert('surat_keterangan_kumuh', $object);
+            }
+            redirect('kawasan');
+        }
+    }
     // ====================================================END OF SK KUMUH==========================================================================
 
     // ====================================================LOKASI KUMUH==========================================================================
@@ -138,6 +174,54 @@ class Kawasan extends CI_Controller
     {
         $this->alosista_model->del_lokasi_kumuh($id_lokasi);
         redirect('kawasan/lokasi_kumuh');
+    }
+
+
+
+    public function import_lokasi()
+    {
+        $file_mimes = array('application/octet-stream', 'application/vnd.ms-excel', 'application/x-csv', 'text/x-csv', 'text/csv', 'application/csv', 'application/excel', 'application/vnd.msexcel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+
+        if (isset($_FILES['berkas_excel']['name']) && in_array($_FILES['berkas_excel']['type'], $file_mimes)) {
+
+            $arr_file = explode('.', $_FILES['berkas_excel']['name']);
+            $extension = end($arr_file);
+
+            if ('csv' == $extension) {
+                $reader = new \PhpOffice\PhpSpreadsheet\Reader\Csv();
+            } else {
+                $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
+            }
+
+            $spreadsheet = $reader->load($_FILES['berkas_excel']['tmp_name']);
+
+            $sheetData = $spreadsheet->getActiveSheet()->toArray();
+            for ($i = 1; $i < count($sheetData); $i++) {
+                $lokasi = $sheetData[$i]['0'];
+                $luas = $sheetData[$i]['1'];
+                $lingkup_adminstratif = $sheetData[$i]['2'];
+                $lng = $sheetData[$i]['3'];
+                $lat = $sheetData[$i]['4'];
+                $tingkat_kumuh = $sheetData[$i]['5'];
+                $luas_akhir = $sheetData[$i]['6'];
+                $id_sk = $sheetData[$i]['7'];
+
+                $object = [
+                    'lokasi' => $lokasi,
+                    'luas' => $luas,
+                    'lingkup_administratif' => $lingkup_adminstratif,
+                    'lng' => $lng,
+                    'lat' => $lat,
+                    'tingkat_kumuh' => $tingkat_kumuh,
+                    'luas_akhir' => $luas,
+                    'id_sk' => $id_sk
+
+                ];
+
+                $this->db->insert('lokasi_kumuh', $object);
+            }
+            redirect('kawasan/lokasi_kumuh');
+        }
     }
     // ====================================================END OF LOKASI KUMUH==========================================================================
 
@@ -203,6 +287,53 @@ class Kawasan extends CI_Controller
         $this->alosista_model->edit_penanganan_kumuh_action($this->input->post('id_penanganan'));
 
         redirect('kawasan/penanganan_kumuh');
+    }
+
+
+    public function import_penanganan()
+    {
+        $file_mimes = array('application/octet-stream', 'application/vnd.ms-excel', 'application/x-csv', 'text/x-csv', 'text/csv', 'application/csv', 'application/excel', 'application/vnd.msexcel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+
+        if (isset($_FILES['berkas_excel']['name']) && in_array($_FILES['berkas_excel']['type'], $file_mimes)) {
+
+            $arr_file = explode('.', $_FILES['berkas_excel']['name']);
+            $extension = end($arr_file);
+
+            if ('csv' == $extension) {
+                $reader = new \PhpOffice\PhpSpreadsheet\Reader\Csv();
+            } else {
+                $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
+            }
+
+            $spreadsheet = $reader->load($_FILES['berkas_excel']['tmp_name']);
+
+            $sheetData = $spreadsheet->getActiveSheet()->toArray();
+            for ($i = 1; $i < count($sheetData); $i++) {
+                $lokasi = $sheetData[$i]['0'];
+                $luas = $sheetData[$i]['1'];
+                $lingkup_adminstratif = $sheetData[$i]['2'];
+                $lng = $sheetData[$i]['3'];
+                $lat = $sheetData[$i]['4'];
+                $tingkat_kumuh = $sheetData[$i]['5'];
+                $luas_akhir = $sheetData[$i]['6'];
+                $id_sk = $sheetData[$i]['7'];
+
+                $object = [
+                    'proposal' => $lokasi,
+                    'kegiatan' => $luas,
+                    'tahun' => $lingkup_adminstratif,
+                    'sumber_dana' => $lng,
+                    'luas_tertangani' => $lat,
+                    'lng' => $tingkat_kumuh,
+                    'lat' => $luas,
+                    'id_lokasi' => $id_sk
+
+                ];
+
+                $this->db->insert('penanganan_lokasi_kumuh', $object);
+            }
+            redirect('kawasan/penanganan_kumuh');
+        }
     }
     // ==================================================END OF PENANGANAN KUMUH==========================================================================
 }

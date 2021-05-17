@@ -101,6 +101,8 @@
 
     });
 
+
+
     $(document).ready(function() {
 
         // get Edit Product
