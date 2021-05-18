@@ -309,24 +309,24 @@ class Kawasan extends CI_Controller
 
             $sheetData = $spreadsheet->getActiveSheet()->toArray();
             for ($i = 1; $i < count($sheetData); $i++) {
-                $lokasi = $sheetData[$i]['0'];
-                $luas = $sheetData[$i]['1'];
-                $lingkup_adminstratif = $sheetData[$i]['2'];
-                $lng = $sheetData[$i]['3'];
-                $lat = $sheetData[$i]['4'];
-                $tingkat_kumuh = $sheetData[$i]['5'];
-                $luas_akhir = $sheetData[$i]['6'];
-                $id_sk = $sheetData[$i]['7'];
+                $proposal = $sheetData[$i]['0'];
+                $kegiatan = $sheetData[$i]['1'];
+                $tahun = $sheetData[$i]['2'];
+                $sumber_dana = $sheetData[$i]['3'];
+                $luas_tertangani = $sheetData[$i]['4'];
+                $lng = $sheetData[$i]['5'];
+                $lat = $sheetData[$i]['6'];
+                $id_lokasi = $sheetData[$i]['7'];
 
                 $object = [
-                    'proposal' => $lokasi,
-                    'kegiatan' => $luas,
-                    'tahun' => $lingkup_adminstratif,
-                    'sumber_dana' => $lng,
-                    'luas_tertangani' => $lat,
-                    'lng' => $tingkat_kumuh,
-                    'lat' => $luas,
-                    'id_lokasi' => $id_sk
+                    'proposal' => $proposal,
+                    'kegiatan' => $kegiatan,
+                    'tahun' => $tahun,
+                    'sumber_dana' => $sumber_dana,
+                    'luas_tertangani' => $luas_tertangani,
+                    'lng' => $lng,
+                    'lat' => $lat,
+                    'id_lokasi' => $id_lokasi
 
                 ];
 
