@@ -118,6 +118,50 @@
             $('#editModal').modal('show');
         });
     });
+
+    $(document).ready(function() {
+
+        // get Edit Product
+        $('.editrole').on('click', function() {
+            // get data from button edit
+            const id = $(this).data('id');
+            const role = $(this).data('role');
+
+            // Set data to Form Edit
+            $('.id').val(id);
+            $('.role').val(role);
+            // Call Modal Edit
+            $('#editRole').modal('show');
+        });
+    });
+
+    $(document).ready(function() {
+
+        // get Edit Product
+        $('.editsubmenu').on('click', function() {
+            // get data from button edit
+            const id = $(this).data('id');
+            const title = $(this).data('title');
+            const url = $(this).data('url');
+            const menu = $(this).data('menu');
+            const icon = $(this).data('icon');
+
+            // Set data to Form Edit
+            $('.id').val(id);
+            $('.title').val(title);
+            $('.url').val(url);
+            $('.menu').val(menu);
+            $('.icon').val(icon);
+            // Call Modal Edit
+            $('#editSubmenu').modal('show');
+        });
+    });
+
+    $(document).ready(function() {
+        $('#select-all').click(function() {
+            $('input[type="checkbox"]').prop('checked', this.checked);
+        })
+    });
 </script>
 
 </body>

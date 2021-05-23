@@ -242,7 +242,7 @@ class Kawasan extends CI_Controller
 
     public function penanganan_kumuh_tambah()
     {
-        $this->form_validation->set_rules('proposal', 'Proposal', 'trim|required');
+        $this->form_validation->set_rules('kegiatan', 'kegiatan', 'trim|required');
 
         if ($this->form_validation->run() == FALSE) {
             $data['content'] =  $this->alosista_model->dropdown_lokasi_kumuh()->result_array();
@@ -335,6 +335,38 @@ class Kawasan extends CI_Controller
             redirect('kawasan/penanganan_kumuh');
         }
     }
+
+    public function remove_penanganan()
+    {
+
+
+        foreach ($this->input->post('id') as $id) {
+            $this->alosista_model->delete_penanganan($id);
+        }
+
+        redirect('kawasan/penanganan_kumuh');
+    }
+
+    public function remove_lokasi()
+    {
+
+
+        foreach ($this->input->post('id') as $id) {
+            $this->alosista_model->delete_lokasi($id);
+        }
+
+        redirect('kawasan/lokasi_kumuh');
+    }
+    public function remove_sk()
+    {
+        foreach ($this->input->post('id') as $id) {
+            $this->alosista_model->delete_sk($id);
+        }
+
+        redirect('kawasan');
+    }
+
+
     // ==================================================END OF PENANGANAN KUMUH==========================================================================
 }
 

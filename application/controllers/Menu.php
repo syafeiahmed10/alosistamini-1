@@ -101,6 +101,21 @@ class Menu extends CI_Controller
         redirect('menu');
     }
 
+    //Update one item
+    public function updateSubmenu()
+    {
+        $id = $this->input->post('id');
+        $data = [
+            'menu_id' => $this->input->post('menu'),
+            'title' => $this->input->post('title'),
+            'url' => $this->input->post('url'),
+            'icon' => $this->input->post('icon')
+        ];
+        $this->db->where('id', $id);
+        $this->db->update('user_sub_menu', $data);
+        redirect('menu/submenu');
+    }
+
     //Delete one item
     public function delete($id = NULL)
     {

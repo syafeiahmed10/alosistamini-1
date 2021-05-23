@@ -25,18 +25,6 @@
 
                     <form action="<?php echo base_url('kawasan/'); ?>penanganan_kumuh_tambah" method="POST">
 
-                        <div class="form-group">
-                            <label for="proposal">Proposal</label>
-                            <input type="text" class="form-control" name="proposal" id="proposal">
-                        </div>
-                        <div class="form-group">
-                            <label for="tahun_penanganan">Tahun Penanganan</label>
-                            <input type="number" class="form-control" name="tahun_penanganan" id="tahun_penanganan">
-                        </div>
-                        <div class="form-group">
-                            <label for="kegiatan">Kegiatan</label>
-                            <textarea type="text" class="form-control" name="kegiatan" id="kegiatan"></textarea>
-                        </div>
 
                         <div class="form-group">
                             <label for="lokasi">Lokasi</label>
@@ -47,8 +35,8 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="luas_tertangani">Luas</label>
-                            <input type="number" step="any" class="form-control" name="luas_tertangani" id="luas_tertangani">
+                            <label for="kegiatan">Jenis Kegiatan</label>
+                            <textarea type="text" class="form-control" name="kegiatan" id="kegiatan"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="lng">Langitude</label>
@@ -59,12 +47,27 @@
                             <input type="number" step="any" class="form-control" name="lat" id="lat">
                         </div>
                         <div class="form-group">
+                            <label for="tahun_penanganan">Tahun Penanganan</label>
+                            <input type="number" class="form-control" name="tahun_penanganan" id="tahun_penanganan">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="luas_tertangani">Luas</label>
+                            <input type="number" step="any" class="form-control" name="luas_tertangani" id="luas_tertangani">
+                        </div>
+                        <div class="form-group">
                             <label for="sumber_dana">Sumber Dana</label>
                             <select class="selectpicker form-control" data-live-search="true" name="sumber_dana" id="sumber_dana" required>
-                                <option value="APBN">APBN</option>
-                                <option value="APBD">APBD</option>
-                                <option value="KOTAKU">KOTAKU</option>
+                                <option value="APBD PROVINSI ">APBD PROVINSI </option>
+                                <option value="APBD KABUPATEN">APBD KABUPATEN</option>
+                                <option value="APBN REGULER">APBN REGULER</option>
+                                <option value="APBN KOTAKU">APBN KOTAKU</option>
+                                <option value="AAPBN NUSP">AAPBN NUSP</option>
                             </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="nominal">Nominal</label>
+                            <input type="number" class="form-control" name="nominal" id="nominal">
                         </div>
                         <button type="submit" name="tambah" class="btn btn-primary float-left">Tambah Data</button>
                         <a class="btn btn-danger float-left ml-1" href="<?php echo base_url('kawasan/penanganan_kumuh') ?>">Batal</a>

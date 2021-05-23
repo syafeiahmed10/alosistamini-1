@@ -80,6 +80,13 @@ class Alosista_model extends CI_Model
         }
     }
 
+    public function get_lokasi_kumuh_edit()
+    {
+        $this->db->select('lokasi_kumuh.luas_akhir as luas_akhir, lokasi_kumuh.id_lokasi as id_lokasi, lokasi_kumuh.lokasi as lokasi,lokasi_kumuh.luas as luas, lokasi_kumuh.lingkup_administratif as lingkup_administratif, lokasi_kumuh.lng as lng, lokasi_kumuh.lat as lat, lokasi_kumuh.tingkat_kumuh as tingkat_kumuh,  surat_keterangan_kumuh.id_sk as id_sk,surat_keterangan_kumuh.sk as sk, reg_regencies.name as kabupaten, lokasi_kumuh.tingkat_kumuh as tingkat_kumuh');
+
+        return $this->db->from('lokasi_kumuh')->join('surat_keterangan_kumuh', 'surat_keterangan_kumuh.id_sk=lokasi_kumuh.id_sk', 'LEFT')->join('reg_regencies', 'reg_regencies.id=surat_keterangan_kumuh.regency_id', 'LEFT')->get();
+    }
+
     public function get_penanganan_kumuh()
     {
         $email = $this->session->userdata('email');
@@ -90,12 +97,23 @@ class Alosista_model extends CI_Model
         $this->db->join('lokasi_kumuh as l', 'l.id_lokasi = p.id_lokasi', 'left');
         $this->db->join('surat_keterangan_kumuh as s', 's.id_sk = l.id_sk', 'left');
         $this->db->join('reg_regencies as r', 'r.id = s.regency_id', 'left');
-        $this->db->select('p.id_penanganan as id_penanganan, p.proposal as proposal, p.kegiatan as kegiatan, p.tahun as tahun_penanganan, p.sumber_dana as dana, p.luas_tertangani as luas_tertangani, p.lng as lng, p.lat as lat, l.lokasi as lokasi, l.lingkup_administratif, s.sk as sk, r.name as kabupaten, p.id_lokasi as id_lokasi');
+        $this->db->select('p.id_penanganan as id_penanganan, p.nominal as nominal, p.kegiatan as kegiatan, p.tahun as tahun_penanganan, p.sumber_dana as dana, p.luas_tertangani as luas_tertangani, p.lng as lng, p.lat as lat, l.lokasi as lokasi, l.lingkup_administratif, s.sk as sk, r.name as kabupaten, p.id_lokasi as id_lokasi');
         if ($user['role_id'] == 1) {
             return $this->db->get();
         } else {
             return $this->db->where('regency_id', $regency_id)->get();
         }
+    }
+
+    public function get_penanganan_kumuh_edit()
+    {
+        $this->db->from('penanganan_lokasi_kumuh as p');
+        $this->db->join('lokasi_kumuh as l', 'l.id_lokasi = p.id_lokasi', 'left');
+        $this->db->join('surat_keterangan_kumuh as s', 's.id_sk = l.id_sk', 'left');
+        $this->db->join('reg_regencies as r', 'r.id = s.regency_id', 'left');
+        $this->db->select('p.id_penanganan as id_penanganan, p.nominal as nominal, p.kegiatan as kegiatan, p.tahun as tahun_penanganan, p.sumber_dana as dana, p.luas_tertangani as luas_tertangani, p.lng as lng, p.lat as lat, l.lokasi as lokasi, l.lingkup_administratif, s.sk as sk, r.name as kabupaten, p.id_lokasi as id_lokasi');
+
+        return $this->db->get();
     }
     // ========================================================END QUERY TABEL=============================================================================
 
@@ -166,7 +184,7 @@ class Alosista_model extends CI_Model
     public function edit_lokasi_kumuh_get($id_lokasi)
     {
         $this->db->where('id_lokasi', $id_lokasi);
-        return $this->get_lokasi_kumuh()->row_array();
+        return $this->get_lokasi_kumuh_edit()->row_array();
     }
     public function edit_lokasi_kumuh_action($id_lokasi)
     {
@@ -192,11 +210,11 @@ class Alosista_model extends CI_Model
 
         $object = [
             'id_lokasi' => $this->input->post('lokasi'),
-            'proposal' => $this->input->post('proposal'),
             'luas_tertangani' => (float)$this->input->post('luas_tertangani'),
             'kegiatan' => $this->input->post('kegiatan'),
             'tahun' => $this->input->post('tahun_penanganan'),
             'sumber_dana' => $this->input->post('sumber_dana'),
+            'nominal' => $this->input->post('nominal'),
             'lng' => $this->input->post('lng'),
             'lat' => $this->input->post('lat')
 
@@ -248,7 +266,7 @@ class Alosista_model extends CI_Model
     public function edit_penanganan_kumuh_get($id_penanganan)
     {
         $this->db->where('id_penanganan', $id_penanganan);
-        return $this->get_penanganan_kumuh()->row_array();
+        return $this->get_penanganan_kumuh_edit()->row_array();
     }
 
     public function edit_penanganan_kumuh_action($id_penanganan)
@@ -260,7 +278,7 @@ class Alosista_model extends CI_Model
 
         $object = [
             'id_lokasi' => $this->input->post('lokasi'),
-            'proposal' => $this->input->post('proposal'),
+            'nominal' => $this->input->post('nominal'),
             'luas_tertangani' => (float)$this->input->post('luas_tertangani'),
             'lng' => $this->input->post('lng'),
             'lat' => $this->input->post('lat'),
@@ -286,6 +304,22 @@ class Alosista_model extends CI_Model
             'luas_akhir' => (float)$luasawal - (float)$luas_tertangani
         ];
         $this->db->update('lokasi_kumuh', $object);
+    }
+
+    public function delete_penanganan($id)
+    {
+        $this->db->where('id_penanganan', $id);
+        $this->db->delete('penanganan_lokasi_kumuh');
+    }
+    public function delete_lokasi($id)
+    {
+        $this->db->where('id_lokasi', $id);
+        $this->db->delete('lokasi_kumuh');
+    }
+    public function delete_sk($id)
+    {
+        $this->db->where('id_sk', $id);
+        $this->db->delete('surat_keterangan_kumuh');
     }
 }
 

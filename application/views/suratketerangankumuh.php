@@ -29,54 +29,59 @@
 
 
     <!-- DataTales Example -->
-    <div class="card shadow mb-4 ">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Surat Keterangan Kumuh</h6>
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Nomor SK</th>
-                            <th>Kabupaten</th>
-                            <th>Tahun</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tfoot>
-                        <tr>
-                            <th>No</th>
-                            <th>Nomor SK</th>
-                            <th>Kabupaten</th>
-                            <th>Tahun</th>
-                            <th>Action</th>
-                        </tr>
-                    </tfoot>
-                    <tbody>
-                        <?php $i = 1; ?>
-                        <?php foreach ($content as $key) : ?>
+    <form action="<?php echo base_url('kawasan/remove_sk') ?>" method="POST">
+        <div class="card shadow mb-4 ">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Surat Keterangan Kumuh</h6>
+                <button type="submit" class="btn btn-primary float-right" value="Delete" onclick="return confirm('anda yakin')">Delete Selected</button>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
                             <tr>
-                                <td><?php echo $i++; ?></td>
-                                <td><?php echo $key['sk']; ?></td>
-                                <td><?php echo $key['name']; ?></td>
-                                <td><?php echo $key['tahun']; ?></td>
-
-                                <td>
-                                    <a href="<?php echo base_url('kawasan/sk_kumuh_ubah/') ?><?php echo $key['id_sk'] ?>"><span class="badge badge-primary">ubah</span></a>
-                                    <a href=" <?php echo base_url('kawasan/sk_kumuh_hapus/') ?><?php echo $key['id_sk'] ?>"><span class="badge badge-danger" onclick="return confirm('yakin')">hapus</span></a>
-                                </td>
-
+                                <th><input type="checkbox" id="select-all"></th>
+                                <th>No</th>
+                                <th>Nomor SK</th>
+                                <th>Kabupaten</th>
+                                <th>Tahun</th>
+                                <th>Action</th>
                             </tr>
-                        <?php endforeach; ?>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th><input type="checkbox" id="select-all"></th>
+                                <th>No</th>
+                                <th>Nomor SK</th>
+                                <th>Kabupaten</th>
+                                <th>Tahun</th>
+                                <th>Action</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            <?php $i = 1; ?>
+                            <?php foreach ($content as $key) : ?>
+                                <tr>
+                                    <td><input type="checkbox" name="id[]" value="<?php echo $key['id_sk']; ?>"></td>
+                                    <td><?php echo $i++; ?></td>
+                                    <td><?php echo $key['sk']; ?></td>
+                                    <td><?php echo $key['name']; ?></td>
+                                    <td><?php echo $key['tahun']; ?></td>
 
-                    </tbody>
-                </table>
+                                    <td>
+                                        <a href="<?php echo base_url('kawasan/sk_kumuh_ubah/') ?><?php echo $key['id_sk'] ?>"><span class="badge badge-primary">ubah</span></a>
+                                        <a href=" <?php echo base_url('kawasan/sk_kumuh_hapus/') ?><?php echo $key['id_sk'] ?>"><span class="badge badge-danger" onclick="return confirm('yakin')">hapus</span></a>
+                                    </td>
+
+                                </tr>
+                            <?php endforeach; ?>
+
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
-
+    </form>
 </div>
 <!-- /.container-fluid -->
 </div>

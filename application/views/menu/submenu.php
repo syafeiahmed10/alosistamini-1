@@ -34,7 +34,7 @@
                             <td><?= $sm['icon']; ?></td>
                             <td><?= $sm['is_active']; ?></td>
                             <td>
-                                <a href="" class="badge badge-success">Edit</a>
+                                <a href="#" class="editsubmenu badge badge-success" data-id="<?= $sm['id']; ?>" data-title="<?= $sm['title']; ?>" data-url="<?= $sm['url']; ?>" data-menu="<?= $sm['menu']; ?>" data-icon="<?= $sm['icon']; ?>">Edit</a>
                                 <a href="<?= base_url('menu/deleteSubmenu') ?>/<?php echo $sm['id']; ?>" onclick="return confirm('are you sure?')" class="badge badge-danger">delete</a>
                             </td>
                         </tr>
@@ -103,3 +103,51 @@
         </div>
     </div>
 </div>
+
+<!-- Modal Edit Product-->
+<form action="<?= base_url('menu/updateSubmenu') ?>" method="post">
+    <div class="modal fade" id="editSubmenu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Menu</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+
+                    <div class="form-group">
+
+                        <input type="text" class="form-control title" name="title" placeholder="title">
+                    </div>
+                    <div class="form-group">
+                        <select name="menu" id="menu" class="form-control menu">
+                            <option value="">Select Menu</option>
+                            <?php foreach ($menu as $m) : ?>
+                                <option value="<?php echo $m['id'] ?>"><?php echo $m['menu'] ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+
+                        <input type="text" class="form-control url" name="url" placeholder="url">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control icon" name="icon" placeholder="icon">
+                    </div>
+
+
+
+                </div>
+                <div class=" modal-footer">
+                    <input type="hidden" name="id" class="id">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<!-- End Modal Edit Product-->

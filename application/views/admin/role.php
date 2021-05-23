@@ -27,8 +27,8 @@
                             <td><?= $r['role']; ?></td>
                             <td>
                                 <a href="<?php echo base_url('admin/roleaccess/') . $r['id'] ?>" class="badge badge-warning">Access</a>
-                                <a href="" class="badge badge-success">Edit</a>
-                                <a href="" class="badge badge-danger">delete</a>
+                                <a href="#" class="editrole badge badge-success" data-id="<?= $r['id']; ?>" data-role="<?= $r['role']; ?>">Edit</a>
+                                <a href="<?= base_url('admin/delete_role') ?>/<?php echo $r['id']; ?>" onclick="return confirm('are you sure?')" class="badge badge-danger">delete</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -71,3 +71,37 @@
         </div>
     </div>
 </div>
+<!-- modal -->
+
+<!-- Modal Edit Product-->
+<form action="<?= base_url('admin/role_update') ?>" method="post">
+    <div class="modal fade" id="editRole" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Role</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+
+                    <div class="form-group">
+                        <label>Role</label>
+                        <input type="text" class="form-control role" name="role" placeholder="role">
+                    </div>
+
+
+
+                </div>
+                <div class=" modal-footer">
+                    <input type="hidden" name="id" class="id">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<!-- End Modal Edit Product-->

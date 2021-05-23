@@ -31,11 +31,24 @@ class Admin extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['role'] = $this->db->get('user_role')->result_array();
 
-        $this->load->view('template/header', $data);
-        $this->load->view('template/sidebar', $data);
-        $this->load->view('template/topbar', $data);
-        $this->load->view('admin/role', $data);
-        $this->load->view('template/footer');
+        $this->form_validation->set_rules('role', 'Role', 'required');
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('template/header', $data);
+            $this->load->view('template/sidebar', $data);
+            $this->load->view('template/topbar', $data);
+            $this->load->view('admin/role', $data);
+            $this->load->view('template/footer');
+        } else {
+            $this->db->insert('user_role', ['role' => $this->input->post('role')]);
+            $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+       New Role Successfully Inserted
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>');
+
+            redirect('admin/role');
+        }
     }
 
     public function roleAccess($role_id)
@@ -78,6 +91,23 @@ class Admin extends CI_Controller
            <span aria-hidden="true">&times;</span>
          </button>
        </div>');
+    }
+
+    public function role_update()
+    {
+        $id = $this->input->post('id');
+        $data = [
+            'role' => $this->input->post('role')
+        ];
+        $this->db->where('id', $id);
+        $this->db->update('user_role', $data);
+        redirect('admin/role');
+    }
+
+    public function delete_role($id = NULL)
+    {
+        $this->db->where('id', $id)->delete('user_role');
+        redirect('admin/role');
     }
 }
 
