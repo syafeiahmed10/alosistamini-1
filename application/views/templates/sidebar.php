@@ -6,14 +6,16 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">Alosista PKP <sup>V2</sup></div>
     </a>
 
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
+    <li class="nav-item <?php if ($this->uri->segment(1) == "dashboard") {
+                            echo "active";
+                        } ?>">
         <a class="nav-link" href="index.html">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
@@ -28,8 +30,7 @@
     </div>
 
     <!-- Nav Item - Perumahan Collapse Menu -->
-    <li class="nav-item <?php if($this->uri->segment(1)=="perumahan"
-    ) ">
+    <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
 
             <i class="fas fa-home"></i>
@@ -46,7 +47,9 @@
         </div>
     </li>
     <!-- Nav Item - Kawasan Permukiman Collapse Menu -->
-    <li class="nav-item">
+    <li class="nav-item <?php if ($this->uri->segment(1) == "kawasan_permukiman") {
+                            echo "active";
+                        } ?>">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-globe-asia"></i>
             <span>Kawasan Permukiman</span>
@@ -54,9 +57,15 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Kawasan Permukiman:</h6>
-                <a class="collapse-item" href="buttons.html">SK Kumuh</a>
-                <a class="collapse-item" href="cards.html">Lokasi Kumuh</a>
-                <a class="collapse-item" href="cards.html">Penanganan Kumuh</a>
+                <a class="collapse-item <?php if ($this->uri->segment(2) == "surat_keterangan_kumuh") {
+                                            echo "active";
+                                        } ?>" href="buttons.html">SK Kumuh</a>
+                <a class="collapse-item <?php if ($this->uri->segment(1) == "lokasi_kumuh") {
+                                            echo "active";
+                                        } ?>" href="cards.html">Lokasi Kumuh</a>
+                <a class="collapse-item <?php if ($this->uri->segment(1) == "penanganan_kumuh") {
+                                            echo "active";
+                                        } ?>" href="cards.html">Penanganan Kumuh</a>
             </div>
         </div>
     </li>
@@ -64,10 +73,6 @@
 
     <!-- Divider -->
     <hr class="sidebar-divider">
-
-
-
-
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">

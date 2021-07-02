@@ -55,6 +55,14 @@
 <script src="<?= base_url('assets/js/demo/chart-area-demo.js') ?>"></script>
 <script src="<?= base_url('assets/js/demo/chart-pie-demo.js') ?>"></script>
 
+<script>
+    $(document).ready(function() {
+        $('#select-all').click(function() {
+            $('input[type="checkbox"]').prop('checked', this.checked);
+        })
+    });
+</script>
+
 </body>
 
 </html>
