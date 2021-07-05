@@ -16,7 +16,7 @@
     <li class="nav-item <?php if ($this->uri->segment(1) == "dashboard") {
                             echo "active";
                         } ?>">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="<?= base_url('dashboard') ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -59,13 +59,13 @@
                 <h6 class="collapse-header">Kawasan Permukiman:</h6>
                 <a class="collapse-item <?php if ($this->uri->segment(2) == "surat_keterangan_kumuh") {
                                             echo "active";
-                                        } ?>" href="buttons.html">SK Kumuh</a>
-                <a class="collapse-item <?php if ($this->uri->segment(1) == "lokasi_kumuh") {
+                                        } ?>" href="<?php echo base_url('kawasan_permukiman/surat_keterangan_kumuh'); ?>">SK Kumuh</a>
+                <a class="collapse-item <?php if ($this->uri->segment(2) == "lokasi_kumuh") {
                                             echo "active";
-                                        } ?>" href="cards.html">Lokasi Kumuh</a>
-                <a class="collapse-item <?php if ($this->uri->segment(1) == "penanganan_kumuh") {
+                                        } ?>" href="<?= base_url('kawasan_permukiman/lokasi_kumuh'); ?>">Lokasi Kumuh</a>
+                <a class="collapse-item <?php if ($this->uri->segment(2) == "penanganan_kumuh") {
                                             echo "active";
-                                        } ?>" href="cards.html">Penanganan Kumuh</a>
+                                        } ?>" href="<?= base_url('kawasan_permukiman/penanganan_kumuh'); ?>">Penanganan Kumuh</a>
             </div>
         </div>
     </li>
