@@ -38,6 +38,14 @@ class Model_for_all extends CI_Model
         $result = $this->db->get();
         return $result;
     }
+
+    public function dropdown_kelurahan($id)
+    {
+        $result = $this->db->from('reg_villages');
+        $result = $this->db->where('district_id', $id);
+        $result = $this->db->get();
+        return $result;
+    }
 }
 
 /* End of file Model_for_all.php */

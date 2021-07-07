@@ -24,8 +24,8 @@
                                 <th>RT/RW</th>
                                 <th>Kelurahan/Desa</th>
                                 <th>Kecamatan</th>
-                                <th>Lintang</th>
-                                <th>Bujur</th>
+                                <!-- <th>Lintang</th>
+                                <th>Bujur</th> -->
                                 <th>Tingkat Kumuh</th>
                                 <th>No SK</th>
                                 <th>Action</th>
@@ -44,13 +44,13 @@
                                     <td><?php echo $key['rt_rw']; ?></td>
                                     <td><?php echo $key['kelurahan']; ?></td>
                                     <td><?php echo $key['kecamatan']; ?></td>
-                                    <td><?php echo $key['lintang']; ?></td>
-                                    <td><?php echo $key['bujur']; ?></td>
+                                    <!-- <td><?php echo $key['lintang']; ?></td>
+                                    <td><?php echo $key['bujur']; ?></td> -->
                                     <td><?php echo $key['tingkat_kumuh']; ?></td>
                                     <td><?php echo $key['sk']; ?></td>
                                     <td>
-                                        <a href="<?php echo base_url('kawasan_permukiman/surat_keterangan_kumuh/update/') ?><?php echo $key['id_sk'] ?>"><span class="badge badge-primary">ubah</span></a>
-                                        <a href=" <?php echo base_url('kawasan_permukiman/surat_keterangan_kumuh/delete/') ?><?php echo $key['id_sk'] ?>"><span class="badge badge-danger" onclick="return confirm('Apakah Anda Yakin Menghapus <?php echo $key['sk'] ?> ?')">hapus</span></a>
+                                        <a href="<?php echo base_url('kawasan_permukiman/lokasi_kumuh/update/') ?><?php echo $key['id_lokasi'] ?>/<?php echo $key['id_kabupaten'] ?>/<?php echo $key['id_kecamatan'] ?>"><span class="badge badge-primary">ubah</span></a>
+                                        <a href=" <?php echo base_url('kawasan_permukiman/lokasi_kumuh/delete/') ?><?php echo $key['id_lokasi'] ?>"><span class="badge badge-danger" onclick="return confirm('Apakah Anda Yakin Menghapus <?php echo $key['nama_lokasi'] ?> ?')">hapus</span></a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

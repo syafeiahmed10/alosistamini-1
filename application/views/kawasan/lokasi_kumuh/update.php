@@ -13,46 +13,62 @@
                         '</div>'
                     ) ?>
 
-                    <form action="<?php echo base_url('kawasan_permukiman/lokasi_kumuh/add'); ?>" method="POST">
+                    <form action="<?php echo base_url('kawasan_permukiman/lokasi_kumuh/update'); ?>" method="POST">
 
+                        <input type="hidden" required type="text" class="form-control" name="id" id="id" value="<?php echo $lokasi_kumuh_by_id['id_lokasi'] ?>">
 
                         <div class="form-group">
-                            <label class="control-label" for="surat_keterangan_kumuh">Surat Keterangan Kumuh</label>
-                            <select required class="selectpicker form-control" data-live-search="true" name="surat_keterangan_kumuh" id="surat_keterangan_kumuh">
-                                <option value="">Pilih</option>
-                                <?php foreach ($dropdown_surat_keterangan_kumuh as $key => $value) : ?>
-                                    <option value="<?php echo $value['id'] ?>|<?php echo $value['id_sk'] ?>"><?php echo $value['sk'] ?></option>
+                            <label for="surat_keterangan_kumuh">Surat Keterangan Kumuh</label>
+                            <select class="selectpicker form-control" data-live-search="true" name="surat_keterangan_kumuh" id="surat_keterangan_kumuh" required>
+                                <!-- UNTUK MENDAPAT SELECTED DATA -->
+                                <?php if (isset($lokasi_kumuh_by_id['id_lokasi'])) : ?>
+                                    <option value="<?php echo $lokasi_kumuh_by_id['id_kabupaten'] ?>|<?php echo $lokasi_kumuh_by_id['id_sk'] ?>"><?php echo $lokasi_kumuh_by_id['sk'] ?></option>
+                                <?php endif; ?>
+
+                                <?php foreach ($dropdown_surat_keterangan_kumuh as $key) : ?>
+                                    <option value="<?php echo $key['id'] ?>|<?php echo $lokasi_kumuh_by_id['id_sk'] ?>"><?php echo $key['sk'] ?> </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class=" form-group">
+                            <label for="kecamatan">Kecamatan</label>
+                            <select class="form-control" data-live-search="true" name="kecamatan" id="kecamatan">
+                                <!-- UNTUK MENDAPAT SELECTED DATA -->
+                                <?php if (isset($lokasi_kumuh_by_id['id_sk'])) : ?>
+                                    <option value="<?php echo $lokasi_kumuh_by_id['id_kecamatan'] ?>"><?php echo $lokasi_kumuh_by_id['kecamatan'] ?></option>
+                                <?php endif; ?>
+                                <?php foreach ($dropdown_kecamatan as $key) : ?>
+                                    <option value="<?php echo $key['id'] ?>"> <?php echo $key['name'] ?> </option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label data-live-search="true" class="control-label" for="kecamatan">Kecamatan</label>
-
-                            <select required class="form-control" name="kecamatan" id="kecamatan">
-                                <option selected>Pilih</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label data-live-search="true" class="control-label" for="kelurahan">Kelurahan</label>
-                            <select required class="form-control" name="kelurahan" id="kelurahan">
-                                <option selected>Pilih</option>
+                            <label for="kelurahan">Kelurahan</label>
+                            <select class="form-control" data-live-search="true" name="kelurahan" id="kelurahan">
+                                <!-- UNTUK MENDAPAT SELECTED DATA -->
+                                <?php if (isset($lokasi_kumuh_by_id['id_lokasi'])) : ?>
+                                    <option value="<?php echo $lokasi_kumuh_by_id['id_kelurahan'] ?>"><?php echo $lokasi_kumuh_by_id['kelurahan'] ?></option>
+                                <?php endif; ?>
+                                <?php foreach ($dropdown_kelurahan as $key) : ?>
+                                    <option value="<?php echo $key['id'] ?>"> <?php echo $key['name'] ?> </option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="rt_rw">RT/RW</label>
-                            <input placeholder="04/09" type="text" step="any" maxlength="5" class="form-control" name="rt_rw" id="rt_rw">
+                            <input placeholder="04/09" value="<?= $lokasi_kumuh_by_id['rt_rw'] ?>" type="text" step="any" maxlength="5" class="form-control" name="rt_rw" id="rt_rw">
                         </div>
                         <div class="form-group">
                             <label for="nama_lokasi">Nama Lokasi</label>
-                            <input placeholder="Jeruksari" type="text" maxlength="40" class="form-control" name="nama_lokasi" id="nama_lokasi">
+                            <input placeholder="Jeruksari" value="<?= $lokasi_kumuh_by_id['nama_lokasi'] ?>" type="text" maxlength="40" class="form-control" name="nama_lokasi" id="nama_lokasi">
                         </div>
                         <div class="form-group">
                             <label for="luas">Luas</label>
-                            <input placeholder="13.5" type="text" step="any" maxlength="5" class="form-control" name="luas" id="luas">
+                            <input placeholder="13.5" value="<?= $lokasi_kumuh_by_id['luas'] ?>" type="text" step="any" maxlength="5" class="form-control" name="luas" id="luas">
                         </div>
                         <div class="form-group">
                             <label for="lintang">Lintang</label>
-                            <input type="text" max="40" class="form-control" name="lintang" id="lintang" disabled>
+                            <input type="text" maxlength="40" class="form-control" name="lintang" id="lintang" disabled>
                         </div>
                         <div class="form-group">
                             <label for="bujur">Bujur</label>
@@ -60,15 +76,20 @@
                         </div>
                         <div class="form-group">
                             <label data-live-search="true" class="control-label" for="tingkat_kumuh">Tingkat Kumuh</label>
-                            <select required class="form-control" name="tingkat_kumuh" id="tingkat_kumuh">
-                                <option selected>Pilih</option>
+                            <select class="form-control" name="tingkat_kumuh" id="tingkat_kumuh">
+
+                                <!-- UNTUK MENDAPAT SELECTED DATA -->
+                                <?php if (isset($lokasi_kumuh_by_id['id_lokasi'])) : ?>
+                                    <option value="<?php echo $lokasi_kumuh_by_id['tingkat_kumuh'] ?>"><?php echo $lokasi_kumuh_by_id['tingkat_kumuh'] ?></option>
+                                <?php endif; ?>
+
                                 <option value="Rendah">Rendah</option>
                                 <option value="Sedang">Sedang</option>
                                 <option value="Tinggi">Tinggi</option>
                             </select>
                         </div>
 
-                        <button type="submit" name="tambah" class="btn btn-primary float-left">Tambah</button>
+                        <button type="submit" name="ubah" class="btn btn-primary float-left">Ubah</button>
                         <a class="btn btn-danger float-left ml-1" href="<?php echo base_url('kawasan_permukiman/lokasi_kumuh') ?>">Batal</a>
                     </form>
                 </div>
@@ -87,8 +108,6 @@
     </div>
 </div>
 
-
-
 <script src="<?= base_url('assets/js/jquery.js') ?>"> </script>
 
 
@@ -98,6 +117,7 @@
 
             var stateID = $(this).val().split("|");
             stateID = stateID[0];
+
             if (stateID) {
                 $.ajax({
                     url: '<?php echo base_url() ?>kawasan_permukiman/helper_kawasan/get_kecamatan/' + stateID,
