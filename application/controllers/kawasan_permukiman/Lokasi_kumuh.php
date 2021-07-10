@@ -17,6 +17,7 @@ class Lokasi_kumuh extends CI_Controller
     {
         $data['title'] = "Lokasi Kumuh";
         $data['lokasi_kumuh'] = $this->model_lokasi_kumuh->get()->result_array();
+        $data['dropdown_kabupaten'] = $this->model_for_all->dropdown_kabupaten()->result_array();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
         $this->load->view('templates/topbar');

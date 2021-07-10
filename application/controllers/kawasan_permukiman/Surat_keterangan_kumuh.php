@@ -12,11 +12,13 @@ class Surat_keterangan_kumuh extends CI_Controller
         parent::__construct();
         $this->load->model('model_surat_keterangan_kumuh');
         $this->load->model('model_for_all');
+        date_default_timezone_set('Asia/Jakarta');
     }
 
     // List all your items
     public function index($offset = 0)
     {
+
         $data['title'] = "Surat Keterangan Kumuh";
         $data['surat_keterangan_kumuh'] = $this->model_surat_keterangan_kumuh->get()->result_array();
         $this->load->view('templates/header', $data);

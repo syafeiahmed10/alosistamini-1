@@ -20,6 +20,7 @@
                                 <th>No</th>
                                 <th>Nomor SK</th>
                                 <th>Kabupaten</th>
+                                <th>Kode</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -32,6 +33,7 @@
                                     <td><?php echo $i++; ?></td>
                                     <td><?php echo $key['sk']; ?></td>
                                     <td><?php echo $key['name']; ?></td>
+                                    <td><?php echo $key['id_sk']; ?></td>
                                     <td>
                                         <a href="<?php echo base_url('kawasan_permukiman/surat_keterangan_kumuh/update/') ?><?php echo $key['id_sk'] ?>"><span class="badge badge-primary">ubah</span></a>
                                         <a href=" <?php echo base_url('kawasan_permukiman/surat_keterangan_kumuh/delete/') ?><?php echo $key['id_sk'] ?>"><span class="badge badge-danger" onclick="return confirm('Apakah Anda Yakin Menghapus <?php echo $key['sk'] ?> ?')">hapus</span></a>

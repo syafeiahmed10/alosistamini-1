@@ -12,8 +12,11 @@
                     </span>
                 </a>
                 <button type="submit" class="btn btn-danger  mb-3 ml-auto" value="Delete" onclick="return confirm('Apakah Anda Yakin Mengapus Baris yang Anda Pilih ?')">Hapus Terpilih</button>
+                <button type="button" class="btn btn-success mb-3 ml-auto" data-toggle="modal" data-target="#modalimport">
+                    Import
+                </button>
                 <div class="table-responsive">
-                    <table class="table table-bordered table-hover" width="100%" cellspacing="0">
+                    <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                         <thead class="bg-primary text-light">
                             <tr>
                                 <th><input type="checkbox" id="select-all"></th>
@@ -28,6 +31,7 @@
                                 <th>Bujur</th> -->
                                 <th>Tingkat Kumuh</th>
                                 <th>No SK</th>
+                                <th>Kode Lokasi</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -48,6 +52,7 @@
                                     <td><?php echo $key['bujur']; ?></td> -->
                                     <td><?php echo $key['tingkat_kumuh']; ?></td>
                                     <td><?php echo $key['sk']; ?></td>
+                                    <td><?php echo $key['id_lokasi']; ?></td>
                                     <td>
                                         <a href="<?php echo base_url('kawasan_permukiman/lokasi_kumuh/update/') ?><?php echo $key['id_lokasi'] ?>/<?php echo $key['id_kabupaten'] ?>/<?php echo $key['id_kecamatan'] ?>"><span class="badge badge-primary">ubah</span></a>
                                         <a href=" <?php echo base_url('kawasan_permukiman/lokasi_kumuh/delete/') ?><?php echo $key['id_lokasi'] ?>"><span class="badge badge-danger" onclick="return confirm('Apakah Anda Yakin Menghapus <?php echo $key['nama_lokasi'] ?> ?')">hapus</span></a>
@@ -64,3 +69,28 @@
 <!-- /.container-fluid -->
 </div>
 <!-- End of Main Content -->
+
+<!-- Modal -->
+<div class="modal fade" id="modalimport" tabindex="-1" role="dialog" aria-labelledby="modalimportLabel" aria-hidden="true">
+    <div class="modal-dialog " role="document">
+        <div class="modal-content">
+            <form method="post" enctype="multipart/form-data" action="<?php echo base_url('kawasan_permukiman/helper_kawasan/import_lokasi_kumuh') ?>">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalimportLabel">Import Data</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input type="file" name="berkas_excel">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" name="import" id="import" class="btn btn-primary">Import</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

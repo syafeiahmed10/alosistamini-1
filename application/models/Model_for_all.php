@@ -46,6 +46,14 @@ class Model_for_all extends CI_Model
         $result = $this->db->get();
         return $result;
     }
+
+    public function dropdown_lokasi_kumuh()
+    {
+        $result = $this->db->from('lokasi_kumuh');
+        $result = $this->db->join('surat_keterangan_kumuh', 'surat_keterangan_kumuh.id_sk=lokasi_kumuh.id_sk', 'LEFT');
+        $result = $this->db->get();
+        return $result;
+    }
 }
 
 /* End of file Model_for_all.php */

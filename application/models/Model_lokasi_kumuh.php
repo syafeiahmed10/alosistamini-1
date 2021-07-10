@@ -37,13 +37,15 @@ class Model_lokasi_kumuh extends CI_Model
 
         $this->db->where('id_lokasi', $id);
         $id_sk = explode("|", $this->input->post('surat_keterangan_kumuh'));
+
         $data = [
             'id_sk' => $id_sk[1],
             'lokasi' => $this->input->post('nama_lokasi'),
             'luas' => (float)$this->input->post('luas'),
             'rt_rw' => $this->input->post('rt_rw'),
             'village_id' => $this->input->post('kelurahan'),
-            'tingkat_kumuh' => $this->input->post('tingkat_kumuh')
+            'tingkat_kumuh' => $this->input->post('tingkat_kumuh'),
+            'last_update' => now()
         ];
         $this->db->update('lokasi_kumuh', $data);
     }
@@ -58,7 +60,8 @@ class Model_lokasi_kumuh extends CI_Model
             'luas' => (float)$this->input->post('luas'),
             'rt_rw' => $this->input->post('rt_rw'),
             'village_id' => $this->input->post('kelurahan'),
-            'tingkat_kumuh' => $this->input->post('tingkat_kumuh')
+            'tingkat_kumuh' => $this->input->post('tingkat_kumuh'),
+            'last_update' => now()
         ];
         $this->db->insert('lokasi_kumuh', $data);
     }

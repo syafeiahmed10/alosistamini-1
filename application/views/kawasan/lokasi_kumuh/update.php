@@ -26,7 +26,7 @@
                                 <?php endif; ?>
 
                                 <?php foreach ($dropdown_surat_keterangan_kumuh as $key) : ?>
-                                    <option value="<?php echo $key['id'] ?>|<?php echo $lokasi_kumuh_by_id['id_sk'] ?>"><?php echo $key['sk'] ?> </option>
+                                    <option value="<?php echo $key['id'] ?>|<?php echo $key['id_sk'] ?>"><?php echo $key['sk'] ?> </option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
