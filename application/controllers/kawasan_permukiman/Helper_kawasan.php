@@ -10,10 +10,35 @@ class Helper_kawasan extends CI_Controller
         parent::__construct();
         $this->load->model('model_lokasi_kumuh');
         $this->load->model('model_for_all');
+        $this->load->helper('download');
+        $this->load->helper('url');
     }
+
     public function index()
     {
     }
+
+    public function download($fileName = null)
+    {
+        if ($fileName) {
+            $file = realpath($fileName);
+
+            echo $file;
+            die;
+            // check file exists    
+            if (file_exists($file)) {
+                // get file content
+                $data = file_get_contents($file);
+                //force download
+                force_download($fileName, $data);
+            } else {
+                // Redirect to base url
+                redirect(base_url());
+            }
+        }
+    }
+
+
 
     public function get_kecamatan($id)
     { //Access-Control-Allow-Origin header with wildcard.
