@@ -18,13 +18,14 @@ class Helper_kawasan extends CI_Controller
     {
     }
 
-    public function download($fileName = null)
+    public function download()
     {
-        if ($fileName) {
-            $file = realpath($fileName);
+        $fileName = 'Eksisting Kumuh_' . $this->input->post('kabupaten') . '.xls';
 
-            echo $file;
-            die;
+        if ($fileName) {
+            $fileName = str_replace('%20', ' ', $fileName);
+            $path = $this->input->post('path');
+            $file = realpath('assets/files/' . $path . '/download/format/' . $fileName);
             // check file exists    
             if (file_exists($file)) {
                 // get file content
