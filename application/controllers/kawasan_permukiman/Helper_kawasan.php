@@ -20,7 +20,10 @@ class Helper_kawasan extends CI_Controller
 
     public function download()
     {
-        $fileName = 'Eksisting Kumuh_' . $this->input->post('kabupaten') . '.xls';
+        $kabupaten = strtolower($this->input->post('kabupaten'));
+        $kabupaten = ucwords($kabupaten);
+        $fileName = 'Eksisting Kumuh_' . $kabupaten . '.xls';
+
         if ($fileName) {
             $fileName = str_replace('%20', ' ', $fileName);
             $path = $this->input->post('path');
