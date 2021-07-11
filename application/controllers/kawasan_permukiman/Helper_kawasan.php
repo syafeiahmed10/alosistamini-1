@@ -25,8 +25,6 @@ class Helper_kawasan extends CI_Controller
             $fileName = str_replace('%20', ' ', $fileName);
             $path = $this->input->post('path');
             $file = realpath('assets/files/' . $path . '/download/format/' . $fileName);
-            echo $file;
-            die;
             // check file exists    
             if (file_exists($file)) {
                 // get file content
