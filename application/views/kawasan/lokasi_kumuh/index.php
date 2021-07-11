@@ -20,7 +20,7 @@
                     Import
                 </button>
                 <div class="table-responsive">
-                    <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered table-hover" id="dataTabl" width="100%" cellspacing="0">
                         <thead class="bg-primary text-light">
                             <tr>
                                 <th><input type="checkbox" id="select-all"></th>
@@ -78,7 +78,7 @@
 <div class="modal fade" id="modalimport" tabindex="-1" role="dialog" aria-labelledby="modalimportLabel" aria-hidden="true">
     <div class="modal-dialog " role="document">
         <div class="modal-content">
-            <form method="post" enctype="multipart/form-data" action="<?php echo base_url('kawasan_permukiman/helper_kawasan/import_lokasi_kumuh') ?>">
+            <form method="post" enctype="multipart/form-data" action="<?php echo base_url('kawasan_permukiman/helper_kawasan/import') ?>">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalimportLabel">Import Data</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -88,6 +88,9 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <input type="file" name="berkas_excel">
+                        <div class="form-group">
+                            <input value="<?php echo $this->uri->segment(2) ?>" type="hidden" name="path" id="path">
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">

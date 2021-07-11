@@ -18,15 +18,20 @@ class Helper_kawasan extends CI_Controller
     {
     }
 
+
+
     public function download()
     {
         $kabupaten = strtolower($this->input->post('kabupaten'));
         $kabupaten = ucwords($kabupaten);
-        $fileName = 'Eksisting Kumuh_' . $kabupaten . '.xls';
+        $path = $this->input->post('path');
+        if ($path == 'lokasi_kumuh') {
+            $fileName = 'Eksisting Kumuh_' . $kabupaten . '.xls';
+        } else {
+            $fileName = 'Penanganan Kumuh_' . $kabupaten . '.xlsx';
+        }
 
         if ($fileName) {
-            $fileName = str_replace('%20', ' ', $fileName);
-            $path = $this->input->post('path');
             $file = realpath('assets/files/' . $path . '/download/format/' . $fileName);
             // check file exists    
             if (file_exists($file)) {
@@ -57,7 +62,7 @@ class Helper_kawasan extends CI_Controller
         echo json_encode($data);
     }
 
-    public function import_lokasi_kumuh()
+    public function import()
     {
         //Access-Control-Allow-Origin header with wildcard.
         header('Access-Control-Allow-Origin: *');
@@ -79,21 +84,46 @@ class Helper_kawasan extends CI_Controller
             $spreadsheet = $reader->load($_FILES['berkas_excel']['tmp_name']);
 
             $sheetData = $spreadsheet->getActiveSheet()->toArray();
-            for ($i = 1; $i < count($sheetData); $i++) {
 
-                $object = [
-                    'id_sk' => $sheetData[$i]['13'],
-                    'lokasi' => $sheetData[$i]['7'],
-                    'luas' => (float)$sheetData[$i]['8'],
-                    'rt_rw' => $sheetData[$i]['6'],
-                    'village_id' => $sheetData[$i]['5'],
-                    'tingkat_kumuh' => "KUMUH_dberat",
-                    'last_update' => now()
-                ];
+            if ($this->input->post('path') == 'lokasi_kumuh') {
+                for ($i = 1; $i < count($sheetData); $i++) {
 
-                $this->db->insert('lokasi_kumuh', $object);
+                    $object = [
+                        'id_sk' => $sheetData[$i]['13'],
+                        'lokasi' => $sheetData[$i]['7'],
+                        'luas' => (float)$sheetData[$i]['8'],
+                        'rt_rw' => $sheetData[$i]['6'],
+                        'village_id' => $sheetData[$i]['5'],
+                        'tingkat_kumuh' => $sheetData[$i]['12'],
+                        'last_update' => now()
+                    ];
+                    if ($object['id_sk'] == null) {
+                        redirect('kawasan_permukiman/lokasi_kumuh');
+                    } else {
+                        # code...
+                        $this->db->insert('lokasi_kumuh', $object);
+                    }
+                }
+            } else {
+                for ($i = 1; $i < count($sheetData); $i++) {
+
+                    $object = [
+                        'id_lokasi' => $sheetData[$i]['15'],
+                        'luas_tertangani' => $sheetData[$i]['8'],
+                        'tahun' => (float)$sheetData[$i]['11'],
+                        'kegiatan' => $sheetData[$i]['12'],
+                        'nominal' => $sheetData[$i]['13'],
+                        'sumber_dana' => $sheetData[$i]['14'],
+                        'last_update' => now()
+                    ];
+                    if ($object['id_lokasi'] == null) {
+                        redirect('kawasan_permukiman/penanganan_kumuh');
+                    } else {
+                        # code...
+                        $this->db->insert('penanganan_lokasi_kumuh', $object);
+                    }
+                }
             }
-            redirect('kawasan_permukiman/lokasi_kumuh');
         }
     }
 }
