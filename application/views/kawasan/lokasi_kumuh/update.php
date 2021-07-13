@@ -21,36 +21,26 @@
                             <label for="surat_keterangan_kumuh">Surat Keterangan Kumuh</label>
                             <select class="selectpicker form-control" data-live-search="true" name="surat_keterangan_kumuh" id="surat_keterangan_kumuh" required>
                                 <!-- UNTUK MENDAPAT SELECTED DATA -->
-                                <?php if (isset($lokasi_kumuh_by_id['id_lokasi'])) : ?>
-                                    <option value="<?php echo $lokasi_kumuh_by_id['id_kabupaten'] ?>|<?php echo $lokasi_kumuh_by_id['id_sk'] ?>"><?php echo $lokasi_kumuh_by_id['sk'] ?></option>
-                                <?php endif; ?>
-
                                 <?php foreach ($dropdown_surat_keterangan_kumuh as $key) : ?>
-                                    <option value="<?php echo $key['id'] ?>|<?php echo $key['id_sk'] ?>"><?php echo $key['sk'] ?> </option>
+                                    <option value="<?php echo $key['id'] ?>|<?php echo $key['id_sk'] ?>" <?php if ($lokasi_kumuh_by_id['id_sk'] == $key['id_sk']) echo 'selected="selected"'; ?>><?php echo $key['sk'] ?> </option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
                         <div class=" form-group">
                             <label for="kecamatan">Kecamatan</label>
-                            <select class="form-control" data-live-search="true" name="kecamatan" id="kecamatan">
+                            <select class="selectpicker form-control" data-live-search="true" name="kecamatan" id="kecamatan">
                                 <!-- UNTUK MENDAPAT SELECTED DATA -->
-                                <?php if (isset($lokasi_kumuh_by_id['id_sk'])) : ?>
-                                    <option value="<?php echo $lokasi_kumuh_by_id['id_kecamatan'] ?>"><?php echo $lokasi_kumuh_by_id['kecamatan'] ?></option>
-                                <?php endif; ?>
                                 <?php foreach ($dropdown_kecamatan as $key) : ?>
-                                    <option value="<?php echo $key['id'] ?>"> <?php echo $key['name'] ?> </option>
+                                    <option value="<?php echo $key['id'] ?>" <?php if ($lokasi_kumuh_by_id['id_kecamatan'] == $key['id']) echo 'selected="selected"' ?>> <?php echo $key['name'] ?> </option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="kelurahan">Kelurahan</label>
-                            <select class="form-control" data-live-search="true" name="kelurahan" id="kelurahan">
+                            <select class="selectpicker form-control" data-live-search="true" name="kelurahan" id="kelurahan">
                                 <!-- UNTUK MENDAPAT SELECTED DATA -->
-                                <?php if (isset($lokasi_kumuh_by_id['id_lokasi'])) : ?>
-                                    <option value="<?php echo $lokasi_kumuh_by_id['id_kelurahan'] ?>"><?php echo $lokasi_kumuh_by_id['kelurahan'] ?></option>
-                                <?php endif; ?>
                                 <?php foreach ($dropdown_kelurahan as $key) : ?>
-                                    <option value="<?php echo $key['id'] ?>"> <?php echo $key['name'] ?> </option>
+                                    <option value="<?php echo $key['id'] ?>" <?php if ($key['id'] == $lokasi_kumuh_by_id['id_kelurahan']) echo 'selected="selected"' ?>> <?php echo $key['name'] ?> </option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -78,14 +68,12 @@
                             <label data-live-search="true" class="control-label" for="tingkat_kumuh">Tingkat Kumuh</label>
                             <select class="form-control" name="tingkat_kumuh" id="tingkat_kumuh">
 
-                                <!-- UNTUK MENDAPAT SELECTED DATA -->
-                                <?php if (isset($lokasi_kumuh_by_id['id_lokasi'])) : ?>
-                                    <option value="<?php echo $lokasi_kumuh_by_id['tingkat_kumuh'] ?>"><?php echo $lokasi_kumuh_by_id['tingkat_kumuh'] ?></option>
-                                <?php endif; ?>
 
-                                <option value="Rendah">Rendah</option>
-                                <option value="Sedang">Sedang</option>
-                                <option value="Tinggi">Tinggi</option>
+
+                                <option value="Rendah" <?php if ($lokasi_kumuh_by_id['tingkat_kumuh'] == "Rendah") echo 'selected="selected"' ?>>Rendah</option>
+                                <option value="Sedang" <?php if ($lokasi_kumuh_by_id['tingkat_kumuh'] == "Sedang") echo 'selected="selected"' ?>>Sedang</option>
+                                <option value="Tinggi" <?php if ($lokasi_kumuh_by_id['tingkat_kumuh'] == "Tinggi") echo 'selected="selected"' ?>>Tinggi</option>
+
                             </select>
                         </div>
 

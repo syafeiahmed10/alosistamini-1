@@ -120,7 +120,7 @@
                         <label for="kabupaten">Kabupaten</label>
                         <select class="selectpicker form-control" data-live-search="true" name="kabupaten" id="kabupaten" required>
                             <?php foreach ($dropdown_kabupaten as $key) : ?>
-                                <option value="<?php echo $key['name'] ?>"> <?php echo $key['name'] ?> </option>
+                                <option value="<?php echo $key['name'] ?>"> <?php echo $key['name'] ?>|<?php echo $key['id'] ?> </option>
                             <?php endforeach; ?>
                         </select>
                     </div>

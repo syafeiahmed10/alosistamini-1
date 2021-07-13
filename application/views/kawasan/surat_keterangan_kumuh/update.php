@@ -21,12 +21,10 @@
                             <label for="kabupaten">Kabupaten</label>
                             <select class="selectpicker form-control" data-live-search="true" name="kabupaten" id="kabupaten" required>
                                 <!-- UNTUK MENDAPAT SELECTED DATA -->
-                                <?php if (isset($surat_keterangan_kumuh_join_reg_regencies_by_id['id'])) : ?>
-                                    <option value="<?php echo $surat_keterangan_kumuh_join_reg_regencies_by_id['id'] ?>"><?php echo $surat_keterangan_kumuh_join_reg_regencies_by_id['name'] ?></option>
-                                <?php endif; ?>
+
 
                                 <?php foreach ($dropdown_kabupaten as $key) : ?>
-                                    <option value="<?php echo $key['id'] ?>"> <?php echo $key['name'] ?> </option>
+                                    <option value="<?php echo $key['id'] ?>" <?php if ($key['id'] == $surat_keterangan_kumuh_join_reg_regencies_by_id['id']) echo 'selected="selected"'; ?>><?php echo $key['name']; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>

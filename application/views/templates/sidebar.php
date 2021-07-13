@@ -3,11 +3,12 @@
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
+        <div class="sidebar-brand-icon ">
             <!-- <i class="fas fa-laugh-wink"></i> -->
-            <i class="fas fa-database"></i>
+            <!-- <i class="fas fa-database"></i> -->
+            <i><img width="60" src="<?php echo base_url('assets/img/logo_jawa_tengah_icon.ico') ?>" alt=""></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Alosista PKP <sup>V2</sup></div>
+        <div class="sidebar-brand-text mx-3">Alosista PKP<sup>V2</sup></div>
     </a>
 
     <!-- Divider -->
@@ -40,10 +41,10 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Perumahan:</h6>
-                <a class="collapse-item" href="utilities-color.html">Belum</a>
-                <a class="collapse-item" href="utilities-border.html">Dibuat</a>
-                <a class="collapse-item" href="utilities-animation.html">Bro</a>
-                <a class="collapse-item" href="utilities-other.html">Ntar Ya</a>
+                <a class="collapse-item" href="utilities-color.html">Under Development</a>
+                <a class="collapse-item" href="utilities-border.html">Under Development</a>
+                <a class="collapse-item" href="utilities-animation.html">Under Development</a>
+                <a class="collapse-item" href="utilities-other.html">Under Development</a>
             </div>
         </div>
     </li>
