@@ -26,6 +26,7 @@ class Surat_keterangan_kumuh extends CI_Controller
         $this->load->view('templates/topbar');
         $this->load->view('kawasan/surat_keterangan_kumuh/index', $data);
         $this->load->view('templates/footer');
+        $this->form_validation->set_error_delimiters(' <small class="text-danger pl-3">', ' </small>');
     }
 
     // Add a new item

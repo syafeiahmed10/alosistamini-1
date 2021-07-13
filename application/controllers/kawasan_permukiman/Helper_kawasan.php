@@ -85,7 +85,24 @@ class Helper_kawasan extends CI_Controller
 
             $sheetData = $spreadsheet->getActiveSheet()->toArray();
 
-            if ($this->input->post('path') == 'lokasi_kumuh') {
+            if ($this->input->post('path') == 'surat_keterangan_kumuh') {
+                for ($i = 1; $i < count($sheetData); $i++) {
+
+                    $object = [
+                        'regency_id' => $sheetData[$i]['2'],
+                        'sk' => $sheetData[$i]['1'],
+                        'last_update' => now()
+                    ];
+                    if ($object['regency_id'] == null) {
+                        $this->session->set_flashdata('message', 'regency_id tidak boleh kosong');
+                        redirect('kawasan_permukiman/surat_keterangan_kumuh');
+                    } else {
+                        # code...
+                        $this->db->insert('surat_keterangan_kumuh', $object);
+                    }
+                }
+                redirect('kawasan_permukiman/surat_keterangan_kumuh');
+            } elseif ($this->input->post('path') == 'lokasi_kumuh') {
                 for ($i = 1; $i < count($sheetData); $i++) {
 
                     $object = [
@@ -103,6 +120,25 @@ class Helper_kawasan extends CI_Controller
                         # code...
                         $this->db->insert('lokasi_kumuh', $object);
                     }
+                }
+                for ($i = 1; $i < count($sheetData); $i++) {
+
+                    $object = [
+                        'id_sk' => $sheetData[$i]['13'],
+                        'lokasi' => $sheetData[$i]['7'],
+                        'luas' => (float)$sheetData[$i]['8'],
+                        'rt_rw' => $sheetData[$i]['6'],
+                        'village_id' => $sheetData[$i]['5'],
+                        'tingkat_kumuh' => $sheetData[$i]['12'],
+                        'last_update' => now()
+                    ];
+                    if ($object['id_sk'] == null) {
+                        redirect('kawasan_permukiman/lokasi_kumuh');
+                    } else {
+                        # code...
+                        $this->db->insert('lokasi_kumuh', $object);
+                    }
+                    redirect('kawasan_permukiman/lokasi_kumuh');
                 }
             } else {
                 for ($i = 1; $i < count($sheetData); $i++) {

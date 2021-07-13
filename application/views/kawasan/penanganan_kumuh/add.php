@@ -19,7 +19,7 @@
                             <label for="lokasi_kumuh">Lokasi Kumuh</label>
                             <select class="selectpicker form-control" data-live-search="true" name="lokasi_kumuh" id="lokasi_kumuh" required>
                                 <?php foreach ($dropdown_lokasi_kumuh as $key) : ?>
-                                    <option value="<?php echo $key['id_lokasi'] ?>"> <?php echo $key['lokasi'] ?> | <?php echo $key['sk'] ?> </option>
+                                    <option value="<?php echo $key['id_lokasi'] ?>"> <?php echo $key['lokasi'] ?> | <?php echo $key['sk'] ?> | <?php echo "RT/RW" ?> <?php echo $key['rt_rw'] ?> </option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
