@@ -31,8 +31,8 @@
                                 <th>RT/RW</th>
                                 <th>Kelurahan/Desa</th>
                                 <th>Kecamatan</th>
-                                <!-- <th>Lintang</th>
-                                <th>Bujur</th> -->
+                                <th>Lintang</th>
+                                <th>Bujur</th>
                                 <th>Tingkat Kumuh</th>
                                 <th>No SK</th>
                                 <th>Kode Lokasi</th>
@@ -42,7 +42,7 @@
 
                         <tbody>
                             <?php $i = 1; ?>
-                            <?php foreach ($lokasi_kumuh as $key) : ?>
+                            <?php foreach ($dataSatu->result_array() as $key) : ?>
                                 <tr>
                                     <td><input type="checkbox" name="id[]" value="<?php echo $key['id_lokasi']; ?>"></td>
                                     <td><?php echo $i++; ?></td>
@@ -52,8 +52,8 @@
                                     <td><?php echo $key['rt_rw']; ?></td>
                                     <td><?php echo $key['kelurahan']; ?></td>
                                     <td><?php echo $key['kecamatan']; ?></td>
-                                    <!-- <td><?php echo $key['lintang']; ?></td>
-                                    <td><?php echo $key['bujur']; ?></td> -->
+                                    <td><?php echo $key['lintang']; ?></td>
+                                    <td><?php echo $key['bujur']; ?></td>
                                     <td><?php echo $key['tingkat_kumuh']; ?></td>
                                     <td><?php echo $key['sk']; ?></td>
                                     <td><?php echo $key['id_lokasi']; ?></td>
@@ -119,8 +119,8 @@
                     <div class="form-group">
                         <label for="kabupaten">Kabupaten</label>
                         <select class="selectpicker form-control" data-live-search="true" name="kabupaten" id="kabupaten" required>
-                            <?php foreach ($dropdown_kabupaten as $key) : ?>
-                                <option value="<?php echo $key['name'] ?>"> <?php echo $key['name'] ?>|<?php echo $key['id'] ?> </option>
+                            <?php foreach ($dataDua->result_array() as $key) : ?>
+                                <option value="<?php echo $key['name'] ?>"> <?php echo $key['name'] ?> </option>
                             <?php endforeach; ?>
                         </select>
                     </div>

@@ -30,7 +30,7 @@
                             <label for="kecamatan">Kecamatan</label>
                             <select class="selectpicker form-control" data-live-search="true" name="kecamatan" id="kecamatan">
                                 <!-- UNTUK MENDAPAT SELECTED DATA -->
-                                <?php foreach ($dropdown_kecamatan as $key) : ?>
+                                <?php foreach ($dataSatu as $key) : ?>
                                     <option value="<?php echo $key['id'] ?>" <?php if ($lokasi_kumuh_by_id['id_kecamatan'] == $key['id']) echo 'selected="selected"' ?>> <?php echo $key['name'] ?> </option>
                                 <?php endforeach; ?>
                             </select>
@@ -58,22 +58,18 @@
                         </div>
                         <div class="form-group">
                             <label for="lintang">Lintang</label>
-                            <input type="text" maxlength="40" class="form-control" name="lintang" id="lintang" disabled>
+                            <input type="text" value="<?= $lokasi_kumuh_by_id['lintang'] ?>" maxlength="40" class="form-control" name="lintang" id="lintang">
                         </div>
                         <div class="form-group">
                             <label for="bujur">Bujur</label>
-                            <input type="text" maxlength="40" class="form-control" name="bujur" id="bujur" disabled>
+                            <input type="text" value="<?= $lokasi_kumuh_by_id['bujur'] ?>" maxlength="40" class="form-control" name="bujur" id="bujur">
                         </div>
                         <div class="form-group">
                             <label data-live-search="true" class="control-label" for="tingkat_kumuh">Tingkat Kumuh</label>
                             <select class="form-control" name="tingkat_kumuh" id="tingkat_kumuh">
-
-
-
                                 <option value="Rendah" <?php if ($lokasi_kumuh_by_id['tingkat_kumuh'] == "Rendah") echo 'selected="selected"' ?>>Rendah</option>
                                 <option value="Sedang" <?php if ($lokasi_kumuh_by_id['tingkat_kumuh'] == "Sedang") echo 'selected="selected"' ?>>Sedang</option>
                                 <option value="Tinggi" <?php if ($lokasi_kumuh_by_id['tingkat_kumuh'] == "Tinggi") echo 'selected="selected"' ?>>Tinggi</option>
-
                             </select>
                         </div>
 

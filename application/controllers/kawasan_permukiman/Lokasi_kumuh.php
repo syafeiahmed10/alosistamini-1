@@ -13,11 +13,11 @@ class Lokasi_kumuh extends CI_Controller
     }
 
     // List all your items
-    public function index($offset = 0)
+    public function index()
     {
         $data['title'] = "Lokasi Kumuh";
-        $data['lokasi_kumuh'] = $this->model_lokasi_kumuh->get()->result_array();
-        $data['dropdown_kabupaten'] = $this->model_for_all->dropdown_kabupaten()->result_array();
+        $data['dataSatu'] = $this->model_lokasi_kumuh->get_table();
+        $data['dataDua'] = $this->model_for_all->get_kabupaten_jateng();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
         $this->load->view('templates/topbar');
@@ -29,8 +29,7 @@ class Lokasi_kumuh extends CI_Controller
     public function add()
     {
         $data['title'] = "Lokasi Kumuh";
-        $data['dropdown_kelurahan_kecamatan'] =  $this->model_for_all->dropdown_kelurahan_kecamatan()->result_array();
-        $data['dropdown_surat_keterangan_kumuh'] =  $this->model_for_all->dropdown_surat_keterangan_kumuh()->result_array();
+        $data['dataSatu'] =  $this->model_for_all->get_surat_keterangan_kumuh();
         $this->form_validation->set_rules('nama_lokasi', 'Nama Lokasi', 'trim|required');
         $this->form_validation->set_rules('luas', 'Luas', 'trim|required|numeric');
         $this->form_validation->set_rules('rt_rw', 'RT/RW', 'trim|required');
@@ -57,9 +56,9 @@ class Lokasi_kumuh extends CI_Controller
     public function update($id = null, $id_kabupaten = null, $id_kecamatan = NULL)
     {
         $data['title'] = "Ubah Lokasi Kumuh";
-        $data['dropdown_kecamatan'] =  $this->model_for_all->dropdown_kecamatan($id_kabupaten)->result_array();
+        $data['dataSatu'] =  $this->model_for_all->get_kecamatan($id_kabupaten)->result_array();
         $data['dropdown_kelurahan'] =  $this->model_for_all->dropdown_kelurahan($id_kecamatan)->result_array();
-        $data['dropdown_surat_keterangan_kumuh'] =  $this->model_for_all->dropdown_surat_keterangan_kumuh()->result_array();
+        $data['dropdown_surat_keterangan_kumuh'] =  $this->model_for_all->get_surat_keterangan_kumuh()->result_array();
         $data['lokasi_kumuh_by_id'] = $this->model_lokasi_kumuh->update($id)->row_array();
 
         $this->form_validation->set_rules('nama_lokasi', 'Nama Lokasi', 'trim|required');

@@ -12,6 +12,7 @@ class Helper_kawasan extends CI_Controller
         $this->load->model('model_for_all');
         $this->load->helper('download');
         $this->load->helper('url');
+        $this->load->helper('alosista_helper');
     }
 
     public function index()
@@ -51,7 +52,7 @@ class Helper_kawasan extends CI_Controller
     public function get_kecamatan($id)
     { //Access-Control-Allow-Origin header with wildcard.
         header('Access-Control-Allow-Origin: *');
-        $data = $this->model_for_all->dropdown_kecamatan($id)->result();
+        $data = $this->model_for_all->get_kecamatan($id)->result();
         echo json_encode($data);
     }
 
@@ -94,7 +95,12 @@ class Helper_kawasan extends CI_Controller
                         'last_update' => now()
                     ];
                     if ($object['regency_id'] == null) {
-                        $this->session->set_flashdata('message', 'regency_id tidak boleh kosong');
+                        $this->session->set_flashdata('message', '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        regency_id tidak boleh kosong
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>');
                         redirect('kawasan_permukiman/surat_keterangan_kumuh');
                     } else {
                         # code...
@@ -106,30 +112,14 @@ class Helper_kawasan extends CI_Controller
                 for ($i = 1; $i < count($sheetData); $i++) {
 
                     $object = [
-                        'id_sk' => $sheetData[$i]['13'],
-                        'lokasi' => $sheetData[$i]['7'],
-                        'luas' => (float)$sheetData[$i]['8'],
-                        'rt_rw' => $sheetData[$i]['6'],
-                        'village_id' => $sheetData[$i]['5'],
-                        'tingkat_kumuh' => $sheetData[$i]['12'],
-                        'last_update' => now()
-                    ];
-                    if ($object['id_sk'] == null) {
-                        redirect('kawasan_permukiman/lokasi_kumuh');
-                    } else {
-                        # code...
-                        $this->db->insert('lokasi_kumuh', $object);
-                    }
-                }
-                for ($i = 1; $i < count($sheetData); $i++) {
-
-                    $object = [
-                        'id_sk' => $sheetData[$i]['13'],
-                        'lokasi' => $sheetData[$i]['7'],
-                        'luas' => (float)$sheetData[$i]['8'],
-                        'rt_rw' => $sheetData[$i]['6'],
-                        'village_id' => $sheetData[$i]['5'],
-                        'tingkat_kumuh' => $sheetData[$i]['12'],
+                        'id_sk' => $sheetData[$i]['12'],
+                        'lokasi' => $sheetData[$i]['6'],
+                        'luas' => (float)$sheetData[$i]['7'],
+                        'rt_rw' => $sheetData[$i]['5'],
+                        'lintang' => get_digit_after_dot_lat_long($sheetData[$i]['8']),
+                        'bujur' => get_digit_after_dot_lat_long($sheetData[$i]['9']),
+                        'village_id' => $sheetData[$i]['4'],
+                        'tingkat_kumuh' => $sheetData[$i]['11'],
                         'last_update' => now()
                     ];
                     if ($object['id_sk'] == null) {

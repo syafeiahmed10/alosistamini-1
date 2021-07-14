@@ -15,22 +15,20 @@
 
                     <form action="<?php echo base_url('kawasan_permukiman/surat_keterangan_kumuh/update'); ?>" method="POST">
 
-                        <input type="hidden" required type="text" class="form-control" name="id" id="id" value="<?php echo $surat_keterangan_kumuh_join_reg_regencies_by_id['id_sk'] ?>">
+                        <input type="hidden" required type="text" class="form-control" name="id" id="id" value="<?php echo $dataDua->row_array()['id_sk'] ?>">
 
                         <div class="form-group">
                             <label for="kabupaten">Kabupaten</label>
                             <select class="selectpicker form-control" data-live-search="true" name="kabupaten" id="kabupaten" required>
                                 <!-- UNTUK MENDAPAT SELECTED DATA -->
-
-
-                                <?php foreach ($dropdown_kabupaten as $key) : ?>
-                                    <option value="<?php echo $key['id'] ?>" <?php if ($key['id'] == $surat_keterangan_kumuh_join_reg_regencies_by_id['id']) echo 'selected="selected"'; ?>><?php echo $key['name']; ?></option>
+                                <?php foreach ($dataSatu->result_array() as $key) : ?>
+                                    <option value="<?php echo $key['id'] ?>" <?php if ($key['id'] == $dataDua->row_array()['id']) echo 'selected="selected"'; ?>><?php echo $key['name']; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="surat_keterangan_kumuh">Surat Keterangan Kumuh</label>
-                            <input type="text" maxlength="40" class="form-control" name="surat_keterangan_kumuh" id="surat_keterangan_kumuh" value="<?= $surat_keterangan_kumuh_join_reg_regencies_by_id['sk'] ?>">
+                            <input type="text" maxlength="100" class="form-control" name="surat_keterangan_kumuh" id="surat_keterangan_kumuh" value="<?= $dataDua->row_array()['sk'] ?>">
                         </div>
                         <button type="submit" name="ubah" class="btn btn-primary float-left">Ubah</button>
                         <a class="btn btn-danger float-left ml-1" href="<?php echo base_url('kawasan_permukiman/surat_keterangan_kumuh') ?>">Batal</a>

@@ -31,7 +31,7 @@
 
                         <tbody>
                             <?php $i = 1; ?>
-                            <?php foreach ($surat_keterangan_kumuh as $key) : ?>
+                            <?php foreach ($dataSatu->result_array() as $key) : ?>
                                 <tr>
                                     <td><input type="checkbox" name="id[]" value="<?php echo $key['id_sk']; ?>"></td>
                                     <td><?php echo $i++; ?></td>

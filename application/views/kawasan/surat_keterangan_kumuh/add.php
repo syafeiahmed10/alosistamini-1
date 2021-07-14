@@ -18,14 +18,14 @@
                         <div class="form-group">
                             <label for="kabupaten">Kabupaten</label>
                             <select class="selectpicker form-control" data-live-search="true" name="kabupaten" id="kabupaten" required>
-                                <?php foreach ($dropdown_kabupaten as $key) : ?>
+                                <?php foreach ($dataSatu->result_array() as $key) : ?>
                                     <option value="<?php echo $key['id'] ?>"> <?php echo $key['name'] ?> </option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="surat_keterangan_kumuh">Surat Keterangan Kumuh</label>
-                            <input type="text" maxlength="40" class="form-control" name="surat_keterangan_kumuh" id="surat_keterangan_kumuh">
+                            <input type="text" maxlength="100" class="form-control" name="surat_keterangan_kumuh" id="surat_keterangan_kumuh">
                         </div>
                         <button type="submit" name="tambah" class="btn btn-primary float-left">Tambah</button>
                         <a class="btn btn-danger float-left ml-1" href="<?php echo base_url('kawasan_permukiman/surat_keterangan_kumuh') ?>">Batal</a>

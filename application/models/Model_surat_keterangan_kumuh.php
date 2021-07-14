@@ -3,12 +3,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Model_surat_keterangan_kumuh extends CI_Model
 {
-    public function get()
+    public function get_table()
     {
-        $result = $this->db->from('surat_keterangan_kumuh');
-        $result = $this->db->join('reg_regencies', 'reg_regencies.id=surat_keterangan_kumuh.regency_id', 'LEFT');
-        $result = $this->db->get();
-        return $result;
+        $this->db->from('surat_keterangan_kumuh');
+        $this->db->join('reg_regencies', 'reg_regencies.id=surat_keterangan_kumuh.regency_id', 'LEFT');
+        return $this->db->get();
     }
 
     public function update($id)
@@ -23,8 +22,6 @@ class Model_surat_keterangan_kumuh extends CI_Model
     public function update_action($id)
     {
         $this->db->where('id_sk', $id);
-
-
         $data = [
             'regency_id' => $this->input->post('kabupaten'),
             'sk' => $this->input->post('surat_keterangan_kumuh'),
@@ -45,12 +42,6 @@ class Model_surat_keterangan_kumuh extends CI_Model
     }
 
     public function delete($id)
-    {
-        $this->db->where('id_sk', $id);
-        $this->db->delete('surat_keterangan_kumuh');
-    }
-
-    public function delete_selected($id)
     {
         $this->db->where('id_sk', $id);
         $this->db->delete('surat_keterangan_kumuh');
