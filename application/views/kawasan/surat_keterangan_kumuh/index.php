@@ -25,6 +25,7 @@
                                 <th>Nomor SK</th>
                                 <th>Kabupaten</th>
                                 <th>Kode</th>
+                                <th>Last Update</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -33,11 +34,14 @@
                             <?php $i = 1; ?>
                             <?php foreach ($dataSatu->result_array() as $key) : ?>
                                 <tr>
+
                                     <td><input type="checkbox" name="id[]" value="<?php echo $key['id_sk']; ?>"></td>
                                     <td><?php echo $i++; ?></td>
                                     <td><?php echo $key['sk']; ?></td>
                                     <td><?php echo $key['name']; ?></td>
                                     <td><?php echo $key['id_sk']; ?></td>
+                                    <td><?php echo gmdate("Y-m-d\TH:i:s\Z", $key['last_update']); ?></td>
+
                                     <td>
                                         <a href="<?php echo base_url('kawasan_permukiman/surat_keterangan_kumuh/update/') ?><?php echo $key['id_sk'] ?>"><span class="badge badge-primary">ubah</span></a>
                                         <a href=" <?php echo base_url('kawasan_permukiman/surat_keterangan_kumuh/delete/') ?><?php echo $key['id_sk'] ?>"><span class="badge badge-danger" onclick="return confirm('Apakah Anda Yakin Menghapus <?php echo $key['sk'] ?> ?')">hapus</span></a>

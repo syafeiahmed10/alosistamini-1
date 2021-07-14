@@ -122,24 +122,22 @@ class Helper_kawasan extends CI_Controller
                         'tingkat_kumuh' => $sheetData[$i]['11'],
                         'last_update' => now()
                     ];
-                    if ($object['id_sk'] == null) {
-                        redirect('kawasan_permukiman/lokasi_kumuh');
-                    } else {
-                        # code...
-                        $this->db->insert('lokasi_kumuh', $object);
-                    }
+
+                    # code...
+                    $this->db->insert('lokasi_kumuh', $object);
+
                     redirect('kawasan_permukiman/lokasi_kumuh');
                 }
             } else {
                 for ($i = 1; $i < count($sheetData); $i++) {
 
                     $object = [
-                        'id_lokasi' => $sheetData[$i]['15'],
-                        'luas_tertangani' => $sheetData[$i]['8'],
-                        'tahun' => (float)$sheetData[$i]['11'],
-                        'kegiatan' => $sheetData[$i]['12'],
-                        'nominal' => $sheetData[$i]['13'],
-                        'sumber_dana' => $sheetData[$i]['14'],
+                        'id_lokasi' => $sheetData[$i]['1'],
+                        'luas_tertangani' => $sheetData[$i]['2'],
+                        'tahun' => $sheetData[$i]['3'],
+                        'kegiatan' => $sheetData[$i]['4'],
+                        'nominal' => $sheetData[$i]['5'],
+                        'sumber_dana' => $sheetData[$i]['6'],
                         'last_update' => now()
                     ];
                     if ($object['id_lokasi'] == null) {
