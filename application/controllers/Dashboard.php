@@ -13,6 +13,8 @@ class Dashboard extends CI_Controller
         $this->load->view('templates/topbar');
         $this->load->view('dashboard');
         $this->load->view('templates/footer');
+        $this->load->helper('alosista_helper');
+        is_logged_in();
     }
 }
 
