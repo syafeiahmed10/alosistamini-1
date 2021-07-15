@@ -3,11 +3,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Model_surat_keterangan_kumuh extends CI_Model
 {
-    public function get_table()
+    public function get_table($limit, $start)
     {
-        $this->db->from('surat_keterangan_kumuh');
         $this->db->join('reg_regencies', 'reg_regencies.id=surat_keterangan_kumuh.regency_id', 'LEFT');
-        return $this->db->get();
+        return $this->db->get('surat_keterangan_kumuh', $limit, $start);
+    }
+
+    public function countRow()
+    {
+        $this->db->join('reg_regencies', 'reg_regencies.id=surat_keterangan_kumuh.regency_id', 'LEFT');
+        return $this->db->get('surat_keterangan_kumuh')->num_rows();
     }
 
     public function update($id)

@@ -19,7 +19,7 @@
                                 </div>
 
                                 <!-- DISINI ada  -->
-                                <?php /*echo $this->session->flashdata('message');*/
+                                <?php echo $this->session->flashdata('message');
                                 ?>
 
                                 <form class="user" method="POST" action="<?php echo base_url('auth') ?>">

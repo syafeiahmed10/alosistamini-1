@@ -10,6 +10,8 @@ class Lokasi_kumuh extends CI_Controller
         parent::__construct();
         $this->load->model('model_lokasi_kumuh');
         $this->load->model('model_for_all');
+        $this->load->helper('alosista_helper');
+        is_logged_in();
     }
 
     // List all your items

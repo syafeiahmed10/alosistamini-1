@@ -31,12 +31,12 @@
                         </thead>
 
                         <tbody>
-                            <?php $i = 1; ?>
+
                             <?php foreach ($dataSatu->result_array() as $key) : ?>
                                 <tr>
 
                                     <td><input type="checkbox" name="id[]" value="<?php echo $key['id_sk']; ?>"></td>
-                                    <td><?php echo $i++; ?></td>
+                                    <td><?php echo ++$start; ?></td>
                                     <td><?php echo $key['sk']; ?></td>
                                     <td><?php echo $key['name']; ?></td>
                                     <td><?php echo $key['id_sk']; ?></td>
@@ -51,6 +51,7 @@
                         </tbody>
                     </table>
                 </div>
+                <?php echo $this->pagination->create_links(); ?>
             </div>
         </div>
     </form>

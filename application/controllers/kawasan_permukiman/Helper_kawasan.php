@@ -107,7 +107,6 @@ class Helper_kawasan extends CI_Controller
                         $this->db->insert('surat_keterangan_kumuh', $object);
                     }
                 }
-                redirect('kawasan_permukiman/surat_keterangan_kumuh');
             } elseif ($this->input->post('path') == 'lokasi_kumuh') {
                 for ($i = 1; $i < count($sheetData); $i++) {
 
@@ -122,11 +121,12 @@ class Helper_kawasan extends CI_Controller
                         'tingkat_kumuh' => $sheetData[$i]['11'],
                         'last_update' => now()
                     ];
-
-                    # code...
-                    $this->db->insert('lokasi_kumuh', $object);
-
-                    redirect('kawasan_permukiman/lokasi_kumuh');
+                    if ($object['id_sk'] == null) {
+                        redirect('kawasan_permukiman/lokasi_kumuh');
+                    } else {
+                        # code...
+                        $this->db->insert('lokasi_kumuh', $object);
+                    }
                 }
             } else {
                 for ($i = 1; $i < count($sheetData); $i++) {

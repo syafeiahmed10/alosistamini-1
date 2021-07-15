@@ -35,6 +35,72 @@ class Auth extends CI_Controller
             $this->load->view('templates/auth_footer');
         }
     }
+
+    private function _login()
+    {
+        $username = $this->input->post('username');
+        $password = $this->input->post('password');
+
+        $user = $this->db->get_where('user', ['username' => $username])->row_array();
+        if ($user) {
+            if ($user['is_active'] == 1) {
+                if (password_verify($password, $user['password'])) {
+                    $data = [
+                        'username' => $user['username'],
+                        'role_id' => $user['role_id']
+                    ];
+                    $this->session->set_userdata($data);
+
+                    // if ($user['role_id'] == 1) {
+                    //     redirect('admin');
+                    // } else {
+                    //     redirect('user');
+                    // }
+                    redirect('dashboard/index');
+                } else {
+                    $this->session->set_flashdata('message', '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    Wrong Password
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>');
+
+                    redirect('auth');
+                }
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+           username has not been Activated
+             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+             </button>
+           </div>');
+
+                redirect('auth');
+            }
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+           username is not Registered
+             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+             </button>
+           </div>');
+
+            redirect('auth');
+        }
+    }
+
+    public function logout()
+    {
+        $this->session->unset_userdata('username');
+        $this->session->unset_userdata('role_id');
+        $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+        You Have Been Logged Out
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+         </button>
+       </div>');
+        redirect('auth');
+    }
 }
 
 /* End of file Auth.php */

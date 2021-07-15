@@ -10,13 +10,22 @@ class Surat_keterangan_kumuh extends CI_Controller
         parent::__construct();
         $this->load->model('model_surat_keterangan_kumuh');
         $this->load->model('model_for_all');
+        $this->load->library('pagination');
+        $this->load->helper('alosista_helper');
+        is_logged_in();
     }
 
     // List all your items
     public function index()
     {
+        $config['base_url'] = base_url('kawasan_permukiman/surat_keterangan_kumuh/index');
+        $config['total_rows'] = $this->model_surat_keterangan_kumuh->countRow();
+        $config['per_page'] = 10;
+
+        $this->pagination->initialize($config);
         $data['title'] = "Surat Keterangan Kumuh";
-        $data['dataSatu'] = $this->model_surat_keterangan_kumuh->get_table();
+        $data['start'] = $this->uri->segment(4);
+        $data['dataSatu'] = $this->model_surat_keterangan_kumuh->get_table($config['per_page'], $data['start']);
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
         $this->load->view('templates/topbar');

@@ -22,6 +22,10 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
+
+        table tr td {
+            font-size: 13px;
+        }
     </style>
 </head>
 
