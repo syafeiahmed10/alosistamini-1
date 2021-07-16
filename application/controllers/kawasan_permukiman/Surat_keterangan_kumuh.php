@@ -18,14 +18,13 @@ class Surat_keterangan_kumuh extends CI_Controller
     // List all your items
     public function index()
     {
-        $config['base_url'] = base_url('kawasan_permukiman/surat_keterangan_kumuh/index');
-        $config['total_rows'] = $this->model_surat_keterangan_kumuh->countRow();
-        $config['per_page'] = 10;
-
-        $this->pagination->initialize($config);
-        $data['title'] = "Surat Keterangan Kumuh";
         $data['start'] = $this->uri->segment(4);
-        $data['dataSatu'] = $this->model_surat_keterangan_kumuh->get_table($config['per_page'], $data['start']);
+        $data['title'] = "Surat Keterangan Kumuh";
+        $data['countRow'] = $this->model_surat_keterangan_kumuh->countRow();
+        $data['base_url'] = base_url('kawasan_permukiman/surat_keterangan_kumuh/index');
+        $this->pagination->initialize(paginationConfig($data['base_url'], $data['countRow']));
+        $data['dataSatu'] = $this->model_surat_keterangan_kumuh->get_table(paginationConfig($data['base_url'], $data['countRow'])['per_page'], $data['start']);
+
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
         $this->load->view('templates/topbar');

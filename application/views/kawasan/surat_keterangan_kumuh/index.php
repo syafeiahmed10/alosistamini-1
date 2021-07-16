@@ -16,6 +16,7 @@
                 <button type="button" class="btn btn-secondary mb-3 ml-auto" data-toggle="modal" data-target="#modalimport">
                     Import
                 </button>
+
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover" width="100%" cellspacing="0">
                         <thead class="bg-primary text-light">
@@ -51,6 +52,7 @@
                         </tbody>
                     </table>
                 </div>
+
                 <?php echo $this->pagination->create_links(); ?>
             </div>
         </div>

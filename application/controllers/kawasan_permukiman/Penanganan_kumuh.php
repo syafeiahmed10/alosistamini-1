@@ -11,6 +11,7 @@ class Penanganan_kumuh extends CI_Controller
         parent::__construct();
         $this->load->model('model_penanganan_kumuh');
         $this->load->model('model_for_all');
+        $this->load->library('pagination');
         $this->load->helper('alosista_helper');
         is_logged_in();
     }
@@ -20,7 +21,11 @@ class Penanganan_kumuh extends CI_Controller
     {
 
         $data['title'] = "Penanganan Kumuh";
-        $data['penanganan_kumuh'] = $this->model_penanganan_kumuh->get()->result_array();
+        $data['start'] = $this->uri->segment(4);
+        $data['countRow'] = $this->model_penanganan_kumuh->countRow();
+        $data['base_url'] = base_url('kawasan_permukiman/penanganan_kumuh/index');
+        $this->pagination->initialize(paginationConfig($data['base_url'], $data['countRow']));
+        $data['penanganan_kumuh'] = $this->model_penanganan_kumuh->get_table(paginationConfig($data['base_url'], $data['countRow'])['per_page'], $data['start'])->result_array();
         $data['dropdown_kabupaten'] = $this->model_for_all->get_kabupaten_jateng()->result_array();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');

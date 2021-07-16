@@ -46,30 +46,30 @@
                         </div>
                         <div class="form-group">
                             <label for="rt_rw">RT/RW</label>
-                            <input placeholder="04/09" value="<?= $lokasi_kumuh_by_id['rt_rw'] ?>" type="text" step="any" maxlength="5" class="form-control" name="rt_rw" id="rt_rw">
+                            <input placeholder="Contoh : RT002/RW007" value="<?= $lokasi_kumuh_by_id['rt_rw'] ?>" type="text" step="any" maxlength="5" class="form-control" name="rt_rw" id="rt_rw">
                         </div>
                         <div class="form-group">
                             <label for="nama_lokasi">Nama Lokasi</label>
-                            <input placeholder="Jeruksari" value="<?= $lokasi_kumuh_by_id['nama_lokasi'] ?>" type="text" maxlength="40" class="form-control" name="nama_lokasi" id="nama_lokasi">
+                            <input placeholder="Contoh : Jeruksari" value="<?= $lokasi_kumuh_by_id['nama_lokasi'] ?>" type="text" maxlength="40" class="form-control" name="nama_lokasi" id="nama_lokasi">
                         </div>
                         <div class="form-group">
                             <label for="luas">Luas</label>
-                            <input placeholder="13.5" value="<?= $lokasi_kumuh_by_id['luas'] ?>" type="text" step="any" maxlength="5" class="form-control" name="luas" id="luas">
+                            <input placeholder="Contoh : 13.5" value="<?= $lokasi_kumuh_by_id['luas'] ?>" type="text" step="any" maxlength="5" class="form-control" name="luas" id="luas">
                         </div>
                         <div class="form-group">
                             <label for="lintang">Lintang</label>
-                            <input type="text" value="<?= $lokasi_kumuh_by_id['lintang'] ?>" maxlength="40" class="form-control" name="lintang" id="lintang">
+                            <input placeholder="Contoh : -7.293831" type="text" value="<?= $lokasi_kumuh_by_id['lintang'] ?>" maxlength="40" class="form-control" name="lintang" id="lintang">
                         </div>
                         <div class="form-group">
                             <label for="bujur">Bujur</label>
-                            <input type="text" value="<?= $lokasi_kumuh_by_id['bujur'] ?>" maxlength="40" class="form-control" name="bujur" id="bujur">
+                            <input placeholder="Contoh : 110.477544" type="text" value="<?= $lokasi_kumuh_by_id['bujur'] ?>" maxlength="40" class="form-control" name="bujur" id="bujur">
                         </div>
                         <div class="form-group">
                             <label data-live-search="true" class="control-label" for="tingkat_kumuh">Tingkat Kumuh</label>
                             <select class="form-control" name="tingkat_kumuh" id="tingkat_kumuh">
-                                <option value="Rendah" <?php if ($lokasi_kumuh_by_id['tingkat_kumuh'] == "Rendah") echo 'selected="selected"' ?>>Rendah</option>
-                                <option value="Sedang" <?php if ($lokasi_kumuh_by_id['tingkat_kumuh'] == "Sedang") echo 'selected="selected"' ?>>Sedang</option>
-                                <option value="Tinggi" <?php if ($lokasi_kumuh_by_id['tingkat_kumuh'] == "Tinggi") echo 'selected="selected"' ?>>Tinggi</option>
+                                <option value="Kumuh Ringan" <?php if ($lokasi_kumuh_by_id['tingkat_kumuh'] == "Kumuh Ringan") echo 'selected="selected"' ?>>Kumuh Ringan</option>
+                                <option value="Kumuh Sedang" <?php if ($lokasi_kumuh_by_id['tingkat_kumuh'] == "Kumuh Sedang") echo 'selected="selected"' ?>>Kumuh Sedang</option>
+                                <option value="Kumuh Berat" <?php if ($lokasi_kumuh_by_id['tingkat_kumuh'] == "Kumuh Berat") echo 'selected="selected"' ?>>Kumuh Berat</option>
                             </select>
                         </div>
 

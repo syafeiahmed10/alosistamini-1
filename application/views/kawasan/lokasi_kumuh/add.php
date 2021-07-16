@@ -40,31 +40,31 @@
                         </div>
                         <div class="form-group">
                             <label for="rt_rw">RT/RW</label>
-                            <input placeholder="04/09" type="text" step="any" maxlength="5" class="form-control" name="rt_rw" id="rt_rw">
+                            <input placeholder="Contoh : RT002/RW007" type="text" step="any" maxlength="5" class="form-control" name="rt_rw" id="rt_rw">
                         </div>
                         <div class="form-group">
                             <label for="nama_lokasi">Nama Lokasi</label>
-                            <input placeholder="Jeruksari" type="text" maxlength="40" class="form-control" name="nama_lokasi" id="nama_lokasi">
+                            <input placeholder="Contoh : Jeruksari" type="text" maxlength="40" class="form-control" name="nama_lokasi" id="nama_lokasi">
                         </div>
                         <div class="form-group">
                             <label for="luas">Luas</label>
-                            <input placeholder="13.5" type="text" step="any" maxlength="5" class="form-control" name="luas" id="luas">
+                            <input placeholder="Contoh : 13.5" type="text" step="any" maxlength="5" class="form-control" name="luas" id="luas">
                         </div>
                         <div class="form-group">
                             <label for="lintang">Lintang</label>
-                            <input type="text" maxlength="40" class="form-control" name="lintang" id="lintang">
+                            <input placeholder="Contoh : -7.293831" type="text" maxlength="40" class="form-control" name="lintang" id="lintang">
                         </div>
                         <div class="form-group">
                             <label for="bujur">Bujur</label>
-                            <input type="text" maxlength="40" class="form-control" name="bujur" id="bujur">
+                            <input placeholder="Contoh : 110.477544" type="text" maxlength="40" class="form-control" name="bujur" id="bujur">
                         </div>
                         <div class="form-group">
                             <label data-live-search="true" class="control-label" for="tingkat_kumuh">Tingkat Kumuh</label>
                             <select required class="form-control" name="tingkat_kumuh" id="tingkat_kumuh">
                                 <option selected>Pilih</option>
-                                <option value="Rendah">Rendah</option>
-                                <option value="Sedang">Sedang</option>
-                                <option value="Tinggi">Tinggi</option>
+                                <option value="Kumuh Ringan">Kumuh Ringan</option>
+                                <option value="Kumuh Sedang">Kumuh Sedang</option>
+                                <option value="Kumuh Berat">Kumuh Berat</option>
                             </select>
                         </div>
 
