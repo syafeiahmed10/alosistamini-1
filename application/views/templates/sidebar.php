@@ -42,9 +42,11 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Perumahan:</h6>
                 <a class="collapse-item" href="utilities-color.html">RTLH</a>
-                <a class="collapse-item" href="utilities-border.html">Under Development</a>
-                <a class="collapse-item" href="utilities-animation.html">Under Development</a>
-                <a class="collapse-item" href="utilities-other.html">Under Development</a>
+                <a class="collapse-item" href="utilities-border.html">Pembangunan Rumah</a>
+                <a class="collapse-item" href="utilities-animation.html">Jenis & Kepemilikan Rumah</a>
+                <a class="collapse-item" href="utilities-animation.html">Backlog</a>
+                <a class="collapse-item" href="utilities-other.html">Rusun & Rusus</a>
+                <a class="collapse-item" href="utilities-animation.html">SPM</a>
             </div>
         </div>
     </li>
