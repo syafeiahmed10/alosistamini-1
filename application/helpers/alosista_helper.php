@@ -46,6 +46,5 @@ function paginationConfig($baseUrl, $countRow)
 
 function show_time($epoch)
 {
-    $dt = new DateTime("@$epoch");  // convert UNIX timestamp to PHP DateTime
-    return $dt->format('Y-m-d H:i:s'); // output = 2017-01-01 00:00:00
+    return date('Y-m-d H:i:s', $epoch + 5 * 3600);
 }

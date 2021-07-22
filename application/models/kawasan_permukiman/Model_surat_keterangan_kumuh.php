@@ -30,7 +30,7 @@ class Model_surat_keterangan_kumuh extends CI_Model
         $this->db->where('id_sk', $id);
         $data = [
             'regency_id' => $this->input->post('kabupaten'),
-            'sk' => $this->input->post('kawasan__surat_keterangan_kumuh'),
+            'sk' => $this->input->post('surat_keterangan_kumuh'),
             'last_update' => now()
 
         ];
@@ -41,7 +41,7 @@ class Model_surat_keterangan_kumuh extends CI_Model
     {
         $data = [
             'regency_id' => $this->input->post('kabupaten'),
-            'sk' => $this->input->post('kawasan__surat_keterangan_kumuh'),
+            'sk' => $this->input->post('surat_keterangan_kumuh'),
             'last_update' => now()
         ];
         $this->db->insert('kawasan__surat_keterangan_kumuh', $data);
