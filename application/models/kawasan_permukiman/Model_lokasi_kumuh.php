@@ -7,13 +7,13 @@ class Model_lokasi_kumuh extends CI_Model
 
     public function get_table($limit, $start)
     {
-        $result = $this->db->select('reg_regencies.id as id_kabupaten,reg_regencies.name as kabupaten, kawasan__lokasi_kumuh.id_lokasi as id_lokasi, kawasan__lokasi_kumuh.lokasi as nama_lokasi,kawasan__lokasi_kumuh.luas as luas, kawasan__lokasi_kumuh.rt_rw as rt_rw, reg_villages.id as id_kelurahan, reg_villages.name as kelurahan,reg_districts.id as id_kecamatan ,reg_districts.name as kecamatan, kawasan__lokasi_kumuh.lintang as lintang, kawasan__lokasi_kumuh.bujur as bujur, kawasan__lokasi_kumuh.tingkat_kumuh as tingkat_kumuh,  kawasan__surat_keterangan_kumuh.id_sk as id_sk,kawasan__surat_keterangan_kumuh.sk as sk,  kawasan__lokasi_kumuh.tingkat_kumuh as tingkat_kumuh, kawasan__lokasi_kumuh.last_update as last_update')->order_by('last_update', 'desc');
+        $result = $this->db->select('reg__regencies.id as id_kabupaten,reg__regencies.name as kabupaten, kawasan__lokasi_kumuh.id_lokasi as id_lokasi, kawasan__lokasi_kumuh.lokasi as nama_lokasi,kawasan__lokasi_kumuh.luas as luas, kawasan__lokasi_kumuh.rt_rw as rt_rw, reg__villages.id as id_kelurahan, reg__villages.name as kelurahan,reg__districts.id as id_kecamatan ,reg__districts.name as kecamatan, kawasan__lokasi_kumuh.lintang as lintang, kawasan__lokasi_kumuh.bujur as bujur, kawasan__lokasi_kumuh.tingkat_kumuh as tingkat_kumuh,  kawasan__surat_keterangan_kumuh.id_sk as id_sk,kawasan__surat_keterangan_kumuh.sk as sk,  kawasan__lokasi_kumuh.tingkat_kumuh as tingkat_kumuh, kawasan__lokasi_kumuh.last_update as last_update')->order_by('last_update', 'desc');
         // $result = $this->db->from('kawasan__lokasi_kumuh');
         $result = $this->db->join('kawasan__surat_keterangan_kumuh', 'kawasan__surat_keterangan_kumuh.id_sk=kawasan__lokasi_kumuh.id_sk', 'LEFT');
-        $result = $this->db->join('reg_regencies', 'reg_regencies.id=kawasan__surat_keterangan_kumuh.regency_id', 'LEFT');
-        // $result = $this->db->join('reg_districts', 'reg_districts.id=kawasan__lokasi_kumuh.district_id', 'LEFT');
-        $result = $this->db->join('reg_villages', 'reg_villages.id=kawasan__lokasi_kumuh.village_id', 'LEFT');
-        $result = $this->db->join('reg_districts', 'reg_districts.id=reg_villages.district_id', 'LEFT');
+        $result = $this->db->join('reg__regencies', 'reg__regencies.id=kawasan__surat_keterangan_kumuh.regency_id', 'LEFT');
+        // $result = $this->db->join('reg__districts', 'reg__districts.id=kawasan__lokasi_kumuh.district_id', 'LEFT');
+        $result = $this->db->join('reg__villages', 'reg__villages.id=kawasan__lokasi_kumuh.village_id', 'LEFT');
+        $result = $this->db->join('reg__districts', 'reg__districts.id=reg__villages.district_id', 'LEFT');
 
         $result = $this->db->get('kawasan__lokasi_kumuh', $limit, $start);
 
@@ -22,26 +22,26 @@ class Model_lokasi_kumuh extends CI_Model
 
     public function countRow()
     {
-        $result = $this->db->select('reg_regencies.id as id_kabupaten,reg_regencies.name as kabupaten, kawasan__lokasi_kumuh.id_lokasi as id_lokasi, kawasan__lokasi_kumuh.lokasi as nama_lokasi,kawasan__lokasi_kumuh.luas as luas, kawasan__lokasi_kumuh.rt_rw as rt_rw, reg_villages.id as id_kelurahan, reg_villages.name as kelurahan,reg_districts.id as id_kecamatan ,reg_districts.name as kecamatan, kawasan__lokasi_kumuh.lintang as lintang, kawasan__lokasi_kumuh.bujur as bujur, kawasan__lokasi_kumuh.tingkat_kumuh as tingkat_kumuh,  kawasan__surat_keterangan_kumuh.id_sk as id_sk,kawasan__surat_keterangan_kumuh.sk as sk,  kawasan__lokasi_kumuh.tingkat_kumuh as tingkat_kumuh');
+        $result = $this->db->select('reg__regencies.id as id_kabupaten,reg__regencies.name as kabupaten, kawasan__lokasi_kumuh.id_lokasi as id_lokasi, kawasan__lokasi_kumuh.lokasi as nama_lokasi,kawasan__lokasi_kumuh.luas as luas, kawasan__lokasi_kumuh.rt_rw as rt_rw, reg__villages.id as id_kelurahan, reg__villages.name as kelurahan,reg__districts.id as id_kecamatan ,reg__districts.name as kecamatan, kawasan__lokasi_kumuh.lintang as lintang, kawasan__lokasi_kumuh.bujur as bujur, kawasan__lokasi_kumuh.tingkat_kumuh as tingkat_kumuh,  kawasan__surat_keterangan_kumuh.id_sk as id_sk,kawasan__surat_keterangan_kumuh.sk as sk,  kawasan__lokasi_kumuh.tingkat_kumuh as tingkat_kumuh');
         // $result = $this->db->from('kawasan__lokasi_kumuh');
         $result = $this->db->join('kawasan__surat_keterangan_kumuh', 'kawasan__surat_keterangan_kumuh.id_sk=kawasan__lokasi_kumuh.id_sk', 'LEFT');
-        $result = $this->db->join('reg_regencies', 'reg_regencies.id=kawasan__surat_keterangan_kumuh.regency_id', 'LEFT');
-        // $result = $this->db->join('reg_districts', 'reg_districts.id=kawasan__lokasi_kumuh.district_id', 'LEFT');
-        $result = $this->db->join('reg_villages', 'reg_villages.id=kawasan__lokasi_kumuh.village_id', 'LEFT');
-        $result = $this->db->join('reg_districts', 'reg_districts.id=reg_villages.district_id', 'LEFT');
+        $result = $this->db->join('reg__regencies', 'reg__regencies.id=kawasan__surat_keterangan_kumuh.regency_id', 'LEFT');
+        // $result = $this->db->join('reg__districts', 'reg__districts.id=kawasan__lokasi_kumuh.district_id', 'LEFT');
+        $result = $this->db->join('reg__villages', 'reg__villages.id=kawasan__lokasi_kumuh.village_id', 'LEFT');
+        $result = $this->db->join('reg__districts', 'reg__districts.id=reg__villages.district_id', 'LEFT');
         $result = $this->db->get('kawasan__lokasi_kumuh');
         return $result->num_rows();
     }
 
     public function update($id = NULL)
     {
-        $result = $this->db->select('reg_regencies.id as id_kabupaten, reg_regencies.name as kabupaten, kawasan__lokasi_kumuh.id_lokasi as id_lokasi, kawasan__lokasi_kumuh.lokasi as nama_lokasi,kawasan__lokasi_kumuh.luas as luas, kawasan__lokasi_kumuh.rt_rw as rt_rw, reg_villages.id as id_kelurahan, reg_villages.name as kelurahan, reg_districts.id as id_kecamatan, reg_districts.name as kecamatan, kawasan__lokasi_kumuh.lintang as lintang, kawasan__lokasi_kumuh.bujur as bujur, kawasan__lokasi_kumuh.tingkat_kumuh as tingkat_kumuh,  kawasan__surat_keterangan_kumuh.id_sk as id_sk,kawasan__surat_keterangan_kumuh.sk as sk,  kawasan__lokasi_kumuh.tingkat_kumuh as tingkat_kumuh, kawasan__lokasi_kumuh.rt_rw as rt_rw');
+        $result = $this->db->select('reg__regencies.id as id_kabupaten, reg__regencies.name as kabupaten, kawasan__lokasi_kumuh.id_lokasi as id_lokasi, kawasan__lokasi_kumuh.lokasi as nama_lokasi,kawasan__lokasi_kumuh.luas as luas, kawasan__lokasi_kumuh.rt_rw as rt_rw, reg__villages.id as id_kelurahan, reg__villages.name as kelurahan, reg__districts.id as id_kecamatan, reg__districts.name as kecamatan, kawasan__lokasi_kumuh.lintang as lintang, kawasan__lokasi_kumuh.bujur as bujur, kawasan__lokasi_kumuh.tingkat_kumuh as tingkat_kumuh,  kawasan__surat_keterangan_kumuh.id_sk as id_sk,kawasan__surat_keterangan_kumuh.sk as sk,  kawasan__lokasi_kumuh.tingkat_kumuh as tingkat_kumuh, kawasan__lokasi_kumuh.rt_rw as rt_rw');
         $result = $this->db->from('kawasan__lokasi_kumuh');
         $result = $this->db->join('kawasan__surat_keterangan_kumuh', 'kawasan__surat_keterangan_kumuh.id_sk=kawasan__lokasi_kumuh.id_sk', 'LEFT');
-        $result = $this->db->join('reg_regencies', 'reg_regencies.id=kawasan__surat_keterangan_kumuh.regency_id', 'LEFT');
-        // $result = $this->db->join('reg_districts', 'reg_districts.id=kawasan__lokasi_kumuh.district_id', 'LEFT');
-        $result = $this->db->join('reg_villages', 'reg_villages.id=kawasan__lokasi_kumuh.village_id', 'LEFT');
-        $result = $this->db->join('reg_districts', 'reg_districts.id=reg_villages.district_id', 'LEFT');
+        $result = $this->db->join('reg__regencies', 'reg__regencies.id=kawasan__surat_keterangan_kumuh.regency_id', 'LEFT');
+        // $result = $this->db->join('reg__districts', 'reg__districts.id=kawasan__lokasi_kumuh.district_id', 'LEFT');
+        $result = $this->db->join('reg__villages', 'reg__villages.id=kawasan__lokasi_kumuh.village_id', 'LEFT');
+        $result = $this->db->join('reg__districts', 'reg__districts.id=reg__villages.district_id', 'LEFT');
         $result = $this->db->where('id_lokasi', $id);
         $result = $this->db->get();
         return $result;

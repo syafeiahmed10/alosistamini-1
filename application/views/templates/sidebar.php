@@ -52,8 +52,8 @@
                 <a class="collapse-item <?php if ($this->uri->segment(2) == "spm") {
                                             echo "active";
                                         } ?>" href="<?php echo base_url('perumahan/spm'); ?>">SPM</a>
-                <a class="collapse-item" href="utilities-animation.html">Under Development</a>
-                <a class="collapse-item" href="utilities-other.html">Under Development</a>
+                <a class="collapse-item" href="#">Under Development</a>
+                <a class="collapse-item" href="#">Under Development</a>
             </div>
         </div>
     </li>

@@ -5,21 +5,21 @@ class Model_surat_keterangan_kumuh extends CI_Model
 {
     public function get_table($limit, $start)
     {
-        $this->db->join('reg_regencies', 'reg_regencies.id=kawasan__surat_keterangan_kumuh.regency_id', 'LEFT');
+        $this->db->join('reg__regencies', 'reg__regencies.id=kawasan__surat_keterangan_kumuh.regency_id', 'LEFT');
         $this->db->order_by('last_update', 'desc');
         return $this->db->get('kawasan__surat_keterangan_kumuh', $limit, $start);
     }
 
     public function countRow()
     {
-        $this->db->join('reg_regencies', 'reg_regencies.id=kawasan__surat_keterangan_kumuh.regency_id', 'LEFT');
+        $this->db->join('reg__regencies', 'reg__regencies.id=kawasan__surat_keterangan_kumuh.regency_id', 'LEFT');
         return $this->db->get('kawasan__surat_keterangan_kumuh')->num_rows();
     }
 
     public function update($id)
     {
         $result = $this->db->from('kawasan__surat_keterangan_kumuh');
-        $result = $this->db->join('reg_regencies', 'reg_regencies.id=kawasan__surat_keterangan_kumuh.regency_id', 'LEFT');
+        $result = $this->db->join('reg__regencies', 'reg__regencies.id=kawasan__surat_keterangan_kumuh.regency_id', 'LEFT');
         $result = $this->db->where('id_sk', $id);
         $result = $this->db->get();
         return $result;
