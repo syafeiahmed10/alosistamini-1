@@ -8,7 +8,7 @@ class Surat_keterangan_kumuh extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Kawasan_permukiman/model_surat_keterangan_kumuh');
+        $this->load->model('kawasan_permukiman/model_surat_keterangan_kumuh');
         $this->load->model('model_for_all');
         $this->load->library('pagination');
         $this->load->helper('alosista_helper');
