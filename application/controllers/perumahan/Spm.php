@@ -8,7 +8,7 @@ class Spm extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('perumahan_tes/model_spm');
+        $this->load->model('perumahan/model_spm');
         $this->load->model('model_for_all');
         $this->load->library('pagination');
         $this->load->helper('alosista_helper');
