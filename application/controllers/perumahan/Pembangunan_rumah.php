@@ -21,7 +21,7 @@ class Pembangunan_rumah extends CI_Controller
         $data['start'] = $this->uri->segment(4);
         $data['title'] = "Pembangunan Rumah";
         $data['countRow'] = $this->model_pembangunan_rumah->countRow();
-        $data['base_url'] = base_url('perumahan/rtlh/index');
+        $data['base_url'] = base_url('perumahan/pembangunan_rumah/index');
         $this->pagination->initialize(paginationConfig($data['base_url'], $data['countRow']));
         $data['dataSatu'] = $this->model_pembangunan_rumah->get_table(paginationConfig($data['base_url'], $data['countRow'])['per_page'], $data['start']);
 
