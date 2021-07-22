@@ -8,7 +8,7 @@ class Helper_kawasan extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Kawasan/model_lokasi_kumuh');
+        $this->load->model('kawasan/model_lokasi_kumuh');
         $this->load->model('model_for_all');
         $this->load->helper('download');
         $this->load->helper('url');
