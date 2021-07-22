@@ -8,7 +8,7 @@ class Surat_keterangan_kumuh extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('model_surat_keterangan_kumuh');
+        $this->load->model('Kawasan_permukiman/model_surat_keterangan_kumuh');
         $this->load->model('model_for_all');
         $this->load->library('pagination');
         $this->load->helper('alosista_helper');
@@ -28,7 +28,7 @@ class Surat_keterangan_kumuh extends CI_Controller
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
         $this->load->view('templates/topbar');
-        $this->load->view('kawasan/surat_keterangan_kumuh/index', $data);
+        $this->load->view('kawasan_permukiman/surat_keterangan_kumuh/index', $data);
         $this->load->view('templates/footer');
     }
 
@@ -48,7 +48,7 @@ class Surat_keterangan_kumuh extends CI_Controller
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar');
             $this->load->view('templates/topbar');
-            $this->load->view('kawasan/surat_keterangan_kumuh/add', $data);
+            $this->load->view('kawasan_permukiman/surat_keterangan_kumuh/add', $data);
             $this->load->view('templates/footer');
         }
     }
@@ -69,7 +69,7 @@ class Surat_keterangan_kumuh extends CI_Controller
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar');
             $this->load->view('templates/topbar');
-            $this->load->view('kawasan/surat_keterangan_kumuh/update', $data);
+            $this->load->view('kawasan_permukiman/surat_keterangan_kumuh/update', $data);
             $this->load->view('templates/footer');
         }
     }

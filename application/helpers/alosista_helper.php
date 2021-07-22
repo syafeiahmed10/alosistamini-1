@@ -23,7 +23,7 @@ function paginationConfig($baseUrl, $countRow)
 
     $config['base_url'] = $baseUrl;
     $config['total_rows'] = $countRow;
-    $config['per_page'] = 10;
+    $config['per_page'] = 20;
     $config['full_tag_open'] = '<nav><ul class="pagination">';
     $config['full_tag_close'] = '</ul></nav>';
     $config['next_link'] = '&raquo';
@@ -42,4 +42,10 @@ function paginationConfig($baseUrl, $countRow)
     $config['num_tag_close'] = '</li>';
     $config['attributes'] = array('class' => 'page-link');
     return $config;
+}
+
+function show_time($epoch)
+{
+    $dt = new DateTime("@$epoch");  // convert UNIX timestamp to PHP DateTime
+    return $dt->format('Y-m-d H:i:s'); // output = 2017-01-01 00:00:00
 }

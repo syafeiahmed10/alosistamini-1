@@ -106,7 +106,7 @@
 <div class="modal fade" id="modaldownloadformat" tabindex="-1" role="dialog" aria-labelledby="modaldownloadformatLabel" aria-hidden="true">
     <div class="modal-dialog " role="document">
         <div class="modal-content">
-            <form method="post" enctype="multipart/form-data" action="<?php echo base_url('kawasan_permukiman/helper_kawasan/download') ?>">
+            <form method="post" enctype="multipart/form-data" action="<?php echo base_url('kawasan_permukiman/helper_kawasan/download')  ?>">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modaldownloadformatLabel">Download Format</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">

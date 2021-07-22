@@ -8,7 +8,7 @@ class Helper_kawasan extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('model_lokasi_kumuh');
+        $this->load->model('Kawasan/model_lokasi_kumuh');
         $this->load->model('model_for_all');
         $this->load->helper('download');
         $this->load->helper('url');
@@ -104,7 +104,7 @@ class Helper_kawasan extends CI_Controller
                         redirect('kawasan_permukiman/surat_keterangan_kumuh');
                     } else {
                         # code...
-                        $this->db->insert('kawasan_surat_keterangan_kumuh', $object);
+                        $this->db->insert('kawasan__surat_keterangan_kumuh', $object);
                     }
                 }
             } elseif ($this->input->post('path') == 'lokasi_kumuh') {
@@ -125,7 +125,7 @@ class Helper_kawasan extends CI_Controller
                         redirect('kawasan_permukiman/lokasi_kumuh');
                     } else {
                         # code...
-                        $this->db->insert('kawasan_lokasi_kumuh', $object);
+                        $this->db->insert('kawasan__lokasi_kumuh', $object);
                     }
                 }
             } else {
@@ -144,7 +144,7 @@ class Helper_kawasan extends CI_Controller
                         redirect('kawasan_permukiman/penanganan_kumuh');
                     } else {
                         # code...
-                        $this->db->insert('kawasan_penanganan_lokasi_kumuh', $object);
+                        $this->db->insert('kawasan__penanganan_lokasi_kumuh', $object);
                     }
                 }
             }

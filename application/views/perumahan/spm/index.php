@@ -1,13 +1,13 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
-    <form action="<?php echo base_url('perumahan/rtlh/delete_selected') ?>" method="POST">
+    <form action="<?php echo base_url('perumahan/spm/delete_selected') ?>" method="POST">
         <div class="card shadow mb-4 ">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary"><?= $title ?></h6>
             </div>
             <div class="card-body">
                 <?php echo $this->session->flashdata('message'); ?>
-                <a class="btn btn-success  mb-3 ml-auto" href="<?php echo base_url('perumahan/rtlh/add') ?>">
+                <a class="btn btn-success  mb-3 ml-auto" href="<?php echo base_url('perumahan/spm/add') ?>">
                     <span class="icon">
                         <i class="fas fa-plus"></i>
                     </span>
@@ -24,12 +24,11 @@
                                 <th>Kabupaten</th>
                                 <th>Kecamatan</th>
                                 <th>Kelurahan</th>
-                                <th>Unit PBDT</th>
-                                <th>Unit DTPFMOTM</th>
-                                <th>Unit DTKS</th>
                                 <th>Tahun</th>
+                                <th>Nama Pekerjaan</th>
+                                <th>Jumlah Rumah Ditangani</th>
                                 <th>Keterangan</th>
-                                <th>Last Update</th>
+                                <th>Last update</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -39,21 +38,19 @@
                             <?php foreach ($dataSatu->result_array() as $key) : ?>
                                 <tr>
 
-                                    <td><input type="checkbox" name="id[]" value="<?php echo $key['id_rtlh']; ?>"></td>
+                                    <td><input type="checkbox" name="id[]" value="<?php echo $key['id_spm']; ?>"></td>
                                     <td><?php echo ++$start; ?></td>
                                     <td><?php echo $key['kabupaten']; ?></td>
                                     <td><?php echo $key['kecamatan']; ?></td>
                                     <td><?php echo $key['kelurahan']; ?></td>
-                                    <td><?php echo $key['unit_pbdt']; ?></td>
-                                    <td><?php echo $key['unit_dtpfmotm']; ?></td>
-                                    <td><?php echo $key['unit_dtks']; ?></td>
                                     <td><?php echo $key['tahun']; ?></td>
+                                    <td><?php echo $key['pekerjaan']; ?></td>
+                                    <td><?php echo $key['jml_rumah_ditangani']; ?></td>
                                     <td><?php echo $key['keterangan']; ?></td>
                                     <td><?php echo show_time($key['last_update']); ?></td>
-
                                     <td>
-                                        <a href="<?php echo base_url('perumahan/rtlh/update/') ?><?php echo $key['id_rtlh'] ?>"><span class="badge badge-primary">ubah</span></a>
-                                        <a href=" <?php echo base_url('perumahan/rtlh/delete/') ?><?php echo $key['id_rtlh'] ?>"><span class="badge badge-danger" onclick="return confirm('Apakah Anda Yakin Menghapus ?')">hapus</span></a>
+                                        <a href="<?php echo base_url('perumahan/spm/update/') ?><?php echo $key['id_spm'] ?>"><span class="badge badge-primary">ubah</span></a>
+                                        <a href=" <?php echo base_url('perumahan/spm/delete/') ?><?php echo $key['id_spm'] ?>"><span class="badge badge-danger" onclick="return confirm('Apakah Anda Yakin Menghapus ?')">hapus</span></a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -73,7 +70,7 @@
 <div class="modal fade" id="modalimport" tabindex="-1" role="dialog" aria-labelledby="modalimportLabel" aria-hidden="true">
     <div class="modal-dialog " role="document">
         <div class="modal-content">
-            <form method="post" enctype="multipart/form-data" action="<?php echo base_url('perumahan/helper_rtlh/import') ?>">
+            <form method="post" enctype="multipart/form-data" action="<?php echo base_url('perumahan/helper_spm/import') ?>">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalimportLabel">Import Data</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">

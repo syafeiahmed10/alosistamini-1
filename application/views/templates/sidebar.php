@@ -32,7 +32,9 @@
     </div>
 
     <!-- Nav Item - Perumahan Collapse Menu -->
-    <li class="nav-item">
+    <li class="nav-item <?php if ($this->uri->segment(1) == "perumahan") {
+                            echo "active";
+                        } ?>">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
 
             <i class="fas fa-home"></i>
@@ -44,7 +46,12 @@
                 <a class="collapse-item <?php if ($this->uri->segment(2) == "rtlh") {
                                             echo "active";
                                         } ?>" href="<?php echo base_url('perumahan/rtlh'); ?>">RTLH</a>
-                <a class="collapse-item" href="utilities-border.html">Under Development</a>
+                <a class="collapse-item <?php if ($this->uri->segment(2) == "pembangunan_rumah") {
+                                            echo "active";
+                                        } ?>" href="<?php echo base_url('perumahan/pembangunan_rumah'); ?>">Pembangunan Rumah</a>
+                <a class="collapse-item <?php if ($this->uri->segment(2) == "spm") {
+                                            echo "active";
+                                        } ?>" href="<?php echo base_url('perumahan/spm'); ?>">SPM</a>
                 <a class="collapse-item" href="utilities-animation.html">Under Development</a>
                 <a class="collapse-item" href="utilities-other.html">Under Development</a>
             </div>
