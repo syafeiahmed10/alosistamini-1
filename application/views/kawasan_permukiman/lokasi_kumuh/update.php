@@ -28,7 +28,7 @@
                         </div>
                         <div class=" form-group">
                             <label for="kecamatan">Kecamatan</label>
-                            <select class="selectpicker form-control" data-live-search="true" name="kecamatan" id="kecamatan">
+                            <select class="form-control" data-live-search="true" name="kecamatan" id="kecamatan">
                                 <!-- UNTUK MENDAPAT SELECTED DATA -->
                                 <?php foreach ($dataSatu as $key) : ?>
                                     <option value="<?php echo $key['id'] ?>" <?php if ($lokasi_kumuh_by_id['id_kecamatan'] == $key['id']) echo 'selected="selected"' ?>> <?php echo $key['name'] ?> </option>
@@ -37,7 +37,7 @@
                         </div>
                         <div class="form-group">
                             <label for="kelurahan">Kelurahan</label>
-                            <select class="selectpicker form-control" data-live-search="true" name="kelurahan" id="kelurahan">
+                            <select class="form-control" data-live-search="true" name="kelurahan" id="kelurahan">
                                 <!-- UNTUK MENDAPAT SELECTED DATA -->
                                 <?php foreach ($dropdown_kelurahan as $key) : ?>
                                     <option value="<?php echo $key['id'] ?>" <?php if ($key['id'] == $lokasi_kumuh_by_id['id_kelurahan']) echo 'selected="selected"' ?>> <?php echo $key['name'] ?> </option>

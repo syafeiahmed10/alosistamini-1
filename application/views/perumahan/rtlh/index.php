@@ -29,7 +29,7 @@
                                 <th>Unit DTKS</th>
                                 <th>Tahun</th>
                                 <th>Keterangan</th>
-                                <th>Last Update</th>
+                                <th>Pembaruan Terakhir</th>
                                 <th>Action</th>
                             </tr>
                         </thead>

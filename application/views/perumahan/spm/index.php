@@ -28,7 +28,7 @@
                                 <th>Nama Pekerjaan</th>
                                 <th>Jumlah Rumah Ditangani</th>
                                 <th>Keterangan</th>
-                                <th>Last update</th>
+                                <th>Pembaruan Terakhir</th>
                                 <th>Action</th>
                             </tr>
                         </thead>

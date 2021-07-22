@@ -26,7 +26,7 @@
                                 <th>Nomor SK</th>
                                 <th>Kabupaten</th>
                                 <th>Kode</th>
-                                <th>Last Update</th>
+                                <th>Pembaruan Terakhir</th>
                                 <th>Action</th>
                             </tr>
                         </thead>

@@ -51,7 +51,7 @@ class Model_lokasi_kumuh extends CI_Model
     {
 
         $this->db->where('id_lokasi', $id);
-        $id_sk = explode("|", $this->input->post('kawasan__surat_keterangan_kumuh'));
+        $id_sk = explode("|", $this->input->post('surat_keterangan_kumuh'));
         $this->load->helper('alosista_helper');
         $data = [
             'id_sk' => $id_sk[1],
@@ -69,7 +69,7 @@ class Model_lokasi_kumuh extends CI_Model
 
     public function add()
     {
-        $id_sk = explode("|", $this->input->post('kawasan__surat_keterangan_kumuh'));
+        $id_sk = explode("|", $this->input->post('surat_keterangan_kumuh'));
         $this->load->helper('alosista_helper');
 
         $data = [

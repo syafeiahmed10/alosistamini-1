@@ -26,14 +26,14 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label data-live-search="true" class="control-label" for="kecamatan">Kecamatan</label>
+                            <label class="control-label" for="kecamatan">Kecamatan</label>
 
                             <select required class="form-control" name="kecamatan" id="kecamatan">
                                 <option selected>Pilih</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label data-live-search="true" class="control-label" for="kelurahan">Kelurahan</label>
+                            <label class="control-label" for="kelurahan">Kelurahan</label>
                             <select required class="form-control" name="kelurahan" id="kelurahan">
                                 <option selected>Pilih</option>
                             </select>
