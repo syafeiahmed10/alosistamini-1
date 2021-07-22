@@ -13,8 +13,8 @@ class Model_for_all extends CI_Model
 
     public function get_surat_keterangan_kumuh()
     {
-        $result = $this->db->from('surat_keterangan_kumuh');
-        $result = $this->db->join('reg_regencies', 'reg_regencies.id=surat_keterangan_kumuh.regency_id', 'LEFT');
+        $result = $this->db->from('kawasan_surat_keterangan_kumuh');
+        $result = $this->db->join('reg_regencies', 'reg_regencies.id=kawasan_surat_keterangan_kumuh.regency_id', 'LEFT');
         $result = $this->db->get();
         return $result;
     }
@@ -37,8 +37,8 @@ class Model_for_all extends CI_Model
 
     public function dropdown_lokasi_kumuh()
     {
-        $result = $this->db->from('lokasi_kumuh');
-        $result = $this->db->join('surat_keterangan_kumuh', 'surat_keterangan_kumuh.id_sk=lokasi_kumuh.id_sk', 'LEFT');
+        $result = $this->db->from('kawasan_lokasi_kumuh');
+        $result = $this->db->join('kawasan_surat_keterangan_kumuh', 'kawasan_surat_keterangan_kumuh.id_sk=kawasan_lokasi_kumuh.id_sk', 'LEFT');
         $result = $this->db->get();
         return $result;
     }

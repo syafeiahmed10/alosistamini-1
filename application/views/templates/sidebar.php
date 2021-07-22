@@ -41,7 +41,9 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Perumahan:</h6>
-                <a class="collapse-item" href="utilities-color.html">RTLH</a>
+                <a class="collapse-item <?php if ($this->uri->segment(2) == "rtlh") {
+                                            echo "active";
+                                        } ?>" href="<?php echo base_url('perumahan/rtlh'); ?>">RTLH</a>
                 <a class="collapse-item" href="utilities-border.html">Under Development</a>
                 <a class="collapse-item" href="utilities-animation.html">Under Development</a>
                 <a class="collapse-item" href="utilities-other.html">Under Development</a>
