@@ -111,15 +111,15 @@ class Helper_kawasan extends CI_Controller
                 for ($i = 1; $i < count($sheetData); $i++) {
 
                     $object = [
-                        'id_sk' => $sheetData[$i]['12'],
-                        'lokasi' => $sheetData[$i]['6'],
-                        'luas' => (float)$sheetData[$i]['7'],
-                        'rt_rw' => $sheetData[$i]['5'],
-                        'lintang' => get_digit_after_dot_lat_long($sheetData[$i]['8']),
-                        'bujur' => get_digit_after_dot_lat_long($sheetData[$i]['9']),
-                        'village_id' => $sheetData[$i]['4'],
-                        'tingkat_kumuh' => $sheetData[$i]['11'],
-                        'last_update' => now()
+                        'id_sk' => $sheetData[$i]['10'],
+                        'lokasi' => $sheetData[$i]['1'],
+                        'luas' => (float)$sheetData[$i]['2'],
+                        'rt_rw' => $sheetData[$i]['3'],
+                        'lintang' => get_digit_after_dot_lat_long($sheetData[$i]['6']),
+                        'bujur' => get_digit_after_dot_lat_long($sheetData[$i]['7']),
+                        'village_id' => $sheetData[$i]['11'],
+                        'tingkat_kumuh' => $sheetData[$i]['9'],
+
                     ];
                     if ($object['id_sk'] == null) {
                         redirect('kawasan_permukiman/lokasi_kumuh');
@@ -138,7 +138,7 @@ class Helper_kawasan extends CI_Controller
                         'kegiatan' => $sheetData[$i]['4'],
                         'nominal' => $sheetData[$i]['5'],
                         'sumber_dana' => $sheetData[$i]['6'],
-                        'last_update' => now()
+
                     ];
                     if ($object['id_lokasi'] == null) {
                         redirect('kawasan_permukiman/penanganan_kumuh');

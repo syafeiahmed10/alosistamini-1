@@ -52,7 +52,7 @@
                                     <td><?php echo $key['tahun']; ?></td>
                                     <td><?php echo $key['keterangan']; ?></td>
 
-                                    <td><?php echo show_time($key['last_update']); ?></td>
+                                    <td><?php echo $key['last_update']; ?></td>
 
                                     <td>
                                         <a href="<?php echo base_url('perumahan/rtlh/update/') ?><?php echo $key['id_pembangunan'] ?>"><span class="badge badge-primary">ubah</span></a>

@@ -58,7 +58,7 @@
                                     <td><?php echo $key['tingkat_kumuh']; ?></td>
                                     <td><?php echo $key['sk']; ?></td>
                                     <td><?php echo $key['id_lokasi']; ?></td>
-                                    <td><?php echo show_time($key['last_update']); ?></td>
+                                    <td><?php echo $key['last_update']; ?></td>
                                     <td>
                                         <a href="<?php echo base_url('kawasan_permukiman/lokasi_kumuh/update/') ?><?php echo $key['id_lokasi'] ?>/<?php echo $key['id_kabupaten'] ?>/<?php echo $key['id_kecamatan'] ?>"><span class="badge badge-primary">ubah</span></a>
                                         <a href=" <?php echo base_url('kawasan_permukiman/lokasi_kumuh/delete/') ?><?php echo $key['id_lokasi'] ?>"><span class="badge badge-danger" onclick="return confirm('Apakah Anda Yakin Menghapus <?php echo $key['nama_lokasi'] ?> ?')">hapus</span></a>

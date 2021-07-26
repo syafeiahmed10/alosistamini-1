@@ -47,7 +47,7 @@
                                     <td><?php echo $key['pekerjaan']; ?></td>
                                     <td><?php echo $key['jml_rumah_ditangani']; ?></td>
                                     <td><?php echo $key['keterangan']; ?></td>
-                                    <td><?php echo show_time($key['last_update']); ?></td>
+                                    <td><?php echo $key['last_update']; ?></td>
                                     <td>
                                         <a href="<?php echo base_url('perumahan/spm/update/') ?><?php echo $key['id_spm'] ?>"><span class="badge badge-primary">ubah</span></a>
                                         <a href=" <?php echo base_url('perumahan/spm/delete/') ?><?php echo $key['id_spm'] ?>"><span class="badge badge-danger" onclick="return confirm('Apakah Anda Yakin Menghapus ?')">hapus</span></a>

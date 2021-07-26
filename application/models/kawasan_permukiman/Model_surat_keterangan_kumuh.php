@@ -41,8 +41,8 @@ class Model_surat_keterangan_kumuh extends CI_Model
     {
         $data = [
             'regency_id' => $this->input->post('kabupaten'),
-            'sk' => $this->input->post('surat_keterangan_kumuh'),
-            'last_update' => now()
+            'sk' => $this->input->post('surat_keterangan_kumuh')
+
         ];
         $this->db->insert('kawasan__surat_keterangan_kumuh', $data);
     }

@@ -60,7 +60,7 @@
                                     <td><?php echo $key['kegiatan']; ?></td>
                                     <td><?php echo $key['nominal']; ?></td>
                                     <td><?php echo $key['sumber_dana']; ?></td>
-                                    <td><?php echo show_time($key['last_update']); ?></td>
+                                    <td><?php echo $key['last_update']; ?></td>
                                     <td>
                                         <a href="<?php echo base_url('kawasan_permukiman/penanganan_kumuh/update/') ?><?php echo $key['id_penanganan'] ?>"><span class="badge badge-primary">ubah</span></a>
                                         <a href=" <?php echo base_url('kawasan_permukiman/penanganan_kumuh/delete/') ?><?php echo $key['id_penanganan'] ?>"><span class="badge badge-danger" onclick="return confirm('Apakah Anda Yakin Menghapus <?php echo $key['nama_lokasi'] ?> ?')">hapus</span></a>
