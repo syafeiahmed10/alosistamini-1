@@ -40,7 +40,9 @@
             <i class="fas fa-home"></i>
             <span>Perumahan</span>
         </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+        <div id="collapseUtilities" class="collapse <?php if ($this->uri->segment(1) == "perumahan") {
+                                                        echo "show";
+                                                    } ?>" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Perumahan:</h6>
                 <a class="collapse-item <?php if ($this->uri->segment(2) == "rtlh") {
@@ -52,7 +54,10 @@
                 <a class="collapse-item <?php if ($this->uri->segment(2) == "spm") {
                                             echo "active";
                                         } ?>" href="<?php echo base_url('perumahan/spm'); ?>">SPM</a>
-                <a class="collapse-item" href="#">Under Development</a>
+                <a class="collapse-item <?php if ($this->uri->segment(2) == "kepemilikan_rumah") {
+                                            echo "active";
+                                        } ?>" href="<?php echo base_url('perumahan/kepemilikan_rumah'); ?>">Kepemilikan Rumah</a>
+
                 <a class="collapse-item" href="#">Under Development</a>
             </div>
         </div>
@@ -65,7 +70,9 @@
             <i class="fas fa-globe-asia"></i>
             <span>Kawasan Permukiman</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseTwo" class="collapse <?php if ($this->uri->segment(1) == "kawasan_permukiman") {
+                                                    echo "show";
+                                                } ?>" aria-labelledby=" headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Kawasan Permukiman:</h6>
                 <a class="collapse-item <?php if ($this->uri->segment(2) == "surat_keterangan_kumuh") {
