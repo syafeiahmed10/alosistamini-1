@@ -18,7 +18,7 @@
     <li class="nav-item <?php if ($this->uri->segment(1) == "dashboard") {
                             echo "active";
                         } ?>">
-        <a class="nav-link" href="<?= base_url('dashboard') ?>">
+        <a class="nav-link" href="<?php echo base_url('dashboard') ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -35,14 +35,14 @@
     <li class="nav-item <?php if ($this->uri->segment(1) == "perumahan") {
                             echo "active";
                         } ?>">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePerumahan" aria-expanded="true" aria-controls="collapsePerumahan">
 
             <i class="fas fa-home"></i>
             <span>Perumahan</span>
         </a>
-        <div id="collapseUtilities" class="collapse <?php if ($this->uri->segment(1) == "perumahan") {
+        <div id="collapsePerumahan" class="collapse <?php if ($this->uri->segment(1) == "perumahan") {
                                                         echo "show";
-                                                    } ?>" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                                                    } ?>" aria-labelledby="headingPerumahan" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Perumahan:</h6>
                 <a class="collapse-item <?php if ($this->uri->segment(2) == "rtlh") {
@@ -66,13 +66,13 @@
     <li class="nav-item <?php if ($this->uri->segment(1) == "kawasan_permukiman") {
                             echo "active";
                         } ?>">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseKawasanPermukiman" aria-expanded="true" aria-controls="collapseKawasanPermukiman">
             <i class="fas fa-globe-asia"></i>
             <span>Kawasan Permukiman</span>
         </a>
-        <div id="collapseTwo" class="collapse <?php if ($this->uri->segment(1) == "kawasan_permukiman") {
-                                                    echo "show";
-                                                } ?>" aria-labelledby=" headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseKawasanPermukiman" class="collapse <?php if ($this->uri->segment(1) == "kawasan_permukiman") {
+                                                                echo "show";
+                                                            } ?>" aria-labelledby=" headingKawasanPermukiman" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Kawasan Permukiman:</h6>
                 <a class="collapse-item <?php if ($this->uri->segment(2) == "surat_keterangan_kumuh") {
@@ -80,10 +80,10 @@
                                         } ?>" href="<?php echo base_url('kawasan_permukiman/surat_keterangan_kumuh'); ?>">SK Kumuh</a>
                 <a class="collapse-item <?php if ($this->uri->segment(2) == "lokasi_kumuh") {
                                             echo "active";
-                                        } ?>" href="<?= base_url('kawasan_permukiman/lokasi_kumuh'); ?>">Lokasi Kumuh</a>
+                                        } ?>" href="<?php echo base_url('kawasan_permukiman/lokasi_kumuh'); ?>">Lokasi Kumuh</a>
                 <a class="collapse-item <?php if ($this->uri->segment(2) == "penanganan_kumuh") {
                                             echo "active";
-                                        } ?>" href="<?= base_url('kawasan_permukiman/penanganan_kumuh'); ?>">Penanganan Kumuh</a>
+                                        } ?>" href="<?php echo base_url('kawasan_permukiman/penanganan_kumuh'); ?>">Penanganan Kumuh</a>
             </div>
         </div>
     </li>
