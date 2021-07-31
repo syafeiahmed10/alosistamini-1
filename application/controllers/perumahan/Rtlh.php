@@ -31,6 +31,40 @@ class Rtlh extends CI_Controller
         $this->load->view('perumahan/rtlh/index', $data);
         $this->load->view('templates/footer');
     }
+
+    // Add a new item
+    public function add()
+    {
+        $data['title'] = "Tambah RTLH";
+        $data['dataSatu'] =  $this->model_for_all->get_kabupaten_jateng();
+        $this->form_validation->set_rules('unit_pbdt', 'Unit PBDT', 'trim|required|number');
+        $this->form_validation->set_rules('unit_dtpfmotm', 'Unit DTPFMOTM', 'trim|required|number');
+        $this->form_validation->set_rules('unit_dtks', 'Unit DTKS', 'trim|required|number');
+        $this->form_validation->set_rules('tahun', 'Tahun', 'trim|required|number');
+        $this->form_validation->set_rules('keterangan', 'Keterangan', 'trim|required');
+        $this->form_validation->set_message('required', '{field} harus diisi');
+
+        if ($this->form_validation->run() == TRUE) {
+            $this->model_rtlh->add();
+            redirect('perumahan/rtlh');
+        } else {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar');
+            $this->load->view('templates/topbar');
+            $this->load->view('perumahan/rtlh/add', $data);
+            $this->load->view('templates/footer');
+        }
+    }
+
+    //Update one item
+    public function update($id = NULL)
+    {
+    }
+
+    //Delete one item
+    public function delete($id = NULL)
+    {
+    }
 }
 
 /* End of file Rtlh.php */

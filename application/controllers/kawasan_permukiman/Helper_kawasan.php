@@ -63,6 +63,13 @@ class Helper_kawasan extends CI_Controller
         echo json_encode($data);
     }
 
+    public function get_graph()
+    {
+        header('Access-Control-Allow-Origin: *');
+        $query = $this->db->query("SELECT name, SUM(luas) as luas FROM kawasan__lokasi_kumuh LEFT JOIN kawasan__surat_keterangan_kumuh ON kawasan__lokasi_kumuh.id_sk = kawasan__surat_keterangan_kumuh.id_sk LEFT JOIN reg__regencies ON reg__regencies.id = kawasan__surat_keterangan_kumuh.regency_id LEFT JOIN kawasan__penanganan_lokasi_kumuh ON kawasan__penanganan_lokasi_kumuh.id_lokasi = kawasan__lokasi_kumuh.id_lokasi GROUP BY name");
+        echo json_encode($query->result());
+    }
+
     public function import()
     {
         import_excel();

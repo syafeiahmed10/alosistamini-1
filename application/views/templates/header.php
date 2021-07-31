@@ -28,6 +28,9 @@
             font-size: 13px;
         }
     </style>
+    <script type="text/javascript">
+        var BASE_URL = "<?php echo base_url(); ?>";
+    </script>
 </head>
 
 <body id="page-top">
