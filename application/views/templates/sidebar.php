@@ -47,16 +47,16 @@
                 <h6 class="collapse-header">Perumahan:</h6>
                 <a class="collapse-item <?php if ($this->uri->segment(2) == "rtlh") {
                                             echo "active";
-                                        } ?>" href="<?php echo base_url('perumahan/rtlh'); ?>">RTLH</a>
+                                        } ?>" href="<?php echo base_url('perumahan__rtlh'); ?>">RTLH</a>
                 <a class="collapse-item <?php if ($this->uri->segment(2) == "pembangunan_rumah") {
                                             echo "active";
-                                        } ?>" href="<?php echo base_url('perumahan/pembangunan_rumah'); ?>">Pembangunan Rumah</a>
+                                        } ?>" href="<?php echo base_url('perumahan__pembangunan_rumah'); ?>">Pembangunan Rumah</a>
                 <a class="collapse-item <?php if ($this->uri->segment(2) == "spm") {
                                             echo "active";
-                                        } ?>" href="<?php echo base_url('perumahan/spm'); ?>">SPM</a>
+                                        } ?>" href="<?php echo base_url('perumahan__spm'); ?>">SPM</a>
                 <a class="collapse-item <?php if ($this->uri->segment(2) == "kepemilikan_rumah") {
                                             echo "active";
-                                        } ?>" href="<?php echo base_url('perumahan/kepemilikan_rumah'); ?>">Kepemilikan Rumah</a>
+                                        } ?>" href="<?php echo base_url('perumahan__kepemilikan_rumah'); ?>">Kepemilikan Rumah</a>
 
                 <a class="collapse-item" href="#">Under Development</a>
             </div>
