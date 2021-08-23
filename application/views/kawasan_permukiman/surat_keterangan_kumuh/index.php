@@ -18,14 +18,16 @@
                 </button>
 
                 <div class="table-responsive">
-                    <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered table-hover" width="100%" cellspacing="0">
                         <thead class="bg-primary text-light">
                             <tr>
                                 <th><input type="checkbox" id="select-all"></th>
                                 <th>No</th>
                                 <th>Nomor SK</th>
                                 <th>Kabupaten</th>
+                                <th>Tahun</th>
                                 <th>Kode</th>
+                                <th>Status SK</th>
                                 <th>Pembaruan Terakhir</th>
                                 <th>Action</th>
                             </tr>
@@ -40,7 +42,9 @@
                                     <td><?php echo ++$start; ?></td>
                                     <td><?php echo $key['sk']; ?></td>
                                     <td><?php echo $key['name']; ?></td>
+                                    <td><?php echo $key['tahun']; ?></td>
                                     <td><?php echo $key['id_sk']; ?></td>
+                                    <td><?php echo $key['status_sk']; ?></td>
                                     <td><?php echo $key['last_update']; ?></td>
 
                                     <td>
@@ -52,8 +56,7 @@
                         </tbody>
                     </table>
                 </div>
-
-                <?php /*echo $this->pagination->create_links();*/ ?>
+                <?php echo $this->pagination->create_links(); ?>
             </div>
         </div>
     </form>

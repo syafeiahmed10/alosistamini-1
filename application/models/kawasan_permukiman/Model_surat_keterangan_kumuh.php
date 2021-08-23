@@ -6,6 +6,7 @@ class Model_surat_keterangan_kumuh extends CI_Model
     public function get_table($limit, $start)
     {
         $this->db->join('reg__regencies', 'reg__regencies.id=kawasan__surat_keterangan_kumuh.regency_id', 'LEFT');
+        $this->db->join('kawasan_dropdown__status_sk', 'kawasan_dropdown__status_sk.id_ssk = kawasan__surat_keterangan_kumuh.id_ssk', 'left');
         $this->db->order_by('last_update', 'desc');
         return $this->db->get('kawasan__surat_keterangan_kumuh', $limit, $start);
     }
@@ -20,6 +21,7 @@ class Model_surat_keterangan_kumuh extends CI_Model
     {
         $result = $this->db->from('kawasan__surat_keterangan_kumuh');
         $result = $this->db->join('reg__regencies', 'reg__regencies.id=kawasan__surat_keterangan_kumuh.regency_id', 'LEFT');
+        $result = $this->db->join('kawasan_dropdown__status_sk', 'kawasan_dropdown__status_sk.id_ssk = kawasan__surat_keterangan_kumuh.id_ssk', 'left');
         $result = $this->db->where('id_sk', $id);
         $result = $this->db->get();
         return $result;
@@ -31,6 +33,8 @@ class Model_surat_keterangan_kumuh extends CI_Model
         $data = [
             'regency_id' => $this->input->post('kabupaten'),
             'sk' => $this->input->post('surat_keterangan_kumuh'),
+            'tahun' => $this->input->post('tahun'),
+            'id_ssk' => $this->input->post('status_sk'),
             'last_update' => now()
 
         ];
@@ -41,7 +45,9 @@ class Model_surat_keterangan_kumuh extends CI_Model
     {
         $data = [
             'regency_id' => $this->input->post('kabupaten'),
-            'sk' => $this->input->post('surat_keterangan_kumuh')
+            'sk' => $this->input->post('surat_keterangan_kumuh'),
+            'tahun' => $this->input->post('tahun'),
+            'id_ssk' => $this->input->post('status_sk')
 
         ];
         $this->db->insert('kawasan__surat_keterangan_kumuh', $data);

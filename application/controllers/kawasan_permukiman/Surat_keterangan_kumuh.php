@@ -36,7 +36,8 @@ class Surat_keterangan_kumuh extends CI_Controller
     public function add()
     {
         $data['title'] = "Tambah Surat Keterangan Kumuh";
-        $data['dataSatu'] =  $this->model_for_all->get_kabupaten_jateng();
+        $data['dataSatu'] = $this->model_for_all->get_kabupaten_jateng();
+        $data['dataDua'] = $this->model_for_all->get_status_sk();
         $this->form_validation->set_rules('surat_keterangan_kumuh', 'Surat Keterangan Kumuh', 'trim|required');
         $this->form_validation->set_message('required', '{field} harus diisi');
 
@@ -58,6 +59,7 @@ class Surat_keterangan_kumuh extends CI_Controller
     {
         $data['title'] = "Ubah Surat Keterangan Kumuh";
         $data['dataSatu'] = $this->model_for_all->get_kabupaten_jateng();
+        $data['dataTiga'] = $this->model_for_all->get_status_sk();
         $data['dataDua'] = $this->model_surat_keterangan_kumuh->update($id);
         $this->form_validation->set_rules('surat_keterangan_kumuh', 'Surat Keterangan Kumuh', 'trim|required');
         $this->form_validation->set_message('required', '{field} harus diisi');

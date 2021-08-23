@@ -23,8 +23,8 @@ class Lokasi_kumuh extends CI_Controller
         $data['countRow'] = $this->model_lokasi_kumuh->countRow();
         $data['base_url'] = base_url('kawasan_permukiman/lokasi_kumuh/index');
         $this->pagination->initialize(paginationConfig($data['base_url'], $data['countRow']));
-        // $data['dataSatu'] = $this->model_lokasi_kumuh->get_table(paginationConfig($data['base_url'], $data['countRow'])['per_page'], $data['start']);
-        $data['dataSatu'] = $this->model_lokasi_kumuh->get_table();
+        $data['dataSatu'] = $this->model_lokasi_kumuh->get_table(paginationConfig($data['base_url'], $data['countRow'])['per_page'], $data['start']);
+        // $data['dataSatu'] = $this->model_lokasi_kumuh->get_table();
         $data['dataDua'] = $this->model_for_all->get_kabupaten_jateng();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');

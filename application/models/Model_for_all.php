@@ -27,6 +27,12 @@ class Model_for_all extends CI_Model
         return $result;
     }
 
+    public function get_status_sk()
+    {
+        $result = $this->db->get('kawasan_dropdown__status_sk');
+        return $result;
+    }
+
     public function dropdown_kelurahan($id)
     {
         $result = $this->db->from('reg__villages');

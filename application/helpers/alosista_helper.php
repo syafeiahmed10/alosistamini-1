@@ -20,7 +20,7 @@ function paginationConfig($baseUrl, $countRow)
 
     $config['base_url'] = $baseUrl;
     $config['total_rows'] = $countRow;
-    $config['per_page'] = $countRow;
+    $config['per_page'] = 10;
     $config['full_tag_open'] = '<nav><ul class="pagination">';
     $config['full_tag_close'] = '</ul></nav>';
     $config['next_link'] = '&raquo';

@@ -4,7 +4,7 @@
     </span>
 </a>
 <div class="table-responsive">
-    <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+    <table class="table table-bordered table-hover" width="100%" cellspacing="0">
         <thead class="bg-primary text-light">
             <tr>
                 <th>Id Rtlh</th>
